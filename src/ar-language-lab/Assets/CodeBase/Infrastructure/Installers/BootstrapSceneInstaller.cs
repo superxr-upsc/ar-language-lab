@@ -8,7 +8,7 @@ namespace CodeBase.Infrastructure.Installers
     {
         public override void InstallBindings()
         {
-            Container.BindInterfacesTo<BootstrapInstaller>().FromInstance(this).AsSingle();
+            Container.BindInterfacesTo<BootstrapSceneInstaller>().FromInstance(this).AsSingle();
         }
 
         public void Initialize()

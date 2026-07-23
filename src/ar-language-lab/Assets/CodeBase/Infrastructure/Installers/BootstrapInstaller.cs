@@ -4,6 +4,7 @@ using CodeBase.Infrastructure.CoroutineRunner;
 using CodeBase.Infrastructure.GameFactory;
 using CodeBase.Infrastructure.GameStateMachineService.Factory;
 using CodeBase.Infrastructure.GameStateMachineService.StateMachine;
+using CodeBase.Infrastructure.GameStateMachineService.States;
 using CodeBase.Infrastructure.Loading;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
 using CodeBase.Infrastructure.TimerService;
@@ -30,6 +31,7 @@ namespace CodeBase.Infrastructure.Installers
             
             //Bind other services
             BindGameStateMachine();
+            BindGameStateMachineStates();
             BindGameFactory();
             BindSceneLoadingService();
             BindProjectResourcesProvider();
@@ -46,6 +48,12 @@ namespace CodeBase.Infrastructure.Installers
             Container.BindInterfacesTo<GameStateMachine>()
                 .AsSingle()
                 .NonLazy();
+        }
+
+        private void BindGameStateMachineStates()
+        {
+            Container.BindInterfacesAndSelfTo<BootstrapState>().AsSingle();
+            Container.BindInterfacesAndSelfTo<EnterSampleSceneState>().AsSingle();
         }
 
         private void BindGameFactory()
