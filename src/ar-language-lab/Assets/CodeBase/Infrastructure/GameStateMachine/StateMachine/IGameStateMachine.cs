@@ -1,0 +1,10 @@
+using CodeBase.Infrastructure.GameStateMachine.StateInfrastructure;
+
+namespace CodeBase.Infrastructure.GameStateMachine.StateMachine
+{
+  public interface IGameStateMachine 
+  {
+    void Enter<TState>() where TState : class, IState;
+    void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadState<TPayload>;
+  }
+}
