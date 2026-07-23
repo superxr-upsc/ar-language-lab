@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using R3;
 using UnityEngine;
 
-namespace CodeBase.Services.TimerService {
+namespace CodeBase.Infrastructure.TimerService {
     public class GameTimer : IGameTimer, IDisposable {
         public float Duration { get; }
         public float Elapsed => _elapsed;

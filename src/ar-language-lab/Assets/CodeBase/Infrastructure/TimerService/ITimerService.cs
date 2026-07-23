@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace CodeBase.Services.TimerService {
+namespace CodeBase.Infrastructure.TimerService {
     public interface ITimerService
     {
         IGameTimer CreateTimer(float duration);

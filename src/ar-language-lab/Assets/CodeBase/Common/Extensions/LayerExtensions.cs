@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CodeBase.Extentions {
+namespace CodeBase.Common.Extensions {
     public static class LayerExtensions 
     {
         public static void SetLayerRecursively(this GameObject go, int layer)

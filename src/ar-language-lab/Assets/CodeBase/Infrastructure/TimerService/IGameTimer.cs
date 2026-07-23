@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
 using R3;
 
-namespace CodeBase.Services.TimerService 
+namespace CodeBase.Infrastructure.TimerService 
 {
     public interface IGameTimer
     {
