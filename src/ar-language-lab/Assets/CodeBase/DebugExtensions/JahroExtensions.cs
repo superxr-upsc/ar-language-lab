@@ -28,12 +28,10 @@ namespace CodeBase.DebugExtensions
 
         private void OnJahroWindowShow()
         {
-            OnJahroConsoleWindowChangedVisibility(true);
         }
 
         private void OnJahroWindowHide()
         {
-            OnJahroConsoleWindowChangedVisibility(false);
         }
 
         private void OnDestroy()
@@ -44,8 +42,5 @@ namespace CodeBase.DebugExtensions
             foreach (var command in _jahroCommands) 
                 Jahro.UnregisterObject(command);
         }
-
-        private void OnJahroConsoleWindowChangedVisibility(bool isOpen) => 
-            Cursor.lockState = isOpen ? CursorLockMode.None : CursorLockMode.Locked;
     }
 }

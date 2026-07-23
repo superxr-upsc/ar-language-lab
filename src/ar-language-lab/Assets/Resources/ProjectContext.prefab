@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3322834550177324518}
   - component: {fileID: 1118982550659734567}
   - component: {fileID: -558615122648341373}
+  - component: {fileID: 552868524501518318}
   m_Layer: 0
   m_Name: ProjectContext
   m_TagString: Untagged
@@ -76,3 +77,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b65fbc4ac47143bb8e2d03fe57d2dd7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Infrastructure.Installers.BootstrapInstaller
+  _jahroExtensions: {fileID: 6102652147797572391, guid: 03cddca4e1fd5457d91f5817a9c7ff36, type: 3}
+  _coroutineRunner: {fileID: 5933007287934844873, guid: bedbc45d79d536d4ebd1d9e17901132f, type: 3}
+  _windowsManagementService: {fileID: 1055101065743096748, guid: eb008e6fd0256504491711e98f05629a, type: 3}
+--- !u!114 &552868524501518318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4203264851836739427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b87411576f354affa1c3c2f98b765473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Infrastructure.Loading.SwitchToEntrySceneInEditor
