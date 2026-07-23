@@ -327,6 +327,13 @@
       },
       "url": "https://packages.unity.com"
     },
+    "io.jahro.console": {
+      "version": "https://github.com/jahro-console/unity-package.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "3af613cfc92119af48f8b85368e60bda62d3a59f"
+    },
     "nuget-packages": {
       "version": "file:nuget-packages",
       "depth": 0,
