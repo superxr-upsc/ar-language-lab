@@ -1,4 +1,6 @@
-﻿using CodeBase.ARFoundation;
+﻿using System.Diagnostics;
+using CodeBase.ARFoundation;
+using CodeBase.DebugExtensions;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using Zenject;
@@ -10,10 +12,16 @@ namespace CodeBase.Infrastructure.Installers
         [SerializeField] private ARSession _sessionPrefab;
         [SerializeField] private AROriginContainer _originContainerPrefab;
         
+        // For AR Foundation debug purposes
+        [SerializeField] private ARDebugMenu _arDebugMenuPrefab;
+        
         public override void InstallBindings()
         {
             BindARSession();
             BindArOriginContainer();
+            
+            // Only for debug builds
+            BindArDebugMenu();
         }
 
         private void BindARSession()
@@ -28,6 +36,15 @@ namespace CodeBase.Infrastructure.Installers
         {
             Container.Bind<AROriginContainer>()
                 .FromComponentInNewPrefab(_originContainerPrefab)
+                .AsSingle()
+                .NonLazy();
+        }
+
+        [Conditional("DEBUG_LOGS_ENABLED")]
+        private void BindArDebugMenu()
+        {
+            Container.Bind<ARDebugMenu>()
+                .FromComponentInNewPrefab(_arDebugMenuPrefab)
                 .AsSingle()
                 .NonLazy();
         }
