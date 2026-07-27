@@ -21,7 +21,7 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
         {
             base.Enter();
             
-            _sceneLoader.LoadScene(Scenes.SampleSceneInfo.Name);
+            _sceneLoader.LoadScene(Scenes.GameplaySceneInfo.Name);
         }
     }
 }
