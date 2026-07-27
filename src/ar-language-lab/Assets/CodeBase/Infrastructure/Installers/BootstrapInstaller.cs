@@ -1,10 +1,9 @@
 ﻿using System.Diagnostics;
 using CodeBase.DebugExtensions;
 using CodeBase.Infrastructure.CoroutineRunner;
+using CodeBase.Infrastructure.EventBroker;
 using CodeBase.Infrastructure.GameFactory;
-using CodeBase.Infrastructure.GameStateMachineService.Factory;
 using CodeBase.Infrastructure.GameStateMachineService.StateMachine;
-using CodeBase.Infrastructure.GameStateMachineService.States;
 using CodeBase.Infrastructure.Loading;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
 using CodeBase.Infrastructure.TimerService;
@@ -30,30 +29,26 @@ namespace CodeBase.Infrastructure.Installers
             BindWindowsManagementService();
             
             //Bind other services
+            BindEventBrokerService();
             BindGameStateMachine();
-            BindGameStateMachineStates();
             BindGameFactory();
             BindSceneLoadingService();
             BindProjectResourcesProvider();
             BindTimerService();
         }
 
+        private void BindEventBrokerService()
+        {
+            Container.Bind<IEventBrokerService>()
+                .To<EventBrokerService>()
+                .AsSingle();
+        }
+
         private void BindGameStateMachine()
         {
-            Container.Bind<IStateFactory>()
-                .To<StateFactory>()
-                .AsSingle()
-                .NonLazy();
-            
             Container.BindInterfacesTo<GameStateMachine>()
                 .AsSingle()
                 .NonLazy();
-        }
-
-        private void BindGameStateMachineStates()
-        {
-            Container.BindInterfacesAndSelfTo<BootstrapState>().AsSingle();
-            Container.BindInterfacesAndSelfTo<EnterSampleSceneState>().AsSingle();
         }
 
         private void BindGameFactory()

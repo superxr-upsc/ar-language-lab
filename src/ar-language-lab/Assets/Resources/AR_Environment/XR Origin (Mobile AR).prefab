@@ -297,7 +297,6 @@ GameObject:
   - component: {fileID: 3324262080929012168}
   - component: {fileID: 5585030979094911218}
   - component: {fileID: 1128652551065326311}
-  - component: {fileID: 3524420734117452187}
   m_Layer: 0
   m_Name: XR Origin (Mobile AR)
   m_TagString: Untagged
@@ -417,24 +416,6 @@ MonoBehaviour:
   m_SerializedLibrary: {fileID: 11400000, guid: 0ac9e5ff5d15524408d8bd2f9880dc48, type: 2}
   m_MaxNumberOfMovingImages: 0
   m_TrackedImagePrefab: {fileID: 0}
---- !u!114 &3524420734117452187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1519170765508686267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b18a1fcdda743d4f96d550491b82247, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UnityEngine.XR.ARFoundation.Samples.PrefabImagePairManager
-  m_PrefabsList:
-  - imageGuid: a5612f63-72e9-48e3-9dc4-2ec0070b7085
-    imagePrefab: {fileID: 5811970893536397571, guid: 13241d599ff10413498d04c6d683ca10, type: 3}
-  - imageGuid: 6240579e-2118-4214-9993-3aa03df88ec1
-    imagePrefab: {fileID: 613292779795284151, guid: ebd7292e888c84f05924605e51048072, type: 3}
-  m_ImageLibrary: {fileID: 11400000, guid: 0ac9e5ff5d15524408d8bd2f9880dc48, type: 2}
 --- !u!1 &5279294934285623392
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,5 +23,10 @@ namespace CodeBase.Infrastructure.ProjectResourcesProvider
             var path = ResourceNames.GetLocation<TResource>();
             return Resources.LoadAll<TResource>(path);
         }
+        
+        public void ReleaseResource(Object resource)
+        {
+            Resources.UnloadAsset(resource);
+        }
     }
 }

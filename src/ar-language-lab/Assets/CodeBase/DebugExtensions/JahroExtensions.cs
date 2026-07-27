@@ -1,4 +1,6 @@
-﻿using JahroConsole;
+﻿using CodeBase.Common.LoggerService;
+using JahroConsole;
+using RSG;
 using UnityEngine;
 
 namespace CodeBase.DebugExtensions
@@ -17,6 +19,7 @@ namespace CodeBase.DebugExtensions
 
         private void Start()
         {
+            Promise.UnhandledException += LogPromiseException;
             Jahro.OnConsoleShow += OnJahroWindowShow;
             Jahro.OnConsoleHide += OnJahroWindowHide;
 
@@ -25,6 +28,9 @@ namespace CodeBase.DebugExtensions
             foreach (var command in _jahroCommands) 
                 Jahro.RegisterObject(command);
         }
+
+        private void LogPromiseException(object sender, ExceptionEventArgs e) => 
+            GameLogger.LogError($"Exception : {e.Exception} | Message : {e.Exception.Message}");
 
         private void OnJahroWindowShow()
         {
@@ -36,6 +42,7 @@ namespace CodeBase.DebugExtensions
 
         private void OnDestroy()
         {
+            Promise.UnhandledException -= LogPromiseException;
             Jahro.OnConsoleHide -= OnJahroWindowHide;
             Jahro.OnConsoleShow -= OnJahroWindowShow;
             

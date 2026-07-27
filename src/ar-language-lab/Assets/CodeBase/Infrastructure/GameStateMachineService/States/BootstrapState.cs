@@ -16,7 +16,7 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
         {
             base.Enter();
             
-            _stateMachine.Enter<EnterSampleSceneState>();
+            _stateMachine.Enter<EnterGameplaySceneState>();
         }
     }
 }

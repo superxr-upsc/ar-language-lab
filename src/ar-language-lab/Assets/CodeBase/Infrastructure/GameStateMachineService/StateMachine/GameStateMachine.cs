@@ -1,4 +1,4 @@
-﻿using CodeBase.Infrastructure.GameStateMachineService.Factory;
+﻿using CodeBase.Infrastructure.GameFactory;
 using CodeBase.Infrastructure.GameStateMachineService.StateInfrastructure;
 using RSG;
 using Zenject;
@@ -8,9 +8,9 @@ namespace CodeBase.Infrastructure.GameStateMachineService.StateMachine
   public class GameStateMachine : IGameStateMachine, ITickable
   {
     private IExitableState _activeState;
-    private readonly IStateFactory _stateFactory;
+    private readonly IGameFactory _stateFactory;
 
-    public GameStateMachine(IStateFactory stateFactory)
+    public GameStateMachine(IGameFactory stateFactory)
     {
       _stateFactory = stateFactory;
     }
@@ -69,8 +69,7 @@ namespace CodeBase.Infrastructure.GameStateMachineService.StateMachine
 
     private IPromise<TState> ChangeState<TState>() where TState : class, IExitableState
     {
-      TState state = _stateFactory.GetState<TState>();
-
+      TState state = _stateFactory.Create<TState>();
       return Promise<TState>.Resolved(state);
     }
   }

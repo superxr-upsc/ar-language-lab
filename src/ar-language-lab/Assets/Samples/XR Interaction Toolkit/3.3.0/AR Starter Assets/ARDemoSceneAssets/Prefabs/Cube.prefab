@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4719697340578916628}
   - component: {fileID: 2996392715678626154}
   - component: {fileID: 7357653953804275573}
+  - component: {fileID: -5858241530646589152}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -217,6 +218,18 @@ MonoBehaviour:
   m_Elasticity: 0.15
   m_EnableElasticBreakLimit: 1
   m_ElasticBreakLimit: 0.5
+--- !u!114 &-5858241530646589152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613292779795284151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddc47e0dbd0548e78abca75453f5c19f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.ARObjects.ARObjectBase
 --- !u!1 &2317233515023633908
 GameObject:
   m_ObjectHideFlags: 0

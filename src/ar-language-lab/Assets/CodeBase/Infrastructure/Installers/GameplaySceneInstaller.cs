@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using CodeBase.ARFoundation;
+using CodeBase.ARFoundation.ImageTracking;
 using CodeBase.DebugExtensions;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
@@ -20,6 +21,8 @@ namespace CodeBase.Infrastructure.Installers
             BindARSession();
             BindArOriginContainer();
             
+            BindImageTrackingService();
+            
             // Only for debug builds
             BindArDebugMenu();
         }
@@ -36,6 +39,14 @@ namespace CodeBase.Infrastructure.Installers
         {
             Container.Bind<AROriginContainer>()
                 .FromComponentInNewPrefab(_originContainerPrefab)
+                .AsSingle()
+                .NonLazy();
+        }
+
+        private void BindImageTrackingService()
+        {
+            Container.Bind<IImageTrackingService>()
+                .To<ImageTrackingService>()
                 .AsSingle()
                 .NonLazy();
         }
