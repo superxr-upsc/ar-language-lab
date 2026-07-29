@@ -5,6 +5,7 @@ using CodeBase.Infrastructure.EventBroker;
 using CodeBase.Infrastructure.GameFactory;
 using CodeBase.Infrastructure.GameStateMachineService.StateMachine;
 using CodeBase.Infrastructure.Loading;
+using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
 using CodeBase.Infrastructure.TimerService;
 using CodeBase.Infrastructure.WindowsManagement;
@@ -35,6 +36,14 @@ namespace CodeBase.Infrastructure.Installers
             BindSceneLoadingService();
             BindProjectResourcesProvider();
             BindTimerService();
+            BindLocalizationService();
+        }
+
+        private void BindLocalizationService()
+        {
+            Container.Bind<ILocalizationService>()
+                .To<LocalizationService>()
+                .AsSingle();
         }
 
         private void BindEventBrokerService()
