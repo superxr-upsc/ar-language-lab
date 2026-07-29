@@ -16,11 +16,10 @@ namespace CodeBase.ARFoundation.ImageTracking
         private readonly IProjectResourcesProvider _resourceProvider;
         private readonly IGameFactory _factory;
         private readonly IEventBrokerService _eventBrokerService;
+        private readonly Dictionary<Guid, ARObjectBase> _instantiatedObjects;
 
         private TrackableImagesConfig _config;
-
-        private Dictionary<Guid, ARObjectBase> _instantiatedObjects;
-
+        
         public ImageTrackingService(AROriginContainer arContainer, IProjectResourcesProvider resourceProvider, IGameFactory factory, IEventBrokerService eventBrokerService)
         {
             _arContainer = arContainer;
@@ -76,9 +75,14 @@ namespace CodeBase.ARFoundation.ImageTracking
             _instantiatedObjects[trackedImage.referenceImage.guid] = instantiatedReferenceObject;
         }
 
-        private void CleanupPrefab(KeyValuePair<TrackableId, ARTrackedImage> trackedImage)
+        private void CleanupPrefab(KeyValuePair<TrackableId, ARTrackedImage> trackedImageInfo)
         {
-            //TODO: implement cleanup for removed trackables
+            var prefab = _instantiatedObjects.GetValueOrDefault(trackedImageInfo.Value.referenceImage.guid);
+            if (prefab == null) 
+                return;
+            
+            prefab.Cleanup();
+            _instantiatedObjects.Remove(trackedImageInfo.Value.referenceImage.guid);
         }
 
         private void UpdatePrefab(ARTrackedImage trackedImage)

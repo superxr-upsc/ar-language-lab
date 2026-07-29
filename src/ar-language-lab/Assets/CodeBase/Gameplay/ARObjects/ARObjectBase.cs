@@ -15,7 +15,7 @@ namespace CodeBase.Gameplay.ARObjects
 
         public void Cleanup()
         {
-            
+            Destroy(gameObject);
         }
     }
 }
