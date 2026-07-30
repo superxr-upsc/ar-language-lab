@@ -24,7 +24,7 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
             base.Enter();
 
             //Right now for testing flow 
-            InitializeAndLoadGameplay();
+            InitializeAndLoadGameplay().Forget();
         }
 
         private async UniTaskVoid InitializeAndLoadGameplay()
