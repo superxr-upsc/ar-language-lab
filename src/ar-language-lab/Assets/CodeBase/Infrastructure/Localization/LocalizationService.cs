@@ -9,12 +9,9 @@ namespace CodeBase.Infrastructure.Localization
 {
     public class LocalizationService : ILocalizationService
     {
-        public const string DefaultLocaleCode = "en";
-        public const string DefaultStringTableName = "BaseStringTableCollection";
-        public const string DefaultAssetTableName = "AssetLocalisationTableCollection";
-
         public bool IsInitialized => _isInitialized;
-        public string CurrentLocaleCode => _currentLocale?.Identifier.Code;
+        public string CurrentLocaleCode => CurrentLocale?.Identifier.Code;
+        public Locale CurrentLocale => LocalizationSettings.SelectedLocale;
         public IReadOnlyList<string> AvailableLocaleCodes => _availableLocaleCodes;
 
         public event Action<string> LocaleChanged;
@@ -24,7 +21,6 @@ namespace CodeBase.Infrastructure.Localization
         private readonly List<string> _availableLocaleCodes = new();
 
         private bool _isInitialized;
-        private Locale _currentLocale;
         private UniTaskCompletionSource _initializeSource;
 
         public async UniTask InitializeAsync(string localeCode = null)
@@ -46,9 +42,7 @@ namespace CodeBase.Infrastructure.Localization
 
                 CacheAvailableLocales();
 
-                var requestedLocaleCode = string.IsNullOrWhiteSpace(localeCode)
-                    ? DefaultLocaleCode
-                    : localeCode;
+                var requestedLocaleCode = GetRequestedLocaleCode(localeCode);
 
                 await SetLocaleInternalAsync(requestedLocaleCode);
 
@@ -77,17 +71,17 @@ namespace CodeBase.Infrastructure.Localization
             await SetLocaleInternalAsync(localeCode);
         }
 
-        public async UniTask<string> GetStringAsync(string key, string tableName = DefaultStringTableName, params object[] arguments)
+        public async UniTask<string> GetStringAsync(string key, string tableName = LocalizationConsts.DefaultStringTableName, params object[] arguments)
         {
             await EnsureInitializedAsync();
 
-            var table = await GetStringTableAsync(tableName, _currentLocale);
+            var table = await GetStringTableAsync(tableName, CurrentLocale);
             var entry = table.GetEntry(key);
 
             if (entry == null)
             {
                 throw new KeyNotFoundException(
-                    $"String key '{key}' was not found in table '{tableName}' for locale '{CurrentLocaleCode}'.");
+                    $"String key '{key}' was not found in table '{tableName}' for locale '{CurrentLocale}'.");
             }
 
             return arguments == null || arguments.Length == 0
@@ -95,21 +89,21 @@ namespace CodeBase.Infrastructure.Localization
                 : entry.GetLocalizedString(arguments);
         }
 
-        public async UniTask<TAsset> GetAssetAsync<TAsset>(string key, string tableName = DefaultAssetTableName)
+        public async UniTask<TAsset> GetAssetAsync<TAsset>(string key, string tableName = LocalizationConsts.DefaultAssetTableName)
             where TAsset : UnityEngine.Object
         {
             await EnsureInitializedAsync();
 
-            var table = await GetAssetTableAsync(tableName, _currentLocale);
+            var table = await GetAssetTableAsync(tableName, CurrentLocale);
             var entry = table.GetEntry(key);
 
             if (entry == null)
             {
                 throw new KeyNotFoundException(
-                    $"Asset key '{key}' was not found in table '{tableName}' for locale '{CurrentLocaleCode}'.");
+                    $"Asset key '{key}' was not found in table '{tableName}' for locale '{CurrentLocale}'.");
             }
 
-            var handle = LocalizationSettings.AssetDatabase.GetLocalizedAssetAsync<TAsset>(tableName, key, _currentLocale);
+            var handle = LocalizationSettings.AssetDatabase.GetLocalizedAssetAsync<TAsset>(tableName, key, CurrentLocale);
             await handle.ToUniTask();
 
             return handle.Result;
@@ -123,18 +117,10 @@ namespace CodeBase.Infrastructure.Localization
             await InitializeAsync();
         }
 
-        private void CacheAvailableLocales()
-        {
-            _availableLocaleCodes.Clear();
-
-            foreach (var locale in LocalizationSettings.AvailableLocales.Locales)
-                _availableLocaleCodes.Add(locale.Identifier.Code);
-        }
-
         private async UniTask SetLocaleInternalAsync(string localeCode)
         {
             if (string.IsNullOrWhiteSpace(localeCode))
-                localeCode = DefaultLocaleCode;
+                localeCode = LocalizationConsts.DefaultLocaleCode;
 
             var locale = FindLocale(localeCode);
             if (locale == null)
@@ -143,27 +129,15 @@ namespace CodeBase.Infrastructure.Localization
                     $"Locale '{localeCode}' is not available. Available locales: {string.Join(", ", _availableLocaleCodes)}.");
             }
 
-            if (_currentLocale == locale)
+            if (CurrentLocale == locale)
                 return;
 
             LocalizationSettings.SelectedLocale = locale;
-            _currentLocale = locale;
 
             ClearTablesCache();
 
             await UniTask.Yield();
-            LocaleChanged?.Invoke(_currentLocale.Identifier.Code);
-        }
-
-        private Locale FindLocale(string localeCode)
-        {
-            foreach (var locale in LocalizationSettings.AvailableLocales.Locales)
-            {
-                if (string.Equals(locale.Identifier.Code, localeCode, StringComparison.OrdinalIgnoreCase))
-                    return locale;
-            }
-
-            return null;
+            LocaleChanged?.Invoke(CurrentLocale.Identifier.Code);
         }
 
         private async UniTask<StringTable> GetStringTableAsync(string tableName, Locale locale)
@@ -206,7 +180,33 @@ namespace CodeBase.Infrastructure.Localization
             return table;
         }
 
-        private static string BuildCacheKey(string tableName, Locale locale)
+        private Locale FindLocale(string localeCode)
+        {
+            foreach (var availableLocale in _availableLocaleCodes)
+            {
+                if (string.Equals(availableLocale, localeCode, StringComparison.OrdinalIgnoreCase))
+                    return LocalizationSettings.AvailableLocales.GetLocale(availableLocale);
+            }
+
+            return null;
+        }
+
+        private void CacheAvailableLocales()
+        {
+            _availableLocaleCodes.Clear();
+
+            foreach (var locale in LocalizationSettings.AvailableLocales.Locales)
+                _availableLocaleCodes.Add(locale.Identifier.Code);
+        }
+
+        private string GetRequestedLocaleCode(string localeCode)
+        {
+            return string.IsNullOrWhiteSpace(localeCode)
+                ? LocalizationConsts.DefaultLocaleCode
+                : localeCode;
+        }
+
+        private string BuildCacheKey(string tableName, Locale locale)
         {
             return $"{tableName}:{locale.Identifier.Code}";
         }

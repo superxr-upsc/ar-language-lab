@@ -1,4 +1,4 @@
-﻿namespace CodeBase.Infrastructure.StaticData
+﻿namespace CodeBase.Infrastructure.WindowsManagement
 {
     public enum UILayer
     {

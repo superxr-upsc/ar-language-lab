@@ -39,13 +39,6 @@ namespace CodeBase.Infrastructure.Installers
             BindLocalizationService();
         }
 
-        private void BindLocalizationService()
-        {
-            Container.Bind<ILocalizationService>()
-                .To<LocalizationService>()
-                .AsSingle();
-        }
-
         private void BindEventBrokerService()
         {
             Container.Bind<IEventBrokerService>()
@@ -85,6 +78,13 @@ namespace CodeBase.Infrastructure.Installers
         {
             Container.Bind<ITimerService>()
                 .To<TimerService.TimerService>()
+                .AsSingle();
+        }
+
+        private void BindLocalizationService()
+        {
+            Container.Bind<ILocalizationService>()
+                .To<LocalizationService>()
                 .AsSingle();
         }
 

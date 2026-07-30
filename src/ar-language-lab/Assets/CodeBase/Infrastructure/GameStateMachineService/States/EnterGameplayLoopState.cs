@@ -1,6 +1,8 @@
 ﻿using CodeBase.Infrastructure.EventBroker;
 using CodeBase.Infrastructure.EventBroker.Handlers;
 using CodeBase.Infrastructure.GameStateMachineService.StateInfrastructure;
+using CodeBase.Infrastructure.Localization;
+using R3;
 
 namespace CodeBase.Infrastructure.GameStateMachineService.States
 {
@@ -16,14 +18,12 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
         public override void Enter()
         {
             base.Enter();
-
             _eventBrokerService.Rise<IGameLoopInitializable>(x => x.OnGameLoopInitialized());
         }
 
         protected override void Exit()
         {
             _eventBrokerService.Rise<IGameLoopDisposable>(x => x.OnGameLoopDisposed());
-            
             base.Exit();
         }
     }
