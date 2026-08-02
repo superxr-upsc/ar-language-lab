@@ -13,12 +13,4 @@ MonoBehaviour:
   m_Name: LessonConfig
   m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.Lessons.LessonConfig
   Id: LC_6d347f984c114e3e968ab0afea1c3ded
-  Tasks:
-  - Id: TD_828b36b9c15b4055b1a30dbe5f1c78ea
-    Type: 0
-  - Id: TD_7c36a08a662c4664af7411ff95d5c986
-    Type: 0
-  - Id: TD_05dd24692ecd4d96a5959a6c33bc664e
-    Type: 0
-  - Id: TD_3b7bcfb37b4941e08530279bae316fc0
-    Type: 0
+  Tasks: []
