@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CodeBase.ARFoundation.ImageTracking
+namespace CodeBase.Gameplay.ARFoundation.ImageTracking
 {
     public interface IImageTrackingService : IDisposable
     {

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
-namespace CodeBase.ARFoundation
+namespace CodeBase.Gameplay.ARFoundation
 {
     public class AROriginContainer : MonoBehaviour
     {

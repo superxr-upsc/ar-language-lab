@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CodeBase.Gameplay.ARFoundation.ImageTracking;
 using CodeBase.Gameplay.ARObjects;
 using UnityEditor;
 using UnityEngine.XR.ARSubsystems;

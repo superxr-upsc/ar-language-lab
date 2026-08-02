@@ -5,9 +5,9 @@ using CodeBase.Infrastructure.ProjectResourcesProvider;
 using UnityEngine;
 using UnityEngine.XR.ARSubsystems;
 
-namespace CodeBase.ARFoundation.ImageTracking
+namespace CodeBase.Gameplay.ARFoundation.ImageTracking
 {
-    [CreateAssetMenu(menuName = "ARFoundation/ImageTrackingConfig", fileName = "ImageTrackingConfig")]
+    [CreateAssetMenu(menuName = "AR/ImageTrackingConfig", fileName = "ImageTrackingConfig")]
     public class TrackableImagesConfig : ScriptableObject, ISerializationCallbackReceiver, IResource
     {
         public XRReferenceImageLibrary ImageLibrary;

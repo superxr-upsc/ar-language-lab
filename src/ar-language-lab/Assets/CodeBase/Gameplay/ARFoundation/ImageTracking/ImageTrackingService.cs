@@ -8,7 +8,7 @@ using CodeBase.Infrastructure.ProjectResourcesProvider;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 
-namespace CodeBase.ARFoundation.ImageTracking
+namespace CodeBase.Gameplay.ARFoundation.ImageTracking
 {
     public class ImageTrackingService : IImageTrackingService, IGameLoopInitializable, IGameLoopDisposable
     {

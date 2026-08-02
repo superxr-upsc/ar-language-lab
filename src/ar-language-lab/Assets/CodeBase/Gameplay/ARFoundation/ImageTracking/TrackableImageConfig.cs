@@ -1,13 +1,12 @@
 ﻿using System;
 using CodeBase.Gameplay.ARObjects;
-using Unity.XR.CoreUtils;
 
-namespace CodeBase.ARFoundation.ImageTracking
+namespace CodeBase.Gameplay.ARFoundation.ImageTracking
 {
     [Serializable]
     public struct TrackableImageConfig
     {
-        [ReadOnly] public string Id;
+        public string Id;
         public ARObjectBase Prefab;
 
         public TrackableImageConfig(Guid guid, ARObjectBase prefab)

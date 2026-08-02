@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
-using CodeBase.ARFoundation;
-using CodeBase.ARFoundation.ImageTracking;
 using CodeBase.DebugExtensions;
+using CodeBase.Gameplay.ARFoundation;
+using CodeBase.Gameplay.ARFoundation.ImageTracking;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using Zenject;

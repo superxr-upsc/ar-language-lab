@@ -1,5 +1,5 @@
 ﻿using System;
-using CodeBase.ARFoundation.ImageTracking;
+using CodeBase.Gameplay.ARFoundation.ImageTracking;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
 
 namespace CodeBase.Infrastructure.StaticData
