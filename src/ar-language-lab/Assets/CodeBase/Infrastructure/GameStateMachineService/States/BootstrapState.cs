@@ -3,8 +3,6 @@ using CodeBase.Infrastructure.GameStateMachineService.StateInfrastructure;
 using CodeBase.Infrastructure.GameStateMachineService.StateMachine;
 using CodeBase.Infrastructure.Localization;
 using Cysharp.Threading.Tasks;
-using RSG;
-using IPromise = RSG.IPromise;
 
 namespace CodeBase.Infrastructure.GameStateMachineService.States
 {

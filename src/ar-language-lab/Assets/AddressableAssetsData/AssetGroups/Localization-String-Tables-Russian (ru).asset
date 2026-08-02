@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: Localization-String-Tables-Russian (ru)
   m_GUID: ff44d85750ed9494c93ca208313be899
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 5561fe7c20c70ce4b8bab30e207718da
+    m_Address: BaseStringTableCollection_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 191c9beeb990b8a43988ec455b7f4bac, type: 2}
   m_SchemaSet:
