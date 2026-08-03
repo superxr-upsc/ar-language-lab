@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Book
       objectReference: {fileID: 0}
+    - target: {fileID: 6868569882816700697, guid: fb04b389beffb6342bcca92311f45eab, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: 118dfa9e27becd74eaf121e87a8889cb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3408720651909863977, guid: fb04b389beffb6342bcca92311f45eab, type: 3}

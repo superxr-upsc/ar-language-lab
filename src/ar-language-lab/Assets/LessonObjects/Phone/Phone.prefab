@@ -50,8 +50,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8255935292595948435, guid: 957f8c0d8fda4d84ca34cb3a5cffc8ba, type: 3}
       propertyPath: m_Name
-      value: BaseObject Variant
+      value: Phone
       objectReference: {fileID: 0}
+    - target: {fileID: 8293336327156361764, guid: 957f8c0d8fda4d84ca34cb3a5cffc8ba, type: 3}
+      propertyPath: _data
+      value: 
+      objectReference: {fileID: 11400000, guid: aca8ddf49f06d0149b3cfd9264a828db, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

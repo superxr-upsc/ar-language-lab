@@ -5,6 +5,8 @@ namespace CodeBase.Gameplay.ARObjects
 {
     public class ARObjectBase : MonoBehaviour
     {
+        [SerializeField] private ARObjectConfig _data;
+        
         public void Initialize(ARTrackedImage trackedImage)
         {
         }

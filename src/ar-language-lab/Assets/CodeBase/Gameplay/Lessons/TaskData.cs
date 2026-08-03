@@ -8,6 +8,7 @@ namespace CodeBase.Gameplay.Lessons
     public class TaskData : UniqueObject
     {
         public TaskType Type;
+        public string DescriptionLocalizationKey;
 
         public TaskData() : base(IdentifierUtility.TaskDataPrefix)
         {

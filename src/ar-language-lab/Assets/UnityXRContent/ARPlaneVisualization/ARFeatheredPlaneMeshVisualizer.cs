@@ -1,6 +1,4 @@
-#if AR_FOUNDATION_PRESENT
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 
 namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
@@ -10,6 +8,7 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
     /// at the edge of the detected plane, which reduces the visual impression
     /// of a hard edge.
     /// </summary>
+
     [RequireComponent(typeof(ARPlaneMeshVisualizer), typeof(MeshRenderer), typeof(ARPlane))]
     public class ARFeatheredPlaneMeshVisualizer : MonoBehaviour
     {
@@ -112,4 +111,3 @@ namespace UnityEngine.XR.Interaction.Toolkit.Samples.ARStarterAssets
         Material m_FeatheredPlaneMaterial;
     }
 }
-#endif
