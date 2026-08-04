@@ -154,7 +154,7 @@ Every word, phrase, and instruction will be voiced by the application, helping l
 
 # 🛠️ Technology
 
-* Unity
+* Unity 6000.3.16f1
 * AR Foundation
 * C#
 * Marker-based Augmented Reality
