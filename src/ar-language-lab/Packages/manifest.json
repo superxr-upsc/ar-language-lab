@@ -1,9 +1,10 @@
 {
   "dependencies": {
     "com.cysharp.r3": "https://github.com/Cysharp/R3.git?path=src/R3.Unity/Assets/R3.Unity",
+    "com.ptc.vuforia.engine": "file:com.ptc.vuforia.engine-11.4.4.tgz",
     "com.unity.feature.development": "1.0.2",
     "com.unity.inputsystem": "1.19.0",
-    "com.unity.learn.iet-framework": "5.0.3",
+    "com.unity.learn.iet-framework": "5.0.4",
     "com.unity.localization": "1.5.12",
     "com.unity.mobile.android-logcat": "1.4.7",
     "com.unity.multiplayer.center": "1.0.1",

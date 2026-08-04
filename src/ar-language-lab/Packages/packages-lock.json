@@ -9,6 +9,16 @@
       },
       "hash": "c6f8a932d9b8e771a9f405e6d72058a21ce0b457"
     },
+    "com.ptc.vuforia.engine": {
+      "version": "file:com.ptc.vuforia.engine-11.4.4.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0",
+        "com.unity.inputsystem": "1.11.2",
+        "com.unity.nuget.newtonsoft-json": "3.2.1"
+      }
+    },
     "com.unity.addressables": {
       "version": "2.9.1",
       "depth": 1,
@@ -102,7 +112,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.learn.iet-framework": {
-      "version": "5.0.3",
+      "version": "5.0.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -280,7 +290,7 @@
     },
     "com.unity.ugui": {
       "version": "2.0.0",
-      "depth": 2,
+      "depth": 1,
       "source": "builtin",
       "dependencies": {
         "com.unity.modules.ui": "1.0.0",
