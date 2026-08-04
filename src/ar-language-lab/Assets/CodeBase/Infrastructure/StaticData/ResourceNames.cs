@@ -1,5 +1,4 @@
 ﻿using System;
-using CodeBase.Gameplay.ARFoundation.ImageTracking;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
 
 namespace CodeBase.Infrastructure.StaticData
@@ -9,7 +8,7 @@ namespace CodeBase.Infrastructure.StaticData
         //Declare resources [type], [location in resources folder]
         private static ResourceName[] resources =
         {
-            new (typeof(TrackableImagesConfig), "Gameplay"),
+            //new (typeof(TrackableImagesConfig), "Gameplay"),
         };
 
         public static string GetLocation<TResource>() where TResource : IResource
