@@ -8,7 +8,9 @@ using CodeBase.Infrastructure.Loading;
 using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
 using CodeBase.Infrastructure.TimerService;
+using CodeBase.Infrastructure.Vuforia;
 using CodeBase.Infrastructure.WindowsManagement;
+using CodeBase.Services.InputService;
 using UnityEngine;
 using Zenject;
 
@@ -33,10 +35,18 @@ namespace CodeBase.Infrastructure.Installers
             BindEventBrokerService();
             BindGameStateMachine();
             BindGameFactory();
+            BindInputService();
             BindSceneLoadingService();
             BindProjectResourcesProvider();
             BindTimerService();
             BindLocalizationService();
+            BindVuforiaService();
+        }
+
+        private void BindVuforiaService()
+        {
+            Container.BindInterfacesTo<VuforiaService>()
+                .AsSingle();
         }
 
         private void BindEventBrokerService()
@@ -57,6 +67,13 @@ namespace CodeBase.Infrastructure.Installers
         {
             Container.Bind<IGameFactory>()
                 .To<GameFactory.GameFactory>()
+                .AsSingle();
+        }
+
+        private void BindInputService()
+        {
+            Container.Bind<IInputService>()
+                .To<PlayerInputService>()
                 .AsSingle();
         }
 
