@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.XR.ARFoundation;
 
 namespace CodeBase.Gameplay.ARObjects
 {
@@ -7,11 +6,11 @@ namespace CodeBase.Gameplay.ARObjects
     {
         [SerializeField] private ARObjectConfig _data;
         
-        public void Initialize(ARTrackedImage trackedImage)
+        public void Initialize()
         {
         }
 
-        public void Refresh(ARTrackedImage trackedImage)
+        public void Refresh()
         {
         }
 
