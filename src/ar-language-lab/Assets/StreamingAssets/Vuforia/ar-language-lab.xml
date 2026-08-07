@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+    <Tracking>
+        <ImageTarget name="ar-apple.Top" size="0.100000 0.100000"/>
+        <ImageTarget name="ar-apple.Left" size="0.100000 0.100000"/>
+        <ImageTarget name="ar-apple.Right" size="0.100000 0.100000"/>
+        <ImageTarget name="ar-apple.Back" size="0.100000 0.100000"/>
+        <ImageTarget name="ar-apple.Bottom" size="0.100000 0.100000"/>
+        <ImageTarget name="ar-apple.Front" size="0.100000 0.100000"/>
+        <MultiTarget name="ar-apple">
+            <Part name="ar-apple.Left" translation="-0.05000000074505806 0 0" rotation="AD: 0 1 0 -90"/>
+            <Part name="ar-apple.Right" translation="0.05000000074505806 0 0" rotation="AD: 0 1 0 90"/>
+            <Part name="ar-apple.Front" translation="0 0 0.05000000074505806" rotation="AD: 1 0 0 0"/>
+            <Part name="ar-apple.Back" translation="0 0 -0.05000000074505806" rotation="AD: 0 1 0 180"/>
+            <Part name="ar-apple.Top" translation="0 0.05000000074505806 0" rotation="AD: 1 0 0 -90"/>
+            <Part name="ar-apple.Bottom" translation="0 -0.05000000074505806 0" rotation="AD: 1 0 0 90"/>
+        </MultiTarget>
+    </Tracking>
+</QCARConfig>

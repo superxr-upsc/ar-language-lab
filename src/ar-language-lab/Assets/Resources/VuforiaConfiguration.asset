@@ -26,7 +26,7 @@ MonoBehaviour:
     version: 11.4.4
     eulaAcceptedVersions: '{"Values":["11.4","0.0"]}'
   database:
-    disableModelExtraction: 0
+    disableModelExtraction: 1
   plugins:
     pluginDirectory: asset://Vuforia
   shaders:
