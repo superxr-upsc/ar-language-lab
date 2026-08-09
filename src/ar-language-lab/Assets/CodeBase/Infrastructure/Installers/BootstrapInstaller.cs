@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using CodeBase.DebugExtensions;
+using CodeBase.Gameplay.Lessons;
 using CodeBase.Infrastructure.CoroutineRunner;
 using CodeBase.Infrastructure.EventBroker;
 using CodeBase.Infrastructure.GameFactory;
@@ -41,6 +42,14 @@ namespace CodeBase.Infrastructure.Installers
             BindTimerService();
             BindLocalizationService();
             BindVuforiaService();
+            BindLessonManagementService();
+        }
+
+        private void BindLessonManagementService()
+        {
+            Container.Bind<ILessonManagementService>()
+                .To<LessonManagementService>()
+                .AsSingle();
         }
 
         private void BindVuforiaService()

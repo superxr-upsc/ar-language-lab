@@ -1,13 +1,16 @@
 ﻿using System.Collections.Generic;
+using CodeBase.Gameplay.ARObjects;
 using CodeBase.Gameplay.Identifiers;
+using CodeBase.Infrastructure.ProjectResourcesProvider;
 using UnityEngine;
 
 namespace CodeBase.Gameplay.Lessons
 {
     [CreateAssetMenu(fileName = "LessonConfig", menuName = "AR/LessonConfig")]
-    public class LessonConfig : UniqueScriptableObject
+    public class LessonConfig : UniqueScriptableObject, IResource
     {
         protected override string Prefix => IdentifierUtility.LessonConfigPrefix;
+        public ARObjectConfig[] ObjectsToUse;
         public TaskData[] Tasks;
         
         //Validation Task ID for task data 

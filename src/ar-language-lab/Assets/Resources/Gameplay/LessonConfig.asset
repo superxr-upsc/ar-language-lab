@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: LessonConfig
   m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.Lessons.LessonConfig
   Id: LC_6d347f984c114e3e968ab0afea1c3ded
+  ObjectsToUse:
+  - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
   Tasks: []

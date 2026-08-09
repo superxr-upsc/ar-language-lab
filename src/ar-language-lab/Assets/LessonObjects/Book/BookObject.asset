@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.ARObjects.ARObjectConfig
   Id: OC_e82b21cb96b646b393f8b161fb1e8abe
   LocalisationKey: ind_book_object
+  Prefab: {fileID: 3029425252642834683, guid: 9552c7112d1c37d4dbb096ce3509fe2e, type: 3}

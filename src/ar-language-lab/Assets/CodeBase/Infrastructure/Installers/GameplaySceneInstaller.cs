@@ -11,6 +11,7 @@ namespace CodeBase.Infrastructure.Installers
         public override void InstallBindings()
         {
             BindARCamera();
+            
         }
 
         private void BindARCamera()

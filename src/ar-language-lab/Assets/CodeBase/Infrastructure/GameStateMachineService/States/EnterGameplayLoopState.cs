@@ -1,4 +1,5 @@
-﻿using CodeBase.Infrastructure.EventBroker;
+﻿using CodeBase.Gameplay.Lessons;
+using CodeBase.Infrastructure.EventBroker;
 using CodeBase.Infrastructure.EventBroker.Handlers;
 using CodeBase.Infrastructure.GameStateMachineService.StateInfrastructure;
 using CodeBase.Infrastructure.Vuforia;
@@ -9,18 +10,24 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
     {
         private readonly IEventBrokerService _eventBrokerService;
         private readonly IVuforiaService _vuforiaService;
+        private readonly ILessonManagementService _lessonManagementService;
 
         public EnterGameplayLoopState(IEventBrokerService eventBrokerService,
-            IVuforiaService vuforiaService)
+            IVuforiaService vuforiaService,
+            ILessonManagementService lessonManagementService)
         {
             _eventBrokerService = eventBrokerService;
             _vuforiaService = vuforiaService;
+            _lessonManagementService = lessonManagementService;
         }
         
         public override void Enter()
         {
             base.Enter();
+            
             _vuforiaService.SetupVuforiaBehaviour();
+            _lessonManagementService.SetupLesson();
+            
             _eventBrokerService.Rise<IGameLoopInitializable>(x => x.OnGameLoopInitialized());
         }
 
