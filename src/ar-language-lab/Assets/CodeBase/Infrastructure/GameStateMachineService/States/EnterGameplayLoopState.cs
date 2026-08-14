@@ -33,6 +33,8 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
 
         protected override void Exit()
         {
+            _lessonManagementService.CleanupLesson();
+            
             _eventBrokerService.Rise<IGameLoopDisposable>(x => x.OnGameLoopDisposed());
             base.Exit();
         }

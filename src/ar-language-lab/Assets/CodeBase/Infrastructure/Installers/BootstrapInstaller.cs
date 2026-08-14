@@ -42,6 +42,7 @@ namespace CodeBase.Infrastructure.Installers
             BindTimerService();
             BindLocalizationService();
             BindVuforiaService();
+            BindARCameraProvider();
             BindLessonManagementService();
         }
 
@@ -55,6 +56,13 @@ namespace CodeBase.Infrastructure.Installers
         private void BindVuforiaService()
         {
             Container.BindInterfacesTo<VuforiaService>()
+                .AsSingle();
+        }
+
+        private void BindARCameraProvider()
+        {
+            Container.Bind<IARCameraProvider>()
+                .To<ARCameraProvider>()
                 .AsSingle();
         }
 

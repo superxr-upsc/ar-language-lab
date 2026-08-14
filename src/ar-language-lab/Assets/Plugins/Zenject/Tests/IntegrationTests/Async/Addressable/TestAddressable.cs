@@ -146,7 +146,7 @@ public class TestAddressable : ZenjectIntegrationTestFixture
         {
             locationsHandle = Addressables.LoadResourceLocationsAsync("TestAddressablePrefab");
         }
-        catch (Exception e)
+        catch (Exception)
         {
             Assert.Inconclusive("You need to set TestAddressablePrefab key to run this test");
             yield break;

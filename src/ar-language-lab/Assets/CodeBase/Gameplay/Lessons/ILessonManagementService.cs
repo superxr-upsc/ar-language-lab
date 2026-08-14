@@ -3,5 +3,6 @@
     public interface ILessonManagementService
     {
         void SetupLesson();
+        void CleanupLesson();
     }
 }

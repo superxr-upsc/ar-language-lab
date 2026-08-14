@@ -1,6 +1,9 @@
-﻿using CodeBase.Gameplay.ARObjects;
+﻿using System;
+using System.Collections.Generic;
+using CodeBase.Gameplay.ARObjects;
 using CodeBase.Infrastructure.GameFactory;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
+using UnityEngine;
 
 namespace CodeBase.Gameplay.Lessons
 {
@@ -11,6 +14,9 @@ namespace CodeBase.Gameplay.Lessons
 
         private LessonConfig _lessonConfig;
         
+        private Transform _gameplayObjectsParent;
+        private List<ARObjectBase> _lessonObjects = new();
+
         public LessonManagementService(IGameFactory gameFactory,
             IProjectResourcesProvider resourcesProvider)
         {
@@ -22,7 +28,14 @@ namespace CodeBase.Gameplay.Lessons
         {
             _lessonConfig = GetSelectedLesson();
 
+            SetupGameplayObjectsParent();
             SetupGameplayObjects();
+        }
+
+        public void CleanupLesson()
+        {
+            foreach (var arObject in _lessonObjects) 
+                arObject.Cleanup();
         }
 
         private LessonConfig GetSelectedLesson()
@@ -31,10 +44,18 @@ namespace CodeBase.Gameplay.Lessons
             return _resourcesProvider.LoadResource<LessonConfig>();
         }
 
+        private void SetupGameplayObjectsParent() => 
+            _gameplayObjectsParent = new GameObject("[GameplayObjectsParent]").transform;
+
         private void SetupGameplayObjects()
         {
-            foreach (var arObjectConfig in _lessonConfig.ObjectsToUse) 
-                _gameFactory.CreateFromPrefab<ARObjectBase>(arObjectConfig.Prefab);
+            foreach (var arObjectConfig in _lessonConfig.ObjectsToUse)
+            {
+                var arObject = _gameFactory.CreateFromPrefab<ARObjectBase>(arObjectConfig.Prefab, _gameplayObjectsParent);
+                arObject.Initialize();
+                
+                _lessonObjects.Add(arObject);
+            }
         }
     }
 }

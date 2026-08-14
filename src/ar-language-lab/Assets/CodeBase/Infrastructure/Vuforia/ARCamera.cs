@@ -12,9 +12,12 @@ namespace CodeBase.Infrastructure.Vuforia
 {
     public class ARCamera : MonoBehaviour, IGameLoopInitializable
     {
+        public Camera Camera => _camera;
         public bool IsFlashTorchEnabled => _isFlashTorchEnabled;
         public bool IsAutofocusEnabled => _isAutofocusEnabled;
         
+        [SerializeField] private Camera _camera;
+
         private IInputService _inputService;
         private IEventBrokerService _eventBrokerService;
         private IVuforiaService _vuforiaService;
