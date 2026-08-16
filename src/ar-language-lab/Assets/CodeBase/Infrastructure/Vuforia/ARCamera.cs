@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using CodeBase.Common.LoggerService;
+using CodeBase.Gameplay.SpeechSyntesis;
 using CodeBase.Infrastructure.EventBroker;
 using CodeBase.Infrastructure.EventBroker.Handlers;
 using CodeBase.Services.InputService;
@@ -13,10 +14,12 @@ namespace CodeBase.Infrastructure.Vuforia
     public class ARCamera : MonoBehaviour, IGameLoopInitializable
     {
         public Camera Camera => _camera;
+        public Speaker Speaker => _speaker;
         public bool IsFlashTorchEnabled => _isFlashTorchEnabled;
         public bool IsAutofocusEnabled => _isAutofocusEnabled;
         
         [SerializeField] private Camera _camera;
+        [SerializeField] private Speaker _speaker;
 
         private IInputService _inputService;
         private IEventBrokerService _eventBrokerService;

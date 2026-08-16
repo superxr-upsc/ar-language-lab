@@ -11,12 +11,12 @@ namespace CodeBase.Infrastructure.Installers
         public override void InstallBindings()
         {
             BindARCamera();
-            
         }
 
         private void BindARCamera()
         {
-            Container.Bind<ARCamera>()
+            Container
+                .Bind<ARCamera>()
                 .FromComponentInNewPrefab(_arCamera)
                 .AsSingle()
                 .NonLazy();

@@ -79,3 +79,4 @@ MonoBehaviour:
   _jahroExtensions: {fileID: 6102652147797572391, guid: 03cddca4e1fd5457d91f5817a9c7ff36, type: 3}
   _coroutineRunner: {fileID: 5933007287934844873, guid: bedbc45d79d536d4ebd1d9e17901132f, type: 3}
   _windowsManagementService: {fileID: 1055101065743096748, guid: eb008e6fd0256504491711e98f05629a, type: 3}
+  _ttsService: {fileID: 2446021797511839463, guid: 40d46e76949684c4ca0224eed605a885, type: 3}

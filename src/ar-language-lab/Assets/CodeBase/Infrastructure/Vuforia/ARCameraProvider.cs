@@ -1,36 +1,30 @@
+using CodeBase.Gameplay.SpeechSyntesis;
 using UnityEngine;
-using Vuforia;
 
 namespace CodeBase.Infrastructure.Vuforia
 {
     public class ARCameraProvider : IARCameraProvider
     {
-        private Camera _cachedCamera;
+        private ARCamera _cachedCamera;
 
-        public Camera GetActiveCamera()
+        public Speaker GetSpeaker() => GetCachedArCamera().Speaker;
+        public Camera GetActiveCamera() => GetCachedArCamera().Camera;
+        public ARCamera GetActiveARCamera() => GetCachedArCamera();
+
+        private ARCamera GetCachedArCamera()
         {
             if (_cachedCamera != null && _cachedCamera.isActiveAndEnabled)
             {
                 return _cachedCamera;
             }
 
-            _cachedCamera = Camera.main;
+            _cachedCamera = Camera.main.GetComponent<ARCamera>();
             if (_cachedCamera != null)
             {
                 return _cachedCamera;
             }
 
-            var vuforiaBehaviour = VuforiaBehaviour.Instance;
-            if (vuforiaBehaviour != null)
-            {
-                _cachedCamera = vuforiaBehaviour.GetComponent<Camera>();
-                if (_cachedCamera != null)
-                {
-                    return _cachedCamera;
-                }
-            }
-
-            _cachedCamera = Object.FindObjectOfType<Camera>();
+            _cachedCamera = Object.FindAnyObjectByType<ARCamera>();
             return _cachedCamera;
         }
     }

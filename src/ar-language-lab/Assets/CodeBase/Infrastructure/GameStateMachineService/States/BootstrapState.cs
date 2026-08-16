@@ -1,4 +1,5 @@
 ﻿using CodeBase.Common.LoggerService;
+using CodeBase.Gameplay.SpeechSyntesis;
 using CodeBase.Infrastructure.GameStateMachineService.StateInfrastructure;
 using CodeBase.Infrastructure.GameStateMachineService.StateMachine;
 using CodeBase.Infrastructure.Localization;
@@ -12,14 +13,17 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
         private readonly IGameStateMachine _stateMachine;
         private readonly ILocalizationService _localizationService;
         private readonly IVuforiaService _vuforiaService;
+        private readonly ITTSService _ttsService;
 
         public BootstrapState(IGameStateMachine stateMachine, 
             ILocalizationService localizationService,
-            IVuforiaService vuforiaService)
+            IVuforiaService vuforiaService,
+            ITTSService ttsService)
         {
             _stateMachine = stateMachine;
             _localizationService = localizationService;
             _vuforiaService = vuforiaService;
+            _ttsService = ttsService;
         }
         
         public override void Enter()
@@ -31,22 +35,11 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
 
         private async UniTaskVoid InitializeAndLoadGameplay()
         {
-            await InitializeLocalisationAsync();
-            await InitializeVuforiaAsync();
+            await _localizationService.InitializeAsync();
+            await _vuforiaService.InitializeVuforia();
+            await _ttsService.InitializeAsync();
             
             _stateMachine.Enter<EnterGameplaySceneState>();
-        }
-
-        private async UniTask InitializeLocalisationAsync()
-        {
-            await _localizationService.InitializeAsync();
-            GameLogger.Log($"[BootstrapState] LocalizationService initialized with locale '{_localizationService.CurrentLocaleCode}'");
-        }
-
-        private async UniTask InitializeVuforiaAsync()
-        {
-            await _vuforiaService.InitializeVuforia();
-            GameLogger.Log("[BootstrapState] VuforiaService initialized");
         }
     }
 }

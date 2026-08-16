@@ -9,6 +9,13 @@
       },
       "hash": "c6f8a932d9b8e771a9f405e6d72058a21ce0b457"
     },
+    "com.eitan.sherpa-onnx-unity": {
+      "version": "https://github.com/EitanWong/com.eitan.sherpa-onnx-unity.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "cf70be74cb51682fdde9b45074df04d1bf420147"
+    },
     "com.ptc.vuforia.engine": {
       "version": "file:com.ptc.vuforia.engine-11.4.4.tgz",
       "depth": 0,

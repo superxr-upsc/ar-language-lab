@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using CodeBase.DebugExtensions;
 using CodeBase.Gameplay.Lessons;
+using CodeBase.Gameplay.SpeechSyntesis;
 using CodeBase.Infrastructure.CoroutineRunner;
 using CodeBase.Infrastructure.EventBroker;
 using CodeBase.Infrastructure.GameFactory;
@@ -22,6 +23,7 @@ namespace CodeBase.Infrastructure.Installers
         [SerializeField] private JahroExtensions _jahroExtensions;
         [SerializeField] private CoroutineRunnerComponent _coroutineRunner;
         [SerializeField] private WindowsManagementService _windowsManagementService;
+        [SerializeField] private TTSService _ttsService;
         
         public override void InstallBindings()
         {
@@ -31,7 +33,8 @@ namespace CodeBase.Infrastructure.Installers
             //Bind services with prefab instances
             BindCoroutineRunner();
             BindWindowsManagementService();
-            
+            BindTTSService();
+
             //Bind other services
             BindEventBrokerService();
             BindGameStateMachine();
@@ -145,6 +148,14 @@ namespace CodeBase.Infrastructure.Installers
             Container.Bind<ICoroutineRunner>()
                 .To<CoroutineRunnerComponent>()
                 .FromComponentInNewPrefab(_coroutineRunner)
+                .AsSingle()
+                .NonLazy();
+        }
+
+        private void BindTTSService()
+        {
+            Container.BindInterfacesTo<TTSService>()
+                .FromComponentInNewPrefab(_ttsService)
                 .AsSingle()
                 .NonLazy();
         }

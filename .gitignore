@@ -93,6 +93,12 @@ src/ar-language-lab/[Aa]ssets/Addressables_Temp*
 # /Assets/AddressableAssetsData/OSX/addressables_content_state.bin
 src/ar-language-lab/[Aa]ssets/AddressableAssetsData/*/*.bin*
 
+#Samples
+src/ar-language-lab/[Aa]ssets/Samples*
+
+#Large language modles for TTS
+src/ar-language-lab/[Aa]ssets/StreamingAssets/sherpa-onnx/models*
+
 # Visual Scripting auto-generated files
 src/ar-language-lab/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db
 src/ar-language-lab/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db.meta
