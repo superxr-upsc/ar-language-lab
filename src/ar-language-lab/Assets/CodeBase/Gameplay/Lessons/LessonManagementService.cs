@@ -6,6 +6,7 @@ using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
 using CodeBase.Infrastructure.Vuforia;
 using UnityEngine;
+using Vuforia;
 
 namespace CodeBase.Gameplay.Lessons
 {
@@ -15,21 +16,24 @@ namespace CodeBase.Gameplay.Lessons
         private readonly IProjectResourcesProvider _resourcesProvider;
         private readonly IARCameraProvider _arCameraProvider;
         private readonly ILocalizationService _localizationService;
+        private readonly IVuforiaService _vuforiaService;
 
         private LessonConfig _lessonConfig;
 
         private Transform _gameplayObjectsParent;
-        private List<ARObjectBase> _lessonObjects = new();
+        private Dictionary<MultiTargetBehaviour, ARObjectBase> _lessonObjects = new();
 
         public LessonManagementService(IGameFactory gameFactory,
             IProjectResourcesProvider resourcesProvider,
             IARCameraProvider arCameraProvider,
-            ILocalizationService localizationService)
+            ILocalizationService localizationService,
+            IVuforiaService vuforiaService)
         {
             _gameFactory = gameFactory;
             _resourcesProvider = resourcesProvider;
             _arCameraProvider = arCameraProvider;
             _localizationService = localizationService;
+            _vuforiaService = vuforiaService;
         }
 
         public void SetupLesson()
@@ -43,7 +47,9 @@ namespace CodeBase.Gameplay.Lessons
         public void CleanupLesson()
         {
             foreach (var arObject in _lessonObjects) 
-                arObject.Cleanup();
+                arObject.Value.Cleanup(arObject.Key);
+            
+            _lessonObjects.Clear();
         }
 
         private LessonConfig GetSelectedLesson()
@@ -59,11 +65,20 @@ namespace CodeBase.Gameplay.Lessons
         {
             foreach (var arObjectConfig in _lessonConfig.ObjectsToUse)
             {
-                var arObject = _gameFactory.CreateFromPrefab<ARObjectBase>(arObjectConfig.Prefab, _gameplayObjectsParent);
-                arObject.Initialize(arObjectConfig, _localizationService, _arCameraProvider.GetSpeaker());
-                
-                _lessonObjects.Add(arObject);
+                CreateArObject(arObjectConfig);
             }
+        }
+
+        private ARObjectBase CreateArObject(ARObjectConfig arObjectConfig)
+        {
+            var target = _vuforiaService.CreateTarget(arObjectConfig.VuforiaKey);
+            
+            var arObject = _gameFactory.CreateFromPrefab<ARObjectBase>(arObjectConfig.Prefab, target.transform);
+            arObject.Initialize(arObjectConfig, _localizationService, _arCameraProvider.GetSpeaker(), target.GetComponent<ARObjectObserver>());
+            
+            _lessonObjects[target] = arObject;
+            
+            return arObject;
         }
     }
 }

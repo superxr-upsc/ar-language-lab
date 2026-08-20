@@ -29,12 +29,14 @@ namespace CodeBase.Gameplay.ARObjects
         private void Construct(IARCameraProvider cameraProvider)
         {
             _cameraProvider = cameraProvider;
-            _renderers = GetComponentsInChildren<Renderer>(includeInactive: false);
             
             if (_exitCoverage >= _enterCoverage)
                 _exitCoverage = Mathf.Max(0.001f, _enterCoverage * 0.8f);
         }
-        
+
+        public void SetupRenderers() => 
+            _renderers = GetComponentsInChildren<Renderer>(includeInactive: false);
+
         private void Update()
         {
             if (!_isTracked)

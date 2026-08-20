@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.ARObjects.ARObjectConfig
   Id: OC_d3869d2c9b0b427cbfeb0686131f5a8e
   LocalisationKey: ind_apple_object
+  VuforiaKey: ar-apple
   Prefab: {fileID: 8483995952497374109, guid: 306066d3d5435e2469cec738f4335339, type: 3}

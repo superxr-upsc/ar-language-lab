@@ -24,6 +24,8 @@ namespace CodeBase.Infrastructure.Installers
         [SerializeField] private CoroutineRunnerComponent _coroutineRunner;
         [SerializeField] private WindowsManagementService _windowsManagementService;
         [SerializeField] private TTSService _ttsService;
+        [SerializeField] private ARCamera _arCamera;
+        
         
         public override void InstallBindings()
         {
@@ -34,6 +36,7 @@ namespace CodeBase.Infrastructure.Installers
             BindCoroutineRunner();
             BindWindowsManagementService();
             BindTTSService();
+            BindARCamera();
 
             //Bind other services
             BindEventBrokerService();
@@ -130,6 +133,15 @@ namespace CodeBase.Infrastructure.Installers
         {
             Container.Bind<JahroExtensions>()
                 .FromComponentInNewPrefab(_jahroExtensions)
+                .AsSingle()
+                .NonLazy();
+        }
+
+        private void BindARCamera()
+        {
+            Container
+                .Bind<ARCamera>()
+                .FromComponentInNewPrefab(_arCamera)
                 .AsSingle()
                 .NonLazy();
         }

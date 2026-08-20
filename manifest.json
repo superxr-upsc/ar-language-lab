@@ -1,0 +1,36 @@
+{
+    "models": [
+        {
+            "modelId": "vits-piper-en_GB-sweetbbak-amy",
+            "moduleType": 2,
+            "moduleTypeHint": "",
+            "downloadUrl": "",
+            "downloadFileHash": "",
+            "modelTypeHint": "Vits",
+            "fileBindings": [
+                {
+                    "key": 1,
+                    "path": "en_GB-sweetbbak-amy.onnx"
+                },
+                {
+                    "key": 8,
+                    "path": "espeak-ng-data"
+                },
+                {
+                    "key": 5,
+                    "path": "tokens.txt"
+                },
+                {
+                    "key": 24,
+                    "path": "espeak-ng-data/voices"
+                },
+                {
+                    "key": 27,
+                    "path": "espeak-ng-data/lang/sit/cmn-Latn-pinyin"
+                }
+            ],
+            "numberOfSpeakers": 0,
+            "sampleRate": 16000
+        }
+    ]
+}

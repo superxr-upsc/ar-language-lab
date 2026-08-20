@@ -1,5 +1,6 @@
 ﻿using Eitan.Sherpa.Onnx.Unity.Mono.Components;
 using System;
+using System.Threading;
 using CodeBase.Common.LoggerService;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -11,10 +12,14 @@ namespace CodeBase.Gameplay.SpeechSyntesis
     public class TTSService : MonoBehaviour, ITTSService
     {
         private const string DefaultModelId = "vits-piper-en_GB-sweetbbak-amy";
-        
+        private const int InitializationTimeoutSeconds = 45;
+
         private SpeechSynthesizerComponent _synthesizer;
         private UniTaskCompletionSource _initializeSource;
+        private SherpaModelInstaller _modelInstaller;
+        
         private bool _isInitialized;
+        private int _initAttemptCounter;
 
         public bool IsInitialized => _isInitialized;
 
@@ -22,44 +27,88 @@ namespace CodeBase.Gameplay.SpeechSyntesis
         private void Construct()
         {
             _synthesizer = GetComponent<SpeechSynthesizerComponent>();
-            
+            _modelInstaller = new SherpaModelInstaller();
+
             AddSynthesizerListeners();
         }
 
         public async UniTask InitializeAsync()
         {
-            if (_isInitialized)
-                return;
+            var attemptId = Interlocked.Increment(ref _initAttemptCounter);
+            GameLogger.Log($"[TTSInit:{attemptId}] Enter. IsInitialized={_isInitialized}, HasPendingAwait={_initializeSource != null}");
 
-            if (_initializeSource != null)
+            if (_isInitialized)
             {
-                await _initializeSource.Task;
+                GameLogger.Log($"[TTSInit:{attemptId}] Skipped: already initialized.");
                 return;
             }
 
+            if (_initializeSource != null)
+            {
+                GameLogger.Log($"[TTSInit:{attemptId}] Awaiting existing initialization task.");
+                await AwaitInitializationWithTimeout(_initializeSource.Task, attemptId);
+                return;
+            }
+
+            if (_synthesizer == null)
+            {
+                var exception = new InvalidOperationException("TTS synthesizer component is null. Ensure Construct was called and prefab has SpeechSynthesizerComponent.");
+                GameLogger.LogError($"[TTSInit:{attemptId}] {exception.Message}");
+                throw exception;
+            }
+
             _initializeSource = new UniTaskCompletionSource();
+            GameLogger.Log($"[TTSInit:{attemptId}] Created initialization await source.");
 
             try
             {
                 _synthesizer.ModelId = DefaultModelId;
+                
+                await _modelInstaller.EnsureInstalledAsync();
+                
+                GameLogger.Log($"[TTSInit:{attemptId}] Starting module load with model '{DefaultModelId}'.");
+
                 if (!_synthesizer.TryLoadModule())
                 {
-                    throw new InvalidOperationException("Failed to start speech synthesizer module loading.");
+                    throw new InvalidOperationException("Failed to start speech synthesizer module loading (TryLoadModule returned false).");
                 }
 
-                await _initializeSource.Task;
+                await AwaitInitializationWithTimeout(_initializeSource.Task, attemptId);
+                GameLogger.Log($"[TTSInit:{attemptId}] Initialization completed.");
+            }
+            catch (OperationCanceledException)
+            {
+                GameLogger.LogError($"[TTSInit:{attemptId}] Initialization canceled.");
+                throw;
+            }
+            catch (Exception exception)
+            {
+                GameLogger.LogError($"[TTSInit:{attemptId}] Initialization failed: {exception}");
+                throw;
             }
             finally
             {
+                GameLogger.Log($"[TTSInit:{attemptId}] Finalizing initialization source.");
                 _initializeSource = null;
             }
+        }
+
+        private static async UniTask AwaitInitializationWithTimeout(UniTask initializationTask, int attemptId)
+        {
+            var completedTaskIndex = await UniTask.WhenAny(initializationTask, UniTask.Delay(TimeSpan.FromSeconds(InitializationTimeoutSeconds)));
+            if (completedTaskIndex != 0)
+            {
+                throw new TimeoutException($"[TTSInit:{attemptId}] Timeout after {InitializationTimeoutSeconds}s while waiting for synthesizer initialization callback.");
+            }
+
+            await initializationTask;
         }
 
         public async UniTask<AudioClip> GenerateAudioClip(string text)
         {
             if (_isInitialized)
                 return await _synthesizer.GenerateClipAsync(text.Trim());
-            
+
             GameLogger.LogWarning("TTS Service is not initialized. Cannot generate audio clip.");
             return null;
 
@@ -68,9 +117,12 @@ namespace CodeBase.Gameplay.SpeechSyntesis
         private void OnDestroy()
         {
             _initializeSource?.TrySetCanceled();
-            
-            _synthesizer.DisposeModule();
-            RemoveSynthesizerListeners();
+
+            if (_synthesizer != null)
+            {
+                _synthesizer.DisposeModule();
+                RemoveSynthesizerListeners();
+            }
         }
 
         private void AddSynthesizerListeners()
@@ -93,6 +145,8 @@ namespace CodeBase.Gameplay.SpeechSyntesis
 
         private void OnInitializationStateChanged(bool isReady)
         {
+            GameLogger.Log($"[TTSService] InitializationStateChanged: isReady={isReady}");
+
             if (!isReady)
                 return;
 
@@ -118,6 +172,7 @@ namespace CodeBase.Gameplay.SpeechSyntesis
         private void OnErrorEvent(string error)
         {
             var exception = new InvalidOperationException($"Speech synthesizer error: {error}");
+            _isInitialized = false;
             _initializeSource?.TrySetException(exception);
             GameLogger.LogError($"[TTSService] {exception.Message}");
         }

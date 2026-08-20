@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9030941714498080522}
   - component: {fileID: 2385589983496873037}
   - component: {fileID: 157453972158226197}
-  - component: {fileID: 3197935116126449698}
+  - component: {fileID: 4383855686592676840}
   - component: {fileID: 4954306006904988027}
   - component: {fileID: 6100203990658275938}
   - component: {fileID: 139878254514990145}
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d148e68c53bc4d40b38e35fd843c356d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.SpeechSyntesis.Speaker
---- !u!114 &3197935116126449698
+--- !u!114 &4383855686592676840
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

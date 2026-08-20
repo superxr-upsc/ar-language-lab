@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using CodeBase.Common.LoggerService;
 using CodeBase.Infrastructure.CoroutineRunner;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,8 +21,10 @@ namespace CodeBase.Infrastructure.Loading
 
     private IEnumerator Load(string nextScene, Action onLoaded)
     {
+      GameLogger.Log($"Loading scene: {nextScene}");
       if (SceneManager.GetActiveScene().name == nextScene)
       {
+        GameLogger.Log($"Scene {nextScene} is already loaded.");
         onLoaded?.Invoke();
         yield break;
       }
@@ -31,6 +34,7 @@ namespace CodeBase.Infrastructure.Loading
       while (!waitNextScene.isDone)
         yield return null;
 
+      GameLogger.Log($"Scene loaded !");
       onLoaded?.Invoke();
     }
   }

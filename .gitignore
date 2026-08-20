@@ -99,6 +99,9 @@ src/ar-language-lab/[Aa]ssets/Samples*
 #Large language modles for TTS
 src/ar-language-lab/[Aa]ssets/StreamingAssets/sherpa-onnx/models*
 
+#builds
+builds/*
+
 # Visual Scripting auto-generated files
 src/ar-language-lab/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db
 src/ar-language-lab/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db.meta

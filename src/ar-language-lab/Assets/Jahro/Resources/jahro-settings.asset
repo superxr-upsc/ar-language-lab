@@ -21,6 +21,10 @@ MonoBehaviour:
   _activeAssemblies:
   - Assembly-CSharp
   - Async.Tests
+  - Eitan.SherpaONNXUnity
+  - Eitan.SherpaONNXUnity.Runtime.Native
+  - Eitan.SherpaONNXUnity.Runtime.Utilities.Pinyin
+  - Eitan.SherpaONNXUnity.Samples
   - Extenject-Addressable-Tests
   - Extenject-Async
   - Jahro.Console
@@ -32,8 +36,9 @@ MonoBehaviour:
   - UniTask.DOTween
   - UniTask.Linq
   - UniTask.TextMeshPro
+  - VuforiaScripts
   - Zenject
   - Zenject-IntegrationTests
   - Zenject-TestFramework
   _autoDisableInRelease: 0
-  _snapshotMode: 1
+  _snapshotMode: 0

@@ -1,4 +1,5 @@
-﻿using CodeBase.Infrastructure.GameStateMachineService.StateInfrastructure;
+﻿using CodeBase.Common.LoggerService;
+using CodeBase.Infrastructure.GameStateMachineService.StateInfrastructure;
 using CodeBase.Infrastructure.GameStateMachineService.StateMachine;
 using CodeBase.Infrastructure.Loading;
 using CodeBase.Infrastructure.StaticData;
@@ -22,7 +23,10 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
             _sceneLoader.LoadScene(Scenes.GameplaySceneInfo.Name, EnterGameplayLoopState);
         }
 
-        private void EnterGameplayLoopState() => 
+        private void EnterGameplayLoopState()
+        {
             _stateMachine.Enter<EnterGameplayLoopState>();
+            GameLogger.Log("LOADED GAMEPLAY SCENE......");
+        }
     }
 }

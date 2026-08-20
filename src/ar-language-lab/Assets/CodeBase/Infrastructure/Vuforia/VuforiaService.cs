@@ -1,31 +1,38 @@
 ﻿using System;
 using CodeBase.Common.LoggerService;
+using CodeBase.Gameplay.ARObjects;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Vuforia;
+using Zenject;
 
 namespace CodeBase.Infrastructure.Vuforia
 {
     public class VuforiaService : IVuforiaService, IDisposable
     {
+        private const string DatabaseName = "ar-language-lab";
+
+        private readonly IInstantiator _instantiator;
         private readonly VuforiaApplication _application;
         private readonly VuforiaConfiguration _configuration;
+
+        private UniTaskCompletionSource _initializeSource;
         private VuforiaBehaviour _behaviour;
 
-        private bool _isInitialized;
-        private UniTaskCompletionSource _initializeSource;
-
-        public VuforiaService()
+        public VuforiaService(IInstantiator instantiator)
         {
+            _instantiator = instantiator;
             _application = VuforiaApplication.Instance;
             _configuration = VuforiaConfiguration.Instance;
+            
+            _behaviour = _application.GetVuforiaBehaviour();
             
             SubscribeToVuforiaEvents();
         }
 
         public async UniTask InitializeVuforia()
         {
-            if (_isInitialized)
+            if (_application.IsInitialized)
                 return;
 
             if (_initializeSource != null)
@@ -38,7 +45,9 @@ namespace CodeBase.Infrastructure.Vuforia
 
             try
             {
-                _application.Initialize();
+                if (_application.IsInitialized) 
+                    _initializeSource.TrySetResult();
+
                 await _initializeSource.Task;
             }
             finally
@@ -58,10 +67,21 @@ namespace CodeBase.Infrastructure.Vuforia
             _behaviour.World;
 
         public bool SetDeviceFlashTorch(bool on) => 
-            VuforiaBehaviour.Instance.CameraDevice.SetFlash(on);
+            _behaviour.CameraDevice.SetFlash(on);
 
         public bool SetDeviceFocusMode(FocusMode focusMode) => 
-            VuforiaBehaviour.Instance.CameraDevice.SetFocusMode(focusMode);
+            _behaviour.CameraDevice.SetFocusMode(focusMode);
+
+        public MultiTargetBehaviour CreateTarget(string vuforiaKey)
+        {
+            var target = _behaviour.ObserverFactory.CreateMultiTarget(GetDatabasePath(), vuforiaKey);
+            _instantiator.InstantiateComponent<ARObjectObserver>(target.gameObject);
+
+            return target;
+        }
+
+        private string GetDatabasePath() => 
+            $"Vuforia/{DatabaseName}.xml";
 
         public void Dispose()
         {
@@ -91,7 +111,6 @@ namespace CodeBase.Infrastructure.Vuforia
 
         private void OnVuforiaDeinitialized()
         {
-            _isInitialized = false;
             GameLogger.Log("Vuforia deinitialized!");
         }
 
@@ -99,7 +118,6 @@ namespace CodeBase.Infrastructure.Vuforia
         {
             if (initError == VuforiaInitError.NONE)
             {
-                _isInitialized = true;
                 GameLogger.Log("Vuforia initialized without any errors!");
                 _initializeSource?.TrySetResult();
                 return;

@@ -10,5 +10,6 @@ namespace CodeBase.Infrastructure.Vuforia
         World GetWorld();
         bool SetDeviceFlashTorch(bool on);
         bool SetDeviceFocusMode(FocusMode focusMode);
+        MultiTargetBehaviour CreateTarget(string vuforiaKey);
     }
 }

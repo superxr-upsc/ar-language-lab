@@ -1,4 +1,5 @@
-﻿using CodeBase.Gameplay.Lessons;
+﻿using CodeBase.Common.LoggerService;
+using CodeBase.Gameplay.Lessons;
 using CodeBase.Infrastructure.EventBroker;
 using CodeBase.Infrastructure.EventBroker.Handlers;
 using CodeBase.Infrastructure.GameStateMachineService.StateInfrastructure;
@@ -29,6 +30,8 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
             _lessonManagementService.SetupLesson();
             
             _eventBrokerService.Rise<IGameLoopInitializable>(x => x.OnGameLoopInitialized());
+            
+            GameLogger.Log("ENTERED GAMEPLAY LOOP");
         }
 
         protected override void Exit()

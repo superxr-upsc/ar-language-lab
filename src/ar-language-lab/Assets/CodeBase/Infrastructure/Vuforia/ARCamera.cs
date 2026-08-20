@@ -58,11 +58,11 @@ namespace CodeBase.Infrastructure.Vuforia
         
         public void OnDoubleTap(InputAction.CallbackContext context)
         {
-            if (!context.performed || _isFocusing)
-                return;
-
-            _isFocusing = true;
-            TriggerAutofocusEvent();
+            // if (!context.performed || _isFocusing)
+            //     return;
+            //
+            // _isFocusing = true;
+            // TriggerAutofocusEvent();
         }
 
         public void SwitchFlashTorch(bool ON)

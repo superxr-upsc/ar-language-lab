@@ -35,10 +35,13 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
 
         private async UniTaskVoid InitializeAndLoadGameplay()
         {
+            GameLogger.Log("LOADING GAMEPLAY......");
+            
             await _localizationService.InitializeAsync();
             await _vuforiaService.InitializeVuforia();
             await _ttsService.InitializeAsync();
             
+            GameLogger.Log("ENTERING GAMEPLAY SCENE......");
             _stateMachine.Enter<EnterGameplaySceneState>();
         }
     }

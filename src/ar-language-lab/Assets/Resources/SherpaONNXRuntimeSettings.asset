@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SherpaONNXRuntimeSettings
   m_EditorClassIdentifier: Eitan.SherpaONNXUnity::Eitan.SherpaONNXUnity.Runtime.SherpaONNXRuntimeSettings
   _fetchLatestManifest: 1
-  _autoDownloadModels: 1
+  _autoDownloadModels: 0
   _autoDeleteCorruptedModels: 1
   _downloadAttemptTimeoutSeconds: 600
   _allowInsecureModelDownload: 0
@@ -21,6 +21,6 @@ MonoBehaviour:
   _githubProxyUrl: 
   _checksumCacheDirectory: 
   _checksumCacheTtlSeconds: 3600
-  _loggingEnabled: 0
+  _loggingEnabled: 1
   _loggingLevel: 3
   _traceWithStacks: 1
