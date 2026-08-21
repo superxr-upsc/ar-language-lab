@@ -1,19 +1,29 @@
 ﻿using CodeBase.Common.LoggerService;
+using CodeBase.Infrastructure.GameFactory;
 using JahroConsole;
 using RSG;
 using UnityEngine;
+using Zenject;
 
 namespace CodeBase.DebugExtensions
 {
     public class JahroExtensions : MonoBehaviour
     {
         private IJahroCommands[] _jahroCommands;
+        private IGameFactory _gameFactory;
 
+        [Inject]
+        private void Construct(IGameFactory gameFactory)
+        {
+            _gameFactory = gameFactory; 
+        }
+        
         private void InitializeJahroCommandsArray()
         {
             _jahroCommands = new IJahroCommands[]
             {
-                new JahroSceneCommands(),
+                _gameFactory.Create<JahroSceneCommands>(),
+                _gameFactory.Create<JahroARObjectCommands>(),
             };
         }
 

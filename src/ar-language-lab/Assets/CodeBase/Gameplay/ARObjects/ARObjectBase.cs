@@ -3,7 +3,6 @@ using CodeBase.Gameplay.SpeechSyntesis;
 using CodeBase.Infrastructure.Localization;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using Vuforia;
 
 namespace CodeBase.Gameplay.ARObjects
 {
@@ -29,10 +28,9 @@ namespace CodeBase.Gameplay.ARObjects
             _observer.SetupRenderers();
         }
 
-        public void Cleanup(MultiTargetBehaviour targetBehaviour)
+        public void Cleanup()
         {
             _observer.NearCameraEntered -= NotifyNearCameraEntered;
-            Destroy(targetBehaviour.gameObject);
         }
 
         private void NotifyNearCameraEntered(float screenCoverage, float distanceToCameraMeters)
@@ -43,7 +41,7 @@ namespace CodeBase.Gameplay.ARObjects
         private async UniTaskVoid PlayLocalizedText()
         {
             var text = await _localization.GetStringAsync(_data.LocalisationKey);
-            _speaker.SpeckAsync(text).Forget();
+            await _speaker.SpeakAsync(text);
         }
     }
 }

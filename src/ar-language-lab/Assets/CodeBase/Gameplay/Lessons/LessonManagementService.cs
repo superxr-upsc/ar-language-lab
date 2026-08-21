@@ -47,7 +47,7 @@ namespace CodeBase.Gameplay.Lessons
         public void CleanupLesson()
         {
             foreach (var arObject in _lessonObjects) 
-                arObject.Value.Cleanup(arObject.Key);
+                arObject.Value.Cleanup();
             
             _lessonObjects.Clear();
         }

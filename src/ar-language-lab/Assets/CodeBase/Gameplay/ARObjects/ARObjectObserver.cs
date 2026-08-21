@@ -10,7 +10,7 @@ namespace CodeBase.Gameplay.ARObjects
         public event Action<float, float> NearCameraEntered;
 
         [Header("Coverage thresholds in viewport space [0..1]")]
-        [SerializeField, Range(0.01f, 1f)] private float _enterCoverage = 0.2f;
+        [SerializeField, Range(0.01f, 1f)] private float _enterCoverage = 0.5f;
         [SerializeField, Range(0.001f, 1f)] private float _exitCoverage = 0.15f;
 
         [Header("Trigger behavior")]
@@ -36,6 +36,15 @@ namespace CodeBase.Gameplay.ARObjects
 
         public void SetupRenderers() => 
             _renderers = GetComponentsInChildren<Renderer>(includeInactive: false);
+
+        public void ChangeEnterTrackingMaxDistance(float distance) => 
+            _enterCoverage = Mathf.Clamp01(distance);
+        
+        public void ChangeExitTrackingMaxDistance(float distance) => 
+            _exitCoverage = Mathf.Clamp01(distance);
+        
+        public void SetOneShotOnlyState(bool state) =>
+            _triggerOnlyOnce = state;
 
         private void Update()
         {

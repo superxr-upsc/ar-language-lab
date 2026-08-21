@@ -10,6 +10,7 @@ namespace CodeBase.Gameplay.SpeechSyntesis
     {
         private AudioSource _audioSource;
         private ITTSService _ttsService;
+        private bool _isSpeaking;
 
         [Inject]
         private void Construct(ITTSService ttsService)
@@ -20,27 +21,41 @@ namespace CodeBase.Gameplay.SpeechSyntesis
         
         public void Speak(string text)
         {
-            SpeckAsync(text).Forget();
+            SpeakAsync(text).Forget();
         }
 
-        public async UniTaskVoid SpeckAsync(string text)
+        public async UniTask SpeakAsync(string text)
         {
+            if (_isSpeaking)
+            {
+                GameLogger.Log("SpeakAsync call ignored because another speech is already in progress.");
+                return;
+            }
+
             if (!_ttsService.IsInitialized)
             {
                 GameLogger.LogWarning("TTS Service is not initialized. Cannot speak.");
                 return;
             }
 
-            var clip = await _ttsService.GenerateAudioClip(text);
-            if (clip != null)
+            _isSpeaking = true;
+            try
             {
-                _audioSource.Stop();
-                _audioSource.clip = clip;
-                _audioSource.Play();
+                var clip = await _ttsService.GenerateAudioClip(text);
+                if (clip != null)
+                {
+                    _audioSource.Stop();
+                    _audioSource.clip = clip;
+                    _audioSource.Play();
+                }
+                else
+                {
+                    GameLogger.LogWarning("Failed to generate audio clip for the given text.");
+                }
             }
-            else
+            finally
             {
-                GameLogger.LogWarning("Failed to generate audio clip for the given text.");
+                _isSpeaking = false;
             }
         }
     }
