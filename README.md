@@ -155,7 +155,7 @@ Every word, phrase, and instruction will be voiced by the application, helping l
 # 🛠️ Technology
 
 * Unity 6000.3.16f1
-* AR Foundation
+* Vuforia Engine
 * C#
 * Marker-based Augmented Reality
 * Data-driven lesson configuration
