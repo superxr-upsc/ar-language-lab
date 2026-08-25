@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Key: ind_apple_object
     m_Metadata:
       m_Items: []
+  - m_Id: 9838105521717248
+    m_Key: ind_ball_object
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

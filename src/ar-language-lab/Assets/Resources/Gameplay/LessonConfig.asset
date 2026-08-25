@@ -15,4 +15,5 @@ MonoBehaviour:
   Id: LC_6d347f984c114e3e968ab0afea1c3ded
   ObjectsToUse:
   - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
+  - {fileID: 11400000, guid: 77d4e027e2eb73e46a8f3a62618bd54f, type: 2}
   Tasks: []

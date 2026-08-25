@@ -4,6 +4,7 @@ using CodeBase.Gameplay.SpeechSyntesis;
 using CodeBase.Infrastructure.GameFactory;
 using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
+using CodeBase.Infrastructure.StaticData;
 using CodeBase.Infrastructure.Vuforia;
 using UnityEngine;
 using Vuforia;
@@ -63,16 +64,20 @@ namespace CodeBase.Gameplay.Lessons
 
         private void SetupGameplayObjects()
         {
-            foreach (var arObjectConfig in _lessonConfig.ObjectsToUse)
+            for (var index = 0; index < _lessonConfig.ObjectsToUse.Length; index++)
             {
-                CreateArObject(arObjectConfig);
+                var arObjectConfig = _lessonConfig.ObjectsToUse[index];
+                CreateArObject(arObjectConfig, index);
             }
         }
 
-        private ARObjectBase CreateArObject(ARObjectConfig arObjectConfig)
+        private ARObjectBase CreateArObject(ARObjectConfig arObjectConfig, int index)
         {
-            var target = _vuforiaService.CreateTarget(arObjectConfig.VuforiaKey);
+            var markerDatabaseName = MarkerNames.GetNameAtIndex(index);
+            if (string.IsNullOrEmpty(markerDatabaseName))
+                return null;
             
+            var target = _vuforiaService.CreateTarget(markerDatabaseName);
             var arObject = _gameFactory.CreateFromPrefab<ARObjectBase>(arObjectConfig.Prefab, target.transform);
             arObject.Initialize(arObjectConfig, _localizationService, _arCameraProvider.GetSpeaker(), target.GetComponent<ARObjectObserver>());
             
