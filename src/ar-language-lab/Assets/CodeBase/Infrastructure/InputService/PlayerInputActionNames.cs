@@ -1,4 +1,4 @@
-﻿namespace CodeBase.Services.InputService
+﻿namespace CodeBase.Infrastructure.InputService
 {
     public abstract class PlayerInputActionNames
     {

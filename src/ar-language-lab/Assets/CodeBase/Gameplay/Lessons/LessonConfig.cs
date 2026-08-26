@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using CodeBase.Gameplay.ARObjects;
 using CodeBase.Gameplay.Identifiers;
+using CodeBase.Gameplay.Lessons.Tasks;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
 using UnityEngine;
 

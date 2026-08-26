@@ -4,5 +4,6 @@
     {
         void SetupLesson();
         void CleanupLesson();
+        void StartLesson();
     }
 }

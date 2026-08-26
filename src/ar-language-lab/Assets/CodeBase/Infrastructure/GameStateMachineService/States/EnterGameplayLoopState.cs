@@ -32,6 +32,8 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
             _eventBrokerService.Rise<IGameLoopInitializable>(x => x.OnGameLoopInitialized());
             
             GameLogger.Log("ENTERED GAMEPLAY LOOP");
+            
+            _lessonManagementService.StartLesson();
         }
 
         protected override void Exit()

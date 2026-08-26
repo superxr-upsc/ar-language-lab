@@ -1,4 +1,4 @@
-﻿using Codebase.Systems.CustomAttributes;
+﻿using CodeBase.CustomAttributes;
 using UnityEngine;
 
 namespace CodeBase.Gameplay.Identifiers

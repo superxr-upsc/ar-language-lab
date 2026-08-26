@@ -3,7 +3,7 @@ using CodeBase.Common.LoggerService;
 using CodeBase.Gameplay.SpeechSyntesis;
 using CodeBase.Infrastructure.EventBroker;
 using CodeBase.Infrastructure.EventBroker.Handlers;
-using CodeBase.Services.InputService;
+using CodeBase.Infrastructure.InputService;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Vuforia;

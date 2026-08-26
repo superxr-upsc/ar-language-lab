@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using CodeBase.CustomAttributes;
+using UnityEditor;
 using UnityEngine;
 
 namespace Codebase.Systems.CustomAttributes.Editor

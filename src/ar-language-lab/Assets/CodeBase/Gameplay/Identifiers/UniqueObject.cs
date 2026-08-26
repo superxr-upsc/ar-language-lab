@@ -1,5 +1,5 @@
 ﻿using System;
-using Codebase.Systems.CustomAttributes;
+using CodeBase.CustomAttributes;
 
 namespace CodeBase.Gameplay.Identifiers
 {

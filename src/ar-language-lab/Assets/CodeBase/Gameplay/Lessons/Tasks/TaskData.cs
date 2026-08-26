@@ -1,8 +1,8 @@
 ﻿using System;
+using CodeBase.Gameplay.ARObjects;
 using CodeBase.Gameplay.Identifiers;
-using CodeBase.Gameplay.Lessons.Tasks;
 
-namespace CodeBase.Gameplay.Lessons
+namespace CodeBase.Gameplay.Lessons.Tasks
 {
     [Serializable]
     public class TaskData : UniqueObject
@@ -10,6 +10,11 @@ namespace CodeBase.Gameplay.Lessons
         public TaskType Type;
         public string DescriptionLocalizationKey;
 
+        public ARObjectConfig[] TargetObjects;
+        public ARObjectConfig[] SecondaryTargetObjects;
+        
+        
+        
         public TaskData() : base(IdentifierUtility.TaskDataPrefix)
         {
             

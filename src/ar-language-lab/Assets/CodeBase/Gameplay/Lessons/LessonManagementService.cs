@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using CodeBase.Gameplay.ARObjects;
-using CodeBase.Gameplay.SpeechSyntesis;
+using CodeBase.Gameplay.Lessons.Tasks;
 using CodeBase.Infrastructure.GameFactory;
 using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
 using CodeBase.Infrastructure.StaticData;
 using CodeBase.Infrastructure.Vuforia;
-using UnityEngine;
 using Vuforia;
 
 namespace CodeBase.Gameplay.Lessons
@@ -21,8 +20,9 @@ namespace CodeBase.Gameplay.Lessons
 
         private LessonConfig _lessonConfig;
 
-        private Transform _gameplayObjectsParent;
         private Dictionary<MultiTargetBehaviour, ARObjectBase> _lessonObjects = new();
+        
+        private LessonTasksService _lessonTasksService;
 
         public LessonManagementService(IGameFactory gameFactory,
             IProjectResourcesProvider resourcesProvider,
@@ -41,12 +41,20 @@ namespace CodeBase.Gameplay.Lessons
         {
             _lessonConfig = GetSelectedLesson();
 
-            SetupGameplayObjectsParent();
             SetupGameplayObjects();
+            SetupQuests();
+        }
+
+        public void StartLesson()
+        {
+            _lessonTasksService.SelectAndRunNewTask();
         }
 
         public void CleanupLesson()
         {
+            _lessonTasksService.Dispose();
+            _lessonTasksService = null;
+            
             foreach (var arObject in _lessonObjects) 
                 arObject.Value.Cleanup();
             
@@ -59,9 +67,6 @@ namespace CodeBase.Gameplay.Lessons
             return _resourcesProvider.LoadResource<LessonConfig>();
         }
 
-        private void SetupGameplayObjectsParent() => 
-            _gameplayObjectsParent = new GameObject("[GameplayObjectsParent]").transform;
-
         private void SetupGameplayObjects()
         {
             for (var index = 0; index < _lessonConfig.ObjectsToUse.Length; index++)
@@ -69,6 +74,11 @@ namespace CodeBase.Gameplay.Lessons
                 var arObjectConfig = _lessonConfig.ObjectsToUse[index];
                 CreateArObject(arObjectConfig, index);
             }
+        }
+
+        private void SetupQuests()
+        {
+            _lessonTasksService = _gameFactory.Create<LessonTasksService>(_lessonConfig);
         }
 
         private ARObjectBase CreateArObject(ARObjectConfig arObjectConfig, int index)

@@ -6,13 +6,13 @@ using CodeBase.Infrastructure.CoroutineRunner;
 using CodeBase.Infrastructure.EventBroker;
 using CodeBase.Infrastructure.GameFactory;
 using CodeBase.Infrastructure.GameStateMachineService.StateMachine;
+using CodeBase.Infrastructure.InputService;
 using CodeBase.Infrastructure.Loading;
 using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
 using CodeBase.Infrastructure.TimerService;
 using CodeBase.Infrastructure.Vuforia;
 using CodeBase.Infrastructure.WindowsManagement;
-using CodeBase.Services.InputService;
 using UnityEngine;
 using Zenject;
 
