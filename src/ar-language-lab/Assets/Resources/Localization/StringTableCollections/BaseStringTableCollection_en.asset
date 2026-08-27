@@ -32,6 +32,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 7023668803858595914
+  - m_Id: 10506081929428992
+    m_Localized: Place {SubjectName} next to {ReferenceName}!
+    m_Metadata:
+      m_Items:
+      - rid: 7023668803858595914
   references:
     version: 2
     RefIds:
@@ -41,3 +46,4 @@ MonoBehaviour:
         m_Entries: 
         m_SharedEntries:
         - id: 10492190352637952
+        - id: 10506081929428992
