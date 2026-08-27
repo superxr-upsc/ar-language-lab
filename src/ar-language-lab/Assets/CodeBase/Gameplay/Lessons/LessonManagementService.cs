@@ -50,6 +50,17 @@ namespace CodeBase.Gameplay.Lessons
             _lessonTasksService.SelectAndRunNewTask();
         }
 
+        public ARObjectBase GetObject(ARObjectConfig config)
+        {
+            foreach (var arObject in _lessonObjects.Values)
+            {
+                if (arObject.IsEqualTo(config))
+                    return arObject;
+            }
+
+            return null;
+        }
+
         public void CleanupLesson()
         {
             _lessonTasksService.Dispose();

@@ -1,5 +1,4 @@
-﻿using CodeBase.Common.LoggerService;
-using CodeBase.Gameplay.SpeechSyntesis;
+﻿using CodeBase.Gameplay.SpeechSyntesis;
 using CodeBase.Infrastructure.Localization;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -8,6 +7,8 @@ namespace CodeBase.Gameplay.ARObjects
 {
     public class ARObjectBase : MonoBehaviour
     {
+        public ARObjectObserver Observer => _observer;
+        
         private ILocalizationService _localization;
         private ARObjectObserver _observer;
         private ARObjectConfig _data;
@@ -27,6 +28,9 @@ namespace CodeBase.Gameplay.ARObjects
 
             _observer.SetupRenderers();
         }
+        
+        public bool IsEqualTo(ARObjectConfig arObjectConfig) => 
+            _data.Equals(arObjectConfig);
 
         public void Cleanup()
         {

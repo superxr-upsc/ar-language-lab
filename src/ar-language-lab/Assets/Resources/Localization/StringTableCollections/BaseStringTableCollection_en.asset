@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: 7e93bb5e0752dfb4288c166276a2af32, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 7023668803858595914
   m_TableData:
   - m_Id: 6525881227051008
     m_Localized: Apple
@@ -26,6 +27,17 @@ MonoBehaviour:
     m_Localized: Ball
     m_Metadata:
       m_Items: []
+  - m_Id: 10492190352637952
+    m_Localized: Please find the {ObjectName} and scan it!
+    m_Metadata:
+      m_Items:
+      - rid: 7023668803858595914
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 7023668803858595914
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 10492190352637952

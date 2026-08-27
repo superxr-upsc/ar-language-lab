@@ -2,35 +2,25 @@
 
 namespace CodeBase.Gameplay.Lessons.Tasks
 {
-    public class TaskResolverBase : IDisposable
+    public abstract class TaskResolverBase : IDisposable
     {
         protected readonly TaskData _taskData;
 
-        public TaskResolverBase(TaskData taskData)
-        {
+        protected TaskResolverBase(TaskData taskData) => 
             _taskData = taskData;
-        }
 
         public event Action<TaskData> TaskCompleted;
 
-        public virtual void Run()
-        {
-            
-        }
+        public abstract void Run();
 
-        public virtual void Dispose()
-        {
-            
-        }
+        public abstract void Dispose();
+
+        protected abstract bool IsTaskComplete();
 
         protected virtual void CompleteTask()
         {
-            TaskCompleted?.Invoke(_taskData);
-        }
-
-        protected virtual void CheckTaskCompletion()
-        {
-            
+            if (IsTaskComplete())
+                TaskCompleted?.Invoke(_taskData);
         }
     }
 }
