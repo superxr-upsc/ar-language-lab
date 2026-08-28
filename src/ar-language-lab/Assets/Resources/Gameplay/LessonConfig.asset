@@ -17,10 +17,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
   - {fileID: 11400000, guid: 77d4e027e2eb73e46a8f3a62618bd54f, type: 2}
   Tasks:
-  - Id: TD_aedb4717acf74152ac9cfd202a60af9f
-    Type: 5
-    DescriptionLocalizationKey: q_place_object_near_to_another
+  - Id: TD_48893d3bd7f44012a5524ed1f72d355f
+    Type: 2
+    DescriptionLocalizationKey: q_place_object_in_hierarchy
     TargetObjects:
     - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
-    SecondaryTargetObjects:
     - {fileID: 11400000, guid: 77d4e027e2eb73e46a8f3a62618bd54f, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0

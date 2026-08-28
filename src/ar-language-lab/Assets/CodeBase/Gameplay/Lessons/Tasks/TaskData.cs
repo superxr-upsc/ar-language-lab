@@ -12,6 +12,7 @@ namespace CodeBase.Gameplay.Lessons.Tasks
 
         public ARObjectConfig[] TargetObjects;
         public ARObjectConfig[] SecondaryTargetObjects;
+        public PlacementSide RequiredSide = PlacementSide.Any;
         
         
         

@@ -9,14 +9,9 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Extensions
             return taskType switch
             {
                 TaskType.None => null,
-                TaskType.FindObjectByVoice => gameFactory.Create<FindObjectByVoiceTask>(taskData),
-                TaskType.FindObjectByText => gameFactory.Create<FindObjectByTextTask>(taskData),
-                TaskType.FindObjectByColor => gameFactory.Create<FindObjectByColorTask>(taskData),
+                TaskType.FindObject => gameFactory.Create<FindObjectTask>(taskData),
                 TaskType.PlaceObjectsInHierarchy => gameFactory.Create<PlaceObjectsInHierarchyTask>(taskData),
-                TaskType.PlaceObjectNextToAnother => gameFactory.Create<PlaceObjectNextToAnotherTask>(taskData),
-                TaskType.PlaceObjectNearToAnotherObjectSide => gameFactory.Create<PlaceObjectNearToAnotherObjectSideTask>(taskData),
-                TaskType.SelectObjectsByDescription => gameFactory.Create<SelectObjectByDescriptionTask>(taskData),
-                TaskType.SelectObjectForQuestion => gameFactory.Create<SelectObjectForQuestionTask>(taskData),
+                TaskType.PlaceObjectNearToAnother => gameFactory.Create<PlaceObjectNearToAnotherTask>(taskData),
                 _ => null
             };
         }

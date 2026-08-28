@@ -37,6 +37,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 7023668803858595914
+  - m_Id: 10702446869512192
+    m_Localized: Place objects in correct way {Objects} !
+    m_Metadata:
+      m_Items:
+      - rid: 7023668803858595914
+  - m_Id: 10703352423940096
+    m_Localized: Book
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:
@@ -47,3 +56,4 @@ MonoBehaviour:
         m_SharedEntries:
         - id: 10492190352637952
         - id: 10506081929428992
+        - id: 10702446869512192
