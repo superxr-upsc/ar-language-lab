@@ -2,6 +2,7 @@
 using CodeBase.Common.Extensions;
 using CodeBase.Gameplay.ARObjects;
 using CodeBase.Infrastructure.Localization;
+using CodeBase.Infrastructure.ProjectResourcesProvider;
 using CodeBase.Infrastructure.Vuforia;
 using Cysharp.Threading.Tasks;
 using R3;
@@ -11,21 +12,17 @@ namespace CodeBase.Gameplay.Lessons.Tasks
 {
     public class PlaceObjectNearToAnotherTask : TaskResolverBase
     {
-        private const float NearDistanceMeters = 0.25f;
-        private const float SideOffsetMeters = 0.08f;
-        private const float TopHorizontalToleranceMeters = 0.18f;
-        private const float AxisAdvantageMeters = 0.02f;
-        private const int RequiredStableFrames = 10;
-
         private readonly ILocalizationService _localization;
         private readonly ILessonManagementService _lessonManagementService;
-
+        private readonly IProjectResourcesProvider _projectResourcesProvider;
+        private readonly TaskResolversSettings _settings;
+        
         private ARObjectConfig _subjectObjectConfig;
         private ARObjectConfig _referenceObjectConfig;
 
         private ARObjectBase _subjectObject;
         private ARObjectBase _referenceObject;
-
+        
         private IDisposable _updateSubscription;
         private int _stableNearAndSideFrames;
 
@@ -33,11 +30,14 @@ namespace CodeBase.Gameplay.Lessons.Tasks
             TaskData taskData,
             IARCameraProvider cameraProvider,
             ILocalizationService localization,
-            ILessonManagementService lessonManagementService) 
+            ILessonManagementService lessonManagementService,
+            IProjectResourcesProvider projectResourcesProvider) 
             : base(taskData, cameraProvider)
         {
             _localization = localization;
             _lessonManagementService = lessonManagementService;
+            _projectResourcesProvider = projectResourcesProvider;
+            _settings = projectResourcesProvider.LoadResource<TaskResolversSettings>();
         }
 
         public override void Run()
@@ -56,6 +56,8 @@ namespace CodeBase.Gameplay.Lessons.Tasks
             _referenceObject = null;
             _subjectObjectConfig = null;
             _referenceObjectConfig = null;
+            
+            _projectResourcesProvider.ReleaseResource(_settings);
         }
 
         protected override void CompleteTask()
@@ -130,13 +132,13 @@ namespace CodeBase.Gameplay.Lessons.Tasks
             var subjectPosition = _subjectObject.transform.position;
             var referencePosition = _referenceObject.transform.position;
             var distance = Vector3.Distance(subjectPosition, referencePosition);
-            var isNear = distance <= NearDistanceMeters;
+            var isNear = distance <= _settings.NearDistanceMeters;
             var isCorrectSide = IsOnRequiredSide(subjectPosition, referencePosition);
 
             var isValidPlacement = isNear && isCorrectSide;
             _stableNearAndSideFrames = isValidPlacement ? _stableNearAndSideFrames + 1 : 0;
 
-            if (_stableNearAndSideFrames >= RequiredStableFrames)
+            if (_stableNearAndSideFrames >= _settings.RequiredStableFrames)
                 CompleteTask();
         }
 
@@ -162,26 +164,26 @@ namespace CodeBase.Gameplay.Lessons.Tasks
 
         private bool IsOnTop(Vector3 localDelta)
         {
-            if (localDelta.y < SideOffsetMeters)
+            if (localDelta.y < _settings.SideOffsetMeters)
                 return false;
 
             var horizontalDistance = Mathf.Sqrt(localDelta.x * localDelta.x + localDelta.z * localDelta.z);
-            return horizontalDistance <= TopHorizontalToleranceMeters;
+            return horizontalDistance <= _settings.TopHorizontalToleranceMeters;
         }
 
         private bool IsPositiveDominant(float axisValue, float secondaryAxis, float tertiaryAxis)
         {
-            return axisValue >= SideOffsetMeters
-                   && axisValue >= Mathf.Abs(secondaryAxis) + AxisAdvantageMeters
-                   && axisValue >= Mathf.Abs(tertiaryAxis) + AxisAdvantageMeters;
+            return axisValue >= _settings.SideOffsetMeters
+                   && axisValue >= Mathf.Abs(secondaryAxis) + _settings.AxisAdvantageMeters
+                   && axisValue >= Mathf.Abs(tertiaryAxis) + _settings.AxisAdvantageMeters;
         }
 
         private bool IsNegativeDominant(float axisValue, float secondaryAxis, float tertiaryAxis)
         {
             var magnitude = -axisValue;
-            return magnitude >= SideOffsetMeters
-                   && magnitude >= Mathf.Abs(secondaryAxis) + AxisAdvantageMeters
-                   && magnitude >= Mathf.Abs(tertiaryAxis) + AxisAdvantageMeters;
+            return magnitude >= _settings.SideOffsetMeters
+                   && magnitude >= Mathf.Abs(secondaryAxis) + _settings.AxisAdvantageMeters
+                   && magnitude >= Mathf.Abs(tertiaryAxis) + _settings.AxisAdvantageMeters;
         }
 
         private void DisposeUpdateSubscription()

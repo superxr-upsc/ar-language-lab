@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using CodeBase.Common.Extensions;
 using CodeBase.Gameplay.ARObjects;
 using CodeBase.Infrastructure.Localization;
+using CodeBase.Infrastructure.ProjectResourcesProvider;
 using CodeBase.Infrastructure.Vuforia;
 using Cysharp.Threading.Tasks;
 using R3;
@@ -12,12 +13,10 @@ namespace CodeBase.Gameplay.Lessons.Tasks
 {
     public class PlaceObjectsInHierarchyTask : TaskResolverBase
     {
-        
-        private const float MinDistanceBetweenObjectsMeters = 0.08f;
-        private const int RequiredStableFrames = 10;
-
         private readonly ILocalizationService _localization;
         private readonly ILessonManagementService _lessonManagementService;
+        private readonly IProjectResourcesProvider _projectResourcesProvider;
+        private readonly TaskResolversSettings _settings;
         private readonly Camera _camera;
 
         private readonly List<ARObjectBase> _objects = new();
@@ -31,11 +30,14 @@ namespace CodeBase.Gameplay.Lessons.Tasks
             TaskData taskData,
             IARCameraProvider cameraProvider,
             ILocalizationService localization,
-            ILessonManagementService lessonManagementService)
+            ILessonManagementService lessonManagementService,
+            IProjectResourcesProvider projectResourcesProvider)
             : base(taskData, cameraProvider)
         {
             _localization = localization;
             _lessonManagementService = lessonManagementService;
+            _projectResourcesProvider = projectResourcesProvider;
+            _settings = projectResourcesProvider.LoadResource<TaskResolversSettings>();
             _camera = cameraProvider.GetActiveCamera();
             
             _sortingDirection = GetCameraRightDirection();
@@ -56,6 +58,7 @@ namespace CodeBase.Gameplay.Lessons.Tasks
 
             _sortingDirection = Vector3.zero;
             _stableCorrectFrames = 0;
+            _projectResourcesProvider.ReleaseResource(_settings);
         }
 
         protected override void CompleteTask()
@@ -123,7 +126,7 @@ namespace CodeBase.Gameplay.Lessons.Tasks
                 ? _stableCorrectFrames + 1
                 : 0;
 
-            if (_stableCorrectFrames >= RequiredStableFrames)
+            if (_stableCorrectFrames >= _settings.RequiredStableFrames)
                 CompleteTask();
         }
 
@@ -153,7 +156,7 @@ namespace CodeBase.Gameplay.Lessons.Tasks
                 delta,
                 _sortingDirection);
             
-            return distanceAlongAxis >= MinDistanceBetweenObjectsMeters;
+            return distanceAlongAxis >= _settings.SideOffsetMeters;
         }
 
         private void DisposeUpdateSubscription()

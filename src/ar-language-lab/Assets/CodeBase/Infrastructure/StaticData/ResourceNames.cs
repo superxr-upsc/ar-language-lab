@@ -1,5 +1,6 @@
 ﻿using System;
 using CodeBase.Gameplay.Lessons;
+using CodeBase.Gameplay.Lessons.Tasks;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
 
 namespace CodeBase.Infrastructure.StaticData
@@ -10,6 +11,7 @@ namespace CodeBase.Infrastructure.StaticData
         private static ResourceName[] resources =
         {
             new (typeof(LessonConfig), "Gameplay"),
+            new (typeof(TaskResolversSettings), "Gameplay")
         };
 
         public static string GetLocation<TResource>() where TResource : IResource
