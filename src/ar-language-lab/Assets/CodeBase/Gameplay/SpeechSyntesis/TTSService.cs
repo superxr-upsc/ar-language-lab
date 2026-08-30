@@ -35,17 +35,12 @@ namespace CodeBase.Gameplay.SpeechSyntesis
         public async UniTask InitializeAsync()
         {
             var attemptId = Interlocked.Increment(ref _initAttemptCounter);
-            GameLogger.Log($"[TTSInit:{attemptId}] Enter. IsInitialized={_isInitialized}, HasPendingAwait={_initializeSource != null}");
 
             if (_isInitialized)
-            {
-                GameLogger.Log($"[TTSInit:{attemptId}] Skipped: already initialized.");
                 return;
-            }
 
             if (_initializeSource != null)
             {
-                GameLogger.Log($"[TTSInit:{attemptId}] Awaiting existing initialization task.");
                 await AwaitInitializationWithTimeout(_initializeSource.Task, attemptId);
                 return;
             }
@@ -58,15 +53,12 @@ namespace CodeBase.Gameplay.SpeechSyntesis
             }
 
             _initializeSource = new UniTaskCompletionSource();
-            GameLogger.Log($"[TTSInit:{attemptId}] Created initialization await source.");
-
+            
             try
             {
                 _synthesizer.ModelId = DefaultModelId;
                 
                 await _modelInstaller.EnsureInstalledAsync();
-                
-                GameLogger.Log($"[TTSInit:{attemptId}] Starting module load with model '{DefaultModelId}'.");
 
                 if (!_synthesizer.TryLoadModule())
                 {
@@ -88,7 +80,6 @@ namespace CodeBase.Gameplay.SpeechSyntesis
             }
             finally
             {
-                GameLogger.Log($"[TTSInit:{attemptId}] Finalizing initialization source.");
                 _initializeSource = null;
             }
         }
@@ -145,8 +136,6 @@ namespace CodeBase.Gameplay.SpeechSyntesis
 
         private void OnInitializationStateChanged(bool isReady)
         {
-            GameLogger.Log($"[TTSService] InitializationStateChanged: isReady={isReady}");
-
             if (!isReady)
                 return;
 

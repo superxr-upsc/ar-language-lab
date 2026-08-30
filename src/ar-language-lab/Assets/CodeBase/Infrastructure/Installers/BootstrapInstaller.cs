@@ -11,6 +11,7 @@ using CodeBase.Infrastructure.Loading;
 using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
 using CodeBase.Infrastructure.SaveLoad;
+using CodeBase.Infrastructure.SaveLoad.AutoSaver;
 using CodeBase.Infrastructure.TimerService;
 using CodeBase.Infrastructure.Vuforia;
 using CodeBase.Infrastructure.WindowsManagement;
@@ -59,12 +60,14 @@ namespace CodeBase.Infrastructure.Installers
             Container.Bind<ISaveService>()
                 .To<SaveService>()
                 .AsSingle();
+
+            Container.BindInterfacesAndSelfTo<AutoSaveService>()
+                .AsSingle();
         }
 
         private void BindLessonManagementService()
         {
-            Container.Bind<ILessonManagementService>()
-                .To<LessonManagementService>()
+            Container.BindInterfacesTo<LessonManagementService>()
                 .AsSingle();
         }
 

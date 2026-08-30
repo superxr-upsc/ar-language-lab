@@ -30,9 +30,6 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
             _lessonManagementService.SetupLesson();
             
             _eventBrokerService.Rise<IGameLoopInitializable>(x => x.OnGameLoopInitialized());
-            
-            GameLogger.Log("ENTERED GAMEPLAY LOOP");
-            
             _lessonManagementService.StartLesson();
         }
 

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using CodeBase.Common.LoggerService;
 using CodeBase.Infrastructure.SaveLoad.Data;
 using CodeBase.Infrastructure.SaveLoad.Migration;
 using CodeBase.Infrastructure.SaveLoad.Serialization;
@@ -14,6 +16,7 @@ namespace CodeBase.Infrastructure.SaveLoad
         private readonly ISaveStorage _saveStorage;
         private readonly ISaveSerializer _saveSerializer;
         private readonly ISaveMigrationRunner _saveMigrationRunner;
+        private readonly SemaphoreSlim _operationLock = new(1, 1);
 
         private ISaveData _saveData;
         private bool _isDirty = false;
@@ -42,16 +45,29 @@ namespace CodeBase.Infrastructure.SaveLoad
                 MarkDirty();
 
             _saveData = saveData;
+            
+            GameLogger.Log("[SAVES] Game state loaded!");
         }
 
         public async UniTask SaveAsync()
         {
-            if (_saveData == null)
-                throw new ArgumentNullException(nameof(_saveData));
+            await _operationLock.WaitAsync();
 
-            var payload = _saveSerializer.Serialize(_saveData);
-            await _saveStorage.WriteAsync(payload);
-            MarkClean();
+            try
+            {
+                if (_saveData == null)
+                    throw new ArgumentNullException(nameof(_saveData));
+
+                var payload = _saveSerializer.Serialize(_saveData);
+                await _saveStorage.WriteAsync(payload);
+                MarkClean();
+                
+                GameLogger.Log("[SAVES] Game state saved!");
+            }
+            finally
+            {
+                _operationLock.Release();
+            }
         }
 
         public async UniTask<bool> TrySaveIfDirtyAsync()
@@ -63,13 +79,13 @@ namespace CodeBase.Infrastructure.SaveLoad
             return true;
         }
 
-        public void MarkDirty() => 
+        public void MarkDirty() =>
             _isDirty = true;
 
-        public void MarkClean() => 
+        public void MarkClean() =>
             _isDirty = false;
 
-        public bool IsDirty() => 
+        public bool IsDirty() =>
             _isDirty;
     }
 }

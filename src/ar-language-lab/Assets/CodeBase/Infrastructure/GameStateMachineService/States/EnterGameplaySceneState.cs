@@ -26,7 +26,6 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
         private void EnterGameplayLoopState()
         {
             _stateMachine.Enter<EnterGameplayLoopState>();
-            GameLogger.Log("LOADED GAMEPLAY SCENE......");
         }
     }
 }

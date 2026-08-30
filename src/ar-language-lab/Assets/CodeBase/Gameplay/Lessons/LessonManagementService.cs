@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CodeBase.Gameplay.ARObjects;
 using CodeBase.Gameplay.Lessons.Tasks;
 using CodeBase.Infrastructure.GameFactory;
@@ -10,7 +11,7 @@ using Vuforia;
 
 namespace CodeBase.Gameplay.Lessons
 {
-    public class LessonManagementService : ILessonManagementService
+    public class LessonManagementService : ILessonManagementService, IDisposable
     {
         private readonly IGameFactory _gameFactory;
         private readonly IProjectResourcesProvider _resourcesProvider;
@@ -70,6 +71,11 @@ namespace CodeBase.Gameplay.Lessons
                 arObject.Value.Cleanup();
             
             _lessonObjects.Clear();
+        }
+
+        public void Dispose()
+        {
+            CleanupLesson();
         }
 
         private LessonConfig GetSelectedLesson()

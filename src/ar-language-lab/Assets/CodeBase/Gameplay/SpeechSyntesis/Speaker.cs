@@ -1,4 +1,5 @@
-﻿using CodeBase.Common.LoggerService;
+﻿using System.Threading;
+using CodeBase.Common.LoggerService;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
@@ -10,7 +11,8 @@ namespace CodeBase.Gameplay.SpeechSyntesis
     {
         private AudioSource _audioSource;
         private ITTSService _ttsService;
-        private bool _isSpeaking;
+        
+        private readonly SemaphoreSlim _operationLock = new(1, 1);
 
         [Inject]
         private void Construct(ITTSService ttsService)
@@ -21,26 +23,22 @@ namespace CodeBase.Gameplay.SpeechSyntesis
         
         public void Speak(string text)
         {
-            SpeakAsync(text).Forget();
+            SpeakAsync(text)
+                .Forget();
         }
 
         public async UniTask SpeakAsync(string text)
         {
-            if (_isSpeaking)
-            {
-                GameLogger.Log("SpeakAsync call ignored because another speech is already in progress.");
-                return;
-            }
-
-            if (!_ttsService.IsInitialized)
-            {
-                GameLogger.LogWarning("TTS Service is not initialized. Cannot speak.");
-                return;
-            }
-
-            _isSpeaking = true;
+            await _operationLock.WaitAsync();
+            
             try
             {
+                if (!_ttsService.IsInitialized)
+                {
+                    GameLogger.LogWarning("TTS Service is not initialized. Cannot speak.");
+                    return;
+                }
+                
                 var clip = await _ttsService.GenerateAudioClip(text);
                 if (clip != null)
                 {
@@ -55,7 +53,7 @@ namespace CodeBase.Gameplay.SpeechSyntesis
             }
             finally
             {
-                _isSpeaking = false;
+                _operationLock.Release();
             }
         }
     }
