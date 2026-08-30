@@ -1,0 +1,75 @@
+﻿using System;
+using CodeBase.Infrastructure.SaveLoad.Data;
+using CodeBase.Infrastructure.SaveLoad.Migration;
+using CodeBase.Infrastructure.SaveLoad.Serialization;
+using CodeBase.Infrastructure.SaveLoad.Storage;
+using Cysharp.Threading.Tasks;
+
+namespace CodeBase.Infrastructure.SaveLoad
+{
+    public class SaveService : ISaveService
+    {
+        public ISaveData SaveData => _saveData;
+
+        private readonly ISaveStorage _saveStorage;
+        private readonly ISaveSerializer _saveSerializer;
+        private readonly ISaveMigrationRunner _saveMigrationRunner;
+
+        private ISaveData _saveData;
+        private bool _isDirty = false;
+        
+        public SaveService()
+        {
+            _saveStorage = new FileSaveStorage();
+            _saveSerializer = new NewtonsoftSaveSerializer();
+            _saveMigrationRunner = new SaveMigrationRunner();
+        }
+
+        public async UniTask LoadAsync<TSaveData>()
+            where TSaveData : class, ISaveData, new()
+        {
+            if (!await _saveStorage.ExistsAsync())
+                _saveData = new TSaveData();
+
+            var payload = await _saveStorage.ReadAsync();
+            if (string.IsNullOrWhiteSpace(payload))
+                _saveData = new TSaveData();
+
+            var saveData = _saveSerializer.Deserialize<TSaveData>(payload) ?? new TSaveData();
+            var migrated = _saveMigrationRunner.RunMigrations(saveData);
+
+            if (migrated)
+                MarkDirty();
+
+            _saveData = saveData;
+        }
+
+        public async UniTask SaveAsync()
+        {
+            if (_saveData == null)
+                throw new ArgumentNullException(nameof(_saveData));
+
+            var payload = _saveSerializer.Serialize(_saveData);
+            await _saveStorage.WriteAsync(payload);
+            MarkClean();
+        }
+
+        public async UniTask<bool> TrySaveIfDirtyAsync()
+        {
+            if (!IsDirty())
+                return false;
+
+            await SaveAsync();
+            return true;
+        }
+
+        public void MarkDirty() => 
+            _isDirty = true;
+
+        public void MarkClean() => 
+            _isDirty = false;
+
+        public bool IsDirty() => 
+            _isDirty;
+    }
+}

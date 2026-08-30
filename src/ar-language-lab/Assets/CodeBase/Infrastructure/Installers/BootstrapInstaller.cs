@@ -10,6 +10,7 @@ using CodeBase.Infrastructure.InputService;
 using CodeBase.Infrastructure.Loading;
 using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
+using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.TimerService;
 using CodeBase.Infrastructure.Vuforia;
 using CodeBase.Infrastructure.WindowsManagement;
@@ -25,8 +26,8 @@ namespace CodeBase.Infrastructure.Installers
         [SerializeField] private WindowsManagementService _windowsManagementService;
         [SerializeField] private TTSService _ttsService;
         [SerializeField] private ARCamera _arCamera;
-        
-        
+
+
         public override void InstallBindings()
         {
             //Only for debug builds
@@ -42,6 +43,7 @@ namespace CodeBase.Infrastructure.Installers
             BindEventBrokerService();
             BindGameStateMachine();
             BindGameFactory();
+            BindSaveSystem();
             BindInputService();
             BindSceneLoadingService();
             BindProjectResourcesProvider();
@@ -50,6 +52,13 @@ namespace CodeBase.Infrastructure.Installers
             BindVuforiaService();
             BindARCameraProvider();
             BindLessonManagementService();
+        }
+
+        private void BindSaveSystem()
+        {
+            Container.Bind<ISaveService>()
+                .To<SaveService>()
+                .AsSingle();
         }
 
         private void BindLessonManagementService()

@@ -3,7 +3,7 @@ using CodeBase.Gameplay.SpeechSyntesis;
 using CodeBase.Infrastructure.Vuforia;
 using Cysharp.Threading.Tasks;
 
-namespace CodeBase.Gameplay.Lessons.Tasks
+namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
 {
     public class TaskResolverBase : IDisposable
     {

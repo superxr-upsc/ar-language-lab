@@ -4,7 +4,7 @@ using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.Vuforia;
 using Cysharp.Threading.Tasks;
 
-namespace CodeBase.Gameplay.Lessons.Tasks
+namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
 {
     public class FindObjectTask : TaskResolverBase
     {

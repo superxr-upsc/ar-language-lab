@@ -9,7 +9,7 @@ using Cysharp.Threading.Tasks;
 using R3;
 using UnityEngine;
 
-namespace CodeBase.Gameplay.Lessons.Tasks
+namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
 {
     public class PlaceObjectsInHierarchyTask : TaskResolverBase
     {

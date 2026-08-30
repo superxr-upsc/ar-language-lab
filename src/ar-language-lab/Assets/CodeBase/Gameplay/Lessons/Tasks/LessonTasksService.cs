@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using CodeBase.Common.LoggerService;
 using CodeBase.Gameplay.Lessons.Tasks.Extensions;
+using CodeBase.Gameplay.Lessons.Tasks.Resolvers;
 using CodeBase.Infrastructure.GameFactory;
 
 namespace CodeBase.Gameplay.Lessons.Tasks

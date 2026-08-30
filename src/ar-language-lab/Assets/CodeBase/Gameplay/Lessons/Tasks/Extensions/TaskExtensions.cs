@@ -1,4 +1,5 @@
-﻿using CodeBase.Infrastructure.GameFactory;
+﻿using CodeBase.Gameplay.Lessons.Tasks.Resolvers;
+using CodeBase.Infrastructure.GameFactory;
 
 namespace CodeBase.Gameplay.Lessons.Tasks.Extensions
 {
