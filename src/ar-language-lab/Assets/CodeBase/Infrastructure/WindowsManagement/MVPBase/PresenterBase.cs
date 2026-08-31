@@ -1,29 +1,31 @@
 ﻿using System;
+using R3;
 
 namespace CodeBase.Infrastructure.WindowsManagement.MVPBase
 {
     public class PresenterBase : IDisposable
     {
-        protected ModelBase Model;
-        protected ViewBase View;
+        protected CompositeDisposable _compositeDisposable;
+        private ViewBase _viewBase;
 
-        public PresenterBase(ModelBase model, ViewBase view)
+        public PresenterBase(ViewBase viewBase)
         {
-            Model = model;
-            View = view;
+            _viewBase = viewBase;
+            _compositeDisposable = new CompositeDisposable();
         }
 
         public virtual void Dispose()
         {
-            View.Close()
+            _compositeDisposable.Dispose();
+            
+            _viewBase.Close()
                 .Then(ClearInstance)
                 .Catch(exception => throw exception);
         }
 
         protected virtual void ClearInstance()
         {
-            Model = null;
-            View = null;
+            _viewBase = null;
         }
     }
 }

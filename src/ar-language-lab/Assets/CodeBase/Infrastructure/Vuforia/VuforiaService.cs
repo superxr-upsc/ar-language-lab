@@ -45,9 +45,12 @@ namespace CodeBase.Infrastructure.Vuforia
 
             try
             {
-                if (_application.IsInitialized) 
+                if (_application.IsInitialized)
+                {
                     _initializeSource.TrySetResult();
-
+                    //_application.
+                }
+                
                 await _initializeSource.Task;
             }
             finally

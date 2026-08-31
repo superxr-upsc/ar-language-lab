@@ -2,7 +2,9 @@
   "dependencies": {
     "com.cysharp.r3": "https://github.com/Cysharp/R3.git?path=src/R3.Unity/Assets/R3.Unity",
     "com.eitan.sherpa-onnx-unity": "https://github.com/EitanWong/com.eitan.sherpa-onnx-unity.git#upm",
+    "com.kyrylokuzyk.primetween": "file:../Packages/com.kyrylokuzyk.primetween.tgz",
     "com.ptc.vuforia.engine": "file:com.ptc.vuforia.engine-11.4.4.tgz",
+    "com.unity.2d.sprite": "1.0.0",
     "com.unity.feature.development": "1.0.2",
     "com.unity.inputsystem": "1.19.0",
     "com.unity.learn.iet-framework": "5.0.4",

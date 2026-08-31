@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using CodeBase.Infrastructure.GameFactory;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
-using CodeBase.Infrastructure.StaticData;
 using CodeBase.Infrastructure.WindowsManagement.MVPBase;
 using UnityEngine;
 using Zenject;
@@ -31,7 +30,7 @@ namespace CodeBase.Infrastructure.WindowsManagement
         public TPresenter CreateWindow<TPresenter, TView, TModel>(UILayer layer, TModel model) 
             where TPresenter : PresenterBase 
             where TView : ViewBase, IResource
-            where TModel : ModelBase
+            where TModel : IModel
         {
             CloseAllWindowsOnLayer(layer);
 
@@ -41,8 +40,13 @@ namespace CodeBase.Infrastructure.WindowsManagement
                 throw new Exception($"There is no resource {typeof(TView)} in folder Resources/{WindowResourcesPath}");
             }
 
-            var view = _factory.CreatePrefab(viewResource, GetParentByLayer(layer));
-            return _factory.Create<TPresenter>(model, view);
+            var view = _factory.CreateFromPrefab<TView>(viewResource, GetParentByLayer(layer));
+            var presenter = _factory.Create<TPresenter>(model, view);
+            
+            _currentOpenedWindows[layer] = presenter;
+            view.Open();
+            
+            return presenter;
         }
 
         private Transform GetParentByLayer(UILayer layer)
@@ -53,7 +57,7 @@ namespace CodeBase.Infrastructure.WindowsManagement
 
         private void CloseAllWindowsOnLayer(UILayer layer)
         {
-            if (_currentOpenedWindows.ContainsKey(layer) == false) return;
+            if (!_currentOpenedWindows.ContainsKey(layer)) return;
             var currentWindowOnLayer = _currentOpenedWindows[layer];
             currentWindowOnLayer.Dispose();
 

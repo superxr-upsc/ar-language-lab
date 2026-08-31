@@ -2,6 +2,7 @@
 using CodeBase.Gameplay.SpeechSyntesis;
 using CodeBase.Infrastructure.GameStateMachineService.StateInfrastructure;
 using CodeBase.Infrastructure.GameStateMachineService.StateMachine;
+using CodeBase.Infrastructure.Loading;
 using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.SaveLoad.AutoSaver;
@@ -18,6 +19,7 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
         private readonly IVuforiaService _vuforiaService;
         private readonly ISaveService _saveService;
         private readonly AutoSaveService _autoSaveService;
+        private readonly ISceneLoader _sceneLoader;
         private readonly ITTSService _ttsService;
 
         public BootstrapState(IGameStateMachine stateMachine, 
@@ -25,6 +27,7 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
             IVuforiaService vuforiaService,
             ISaveService saveService,
             AutoSaveService autoSaveService,
+            ISceneLoader sceneLoader,
             ITTSService ttsService)
         {
             _stateMachine = stateMachine;
@@ -32,6 +35,7 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
             _vuforiaService = vuforiaService;
             _saveService = saveService;
             _autoSaveService = autoSaveService;
+            _sceneLoader = sceneLoader;
             _ttsService = ttsService;
         }
         
@@ -44,12 +48,20 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
 
         private async UniTaskVoid InitializeAndLoadGameplay()
         {
+            _sceneLoader.ShowLoadingScreen();
+            
+            _sceneLoader.UpdateProgress(0.1f, "Initializing Localization...");
             await _localizationService.InitializeAsync();
+            
+            _sceneLoader.UpdateProgress(0.25f, "Loading Save Data...");
             await _saveService.LoadAsync<SaveData>();
-            
+
             _autoSaveService.StartSaving();
-            
+
+            _sceneLoader.UpdateProgress(0.65f, "Initializing Vuforia...");
             await _vuforiaService.InitializeVuforia();
+            
+            _sceneLoader.UpdateProgress(0.85f, "Initializing TTS models...");
             await _ttsService.InitializeAsync();
             
             _stateMachine.Enter<EnterGameplaySceneState>();

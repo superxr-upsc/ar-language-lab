@@ -16,6 +16,12 @@
       "dependencies": {},
       "hash": "cf70be74cb51682fdde9b45074df04d1bf420147"
     },
+    "com.kyrylokuzyk.primetween": {
+      "version": "file:../Packages/com.kyrylokuzyk.primetween.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {}
+    },
     "com.ptc.vuforia.engine": {
       "version": "file:com.ptc.vuforia.engine-11.4.4.tgz",
       "depth": 0,
@@ -25,6 +31,12 @@
         "com.unity.inputsystem": "1.11.2",
         "com.unity.nuget.newtonsoft-json": "3.2.1"
       }
+    },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
     },
     "com.unity.addressables": {
       "version": "2.9.1",
@@ -571,5 +583,6 @@
       "depth": 0,
       "source": "builtin",
       "dependencies": {}
-    }  }
+    }
+  }
 }

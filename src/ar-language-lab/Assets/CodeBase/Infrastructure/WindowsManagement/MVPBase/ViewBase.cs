@@ -12,7 +12,7 @@ namespace CodeBase.Infrastructure.WindowsManagement.MVPBase
         
         protected virtual void OpenWindowAnimation(Action<ViewBase> resolve, Action<Exception> reject)
         {
-            
+            resolve(this);
         }
         
         protected virtual void CloseWindowAnimation(Action resolve, Action<Exception> reject)
