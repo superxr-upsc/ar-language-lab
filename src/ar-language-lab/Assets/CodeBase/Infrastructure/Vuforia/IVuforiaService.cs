@@ -11,5 +11,6 @@ namespace CodeBase.Infrastructure.Vuforia
         bool SetDeviceFlashTorch(bool on);
         bool SetDeviceFocusMode(FocusMode focusMode);
         MultiTargetBehaviour CreateTarget(string vuforiaKey);
+        void SetVuforiaState(bool isOn);
     }
 }

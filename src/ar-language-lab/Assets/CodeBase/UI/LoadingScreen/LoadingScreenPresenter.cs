@@ -1,7 +1,7 @@
 ﻿using CodeBase.Infrastructure.WindowsManagement.MVPBase;
 using R3;
 
-namespace CodeBase.Infrastructure.Loading.UI
+namespace CodeBase.UI.LoadingScreen
 {
     public class LoadingScreenPresenter : PresenterBase
     {

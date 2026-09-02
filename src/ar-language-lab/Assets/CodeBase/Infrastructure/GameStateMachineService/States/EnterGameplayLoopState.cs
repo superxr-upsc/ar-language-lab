@@ -29,15 +29,13 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
         {
             base.Enter();
             
-            _sceneLoader.UpdateProgress(1f, "Setup vuforia behaviour...");
-            
+            _sceneLoader.UpdateProgress(1f, "");
             _vuforiaService.SetupVuforiaBehaviour();
             _lessonManagementService.SetupLesson();
             
             _eventBrokerService.Rise<IGameLoopInitializable>(x => x.OnGameLoopInitialized());
-            _lessonManagementService.StartLesson();
-            
             _sceneLoader.CloseLoadingScreen();
+            _lessonManagementService.StartLesson();
         }
 
         protected override void Exit()

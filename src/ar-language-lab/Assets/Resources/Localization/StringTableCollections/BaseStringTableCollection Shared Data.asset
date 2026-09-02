@@ -31,12 +31,20 @@ MonoBehaviour:
     m_Key: q_find_and_scan_object
     m_Metadata:
       m_Items: []
-  - m_Id: 10506081929428992
-    m_Key: q_place_object_near_to_another
+  - m_Id: 12797029279498240
+    m_Key: ind_lesson_1_name
     m_Metadata:
       m_Items: []
-  - m_Id: 10702446869512192
-    m_Key: q_place_object_in_hierarchy
+  - m_Id: 12797116785262592
+    m_Key: ind_lesson_1_descriptrion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12797151488933888
+    m_Key: ind_lesson_2_name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12797165716013056
+    m_Key: ind_lesson_2_descriptrion
     m_Metadata:
       m_Items: []
   m_Metadata:

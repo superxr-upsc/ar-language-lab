@@ -44,9 +44,15 @@ namespace CodeBase.Infrastructure.WindowsManagement
             var presenter = _factory.Create<TPresenter>(model, view);
             
             _currentOpenedWindows[layer] = presenter;
-            view.Open();
+            view.Open().Catch(Debug.LogException);
             
             return presenter;
+        }
+
+        public void CloseAllWindows()
+        {
+            foreach (var layer in _layers.Select(x => x.Layer)) 
+                CloseAllWindowsOnLayer(layer);
         }
 
         private Transform GetParentByLayer(UILayer layer)
@@ -59,9 +65,15 @@ namespace CodeBase.Infrastructure.WindowsManagement
         {
             if (!_currentOpenedWindows.ContainsKey(layer)) return;
             var currentWindowOnLayer = _currentOpenedWindows[layer];
-            currentWindowOnLayer.Dispose();
 
-            _currentOpenedWindows.Remove(layer);
+            currentWindowOnLayer.DisposeAsync()
+                .Then(() =>
+                {
+                    // Avoid removing a newer presenter if this close finishes later.
+                    if (_currentOpenedWindows.TryGetValue(layer, out var openedWindow) && openedWindow == currentWindowOnLayer)
+                        _currentOpenedWindows.Remove(layer);
+                })
+                .Catch(Debug.LogException);
         }
     }
 }

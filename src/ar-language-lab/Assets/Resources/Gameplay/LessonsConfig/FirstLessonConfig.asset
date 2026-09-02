@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c95147ea2565466c978787349a3ec315, type: 3}
+  m_Name: FirstLessonConfig
+  m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.Lessons.LessonConfig
+  Id: LC_e938dccd588c4ba0b23a85ec8eec5fca
+  LessonIcon: {fileID: -8246627260571945669, guid: 215687feeab0b7445b4a1cd86c82c2e1, type: 3}
+  LessonNameKey: ind_lesson_1_name
+  LessonDescriptionKey: ind_lesson_1_descriptrion
+  ObjectsToUse:
+  - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
+  Tasks:
+  - Id: TD_47ae7ba1e17c45d9b231e734096d5e7d
+    Type: 1
+    DescriptionLocalizationKey: q_find_and_scan_object
+    TargetObjects:
+    - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0

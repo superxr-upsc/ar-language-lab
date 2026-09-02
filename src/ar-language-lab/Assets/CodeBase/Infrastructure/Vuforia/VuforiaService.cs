@@ -8,7 +8,7 @@ using Zenject;
 
 namespace CodeBase.Infrastructure.Vuforia
 {
-    public class VuforiaService : IVuforiaService, IDisposable
+    public class VuforiaService : IVuforiaService, IInitializable, IDisposable
     {
         private const string DatabaseName = "ar-language-lab";
 
@@ -25,15 +25,21 @@ namespace CodeBase.Infrastructure.Vuforia
             _application = VuforiaApplication.Instance;
             _configuration = VuforiaConfiguration.Instance;
             
-            _behaviour = _application.GetVuforiaBehaviour();
-            
             SubscribeToVuforiaEvents();
+        }
+        
+        public void Initialize()
+        {
+            _behaviour = VuforiaBehaviour.Instance;
         }
 
         public async UniTask InitializeVuforia()
         {
             if (_application.IsInitialized)
+            {
+                SetVuforiaState(false);
                 return;
+            }
 
             if (_initializeSource != null)
             {
@@ -48,7 +54,7 @@ namespace CodeBase.Infrastructure.Vuforia
                 if (_application.IsInitialized)
                 {
                     _initializeSource.TrySetResult();
-                    //_application.
+                    SetVuforiaState(false);
                 }
                 
                 await _initializeSource.Task;
@@ -62,8 +68,13 @@ namespace CodeBase.Infrastructure.Vuforia
         //Vuforia Behaviour is placed on AR camera and should be setup after camera is created
         public void SetupVuforiaBehaviour()
         {
-            _behaviour = _application.GetVuforiaBehaviour();
+            SetVuforiaState(true);
             SetRecomendedTargetFPS();
+        }
+
+        public void SetVuforiaState(bool isOn)
+        {
+            _behaviour.enabled = isOn;
         }
 
         public World GetWorld() => 

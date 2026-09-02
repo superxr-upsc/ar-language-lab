@@ -11,9 +11,30 @@ namespace CodeBase.Gameplay.Lessons
     public class LessonConfig : UniqueScriptableObject, IResource
     {
         protected override string Prefix => IdentifierUtility.LessonConfigPrefix;
+
+        public Sprite LessonIcon;
+        
+        public string LessonNameKey;
+        public string LessonDescriptionKey;
+        
+        
         public ARObjectConfig[] ObjectsToUse;
         public TaskData[] Tasks;
-        
+
+        public int GetCompletedTasksPercent(string lastCompletedTask)
+        {
+            var completedTasks = 0;
+            foreach (var taskData in Tasks)    
+            {
+                if (taskData.Id !=  lastCompletedTask)
+                    continue;
+                
+                completedTasks++;
+            }
+            
+            return (int)((float)completedTasks / Tasks.Length * 100);
+        }
+
         //Validation Task ID for task data 
         protected override void EnsureCustomIDValidation()
         {

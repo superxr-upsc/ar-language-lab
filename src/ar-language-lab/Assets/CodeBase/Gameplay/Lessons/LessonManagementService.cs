@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using CodeBase.Gameplay.ARObjects;
+using CodeBase.Gameplay.Lessons.Saves;
 using CodeBase.Gameplay.Lessons.Tasks;
 using CodeBase.Infrastructure.GameFactory;
+using CodeBase.Infrastructure.GameStateMachineService.StateMachine;
+using CodeBase.Infrastructure.GameStateMachineService.States;
 using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
+using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.StaticData;
 using CodeBase.Infrastructure.Vuforia;
 using Vuforia;
@@ -18,28 +22,36 @@ namespace CodeBase.Gameplay.Lessons
         private readonly IARCameraProvider _arCameraProvider;
         private readonly ILocalizationService _localizationService;
         private readonly IVuforiaService _vuforiaService;
+        private readonly ISaveService _saveService;
+        private readonly IGameStateMachine _gameStateMachine;
 
         private LessonConfig _lessonConfig;
+        private LessonsGameDataProvider _lessonGameDataProvider;
 
         private Dictionary<MultiTargetBehaviour, ARObjectBase> _lessonObjects = new();
-        
+
         private LessonTasksService _lessonTasksService;
 
         public LessonManagementService(IGameFactory gameFactory,
             IProjectResourcesProvider resourcesProvider,
             IARCameraProvider arCameraProvider,
             ILocalizationService localizationService,
-            IVuforiaService vuforiaService)
+            IVuforiaService vuforiaService,
+            ISaveService saveService,
+            IGameStateMachine gameStateMachine)
         {
             _gameFactory = gameFactory;
             _resourcesProvider = resourcesProvider;
             _arCameraProvider = arCameraProvider;
             _localizationService = localizationService;
             _vuforiaService = vuforiaService;
+            _saveService = saveService;
+            _gameStateMachine = gameStateMachine;
         }
 
         public void SetupLesson()
         {
+            _lessonGameDataProvider = new LessonsGameDataProvider(_saveService);
             _lessonConfig = GetSelectedLesson();
 
             SetupGameplayObjects();
@@ -49,6 +61,7 @@ namespace CodeBase.Gameplay.Lessons
         public void StartLesson()
         {
             _lessonTasksService.SelectAndRunNewTask();
+            _lessonTasksService.OnLessonComplete += OnLessonComplete;
         }
 
         public ARObjectBase GetObject(ARObjectConfig config)
@@ -64,8 +77,12 @@ namespace CodeBase.Gameplay.Lessons
 
         public void CleanupLesson()
         {
-            _lessonTasksService.Dispose();
-            _lessonTasksService = null;
+            if (_lessonTasksService != null)
+            {
+                _lessonTasksService.OnLessonComplete -= OnLessonComplete;
+                _lessonTasksService.Dispose();
+                _lessonTasksService = null;
+            }
             
             foreach (var arObject in _lessonObjects) 
                 arObject.Value.Cleanup();
@@ -80,8 +97,14 @@ namespace CodeBase.Gameplay.Lessons
 
         private LessonConfig GetSelectedLesson()
         {
-            // TODO : Should get selected lesson from main menu 
-            return _resourcesProvider.LoadResource<LessonConfig>();
+            var gameLessons = _resourcesProvider.LoadResource<GameLessons>();
+            return gameLessons.GetLesson(_saveService.SaveData.Lessons.SelectedLessonID);
+        }
+
+        private void OnLessonComplete()
+        {
+            _vuforiaService.SetVuforiaState(false);
+            _gameStateMachine.Enter<EnterMainMenuState>();
         }
 
         private void SetupGameplayObjects()
@@ -95,7 +118,7 @@ namespace CodeBase.Gameplay.Lessons
 
         private void SetupQuests()
         {
-            _lessonTasksService = _gameFactory.Create<LessonTasksService>(_lessonConfig);
+            _lessonTasksService = _gameFactory.Create<LessonTasksService>(_lessonConfig, _lessonGameDataProvider);
         }
 
         private ARObjectBase CreateArObject(ARObjectConfig arObjectConfig, int index)

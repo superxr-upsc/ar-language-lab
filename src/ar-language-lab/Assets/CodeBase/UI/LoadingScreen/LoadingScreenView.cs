@@ -5,7 +5,7 @@ using PrimeTween;
 using TMPro;
 using UnityEngine;
 
-namespace CodeBase.Infrastructure.Loading.UI
+namespace CodeBase.UI.LoadingScreen
 {
     public class LoadingScreenView : ViewBase
     {
@@ -16,20 +16,29 @@ namespace CodeBase.Infrastructure.Loading.UI
         [SerializeField] private RectTransform _progressBarBackground;
         
         [SerializeField] private CanvasGroup _canvasGroup;
+        private Coroutine _loadingAnimationCoroutine;
         
         protected override void OpenWindowAnimation(Action<ViewBase> resolve, Action<Exception> reject)
         {
-            StartCoroutine(LoadingAnimation());
+            if (_loadingAnimationCoroutine == null)
+                _loadingAnimationCoroutine = StartCoroutine(LoadingAnimation());
+
             base.OpenWindowAnimation(resolve, reject);
         }
 
         protected override void CloseWindowAnimation(Action resolve, Action<Exception> reject)
         {
-            StopCoroutine(LoadingAnimation());
+            if (_loadingAnimationCoroutine != null)
+            {
+                StopCoroutine(_loadingAnimationCoroutine);
+                _loadingAnimationCoroutine = null;
+            }
+
             Tween.Alpha(_canvasGroup, 0f, 0.5f)
-                .OnComplete(() => resolve?.Invoke());
-            
-            base.CloseWindowAnimation(resolve, reject);
+                .OnComplete(() =>
+                {
+                    base.CloseWindowAnimation(resolve, reject);
+                });
         }
 
         public void UpdateProgressText(string progress) => 

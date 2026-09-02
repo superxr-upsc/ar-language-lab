@@ -9,5 +9,7 @@ namespace CodeBase.Infrastructure.WindowsManagement
             where TPresenter : PresenterBase
             where TView : ViewBase, IResource
             where TModel : IModel;
+
+        void CloseAllWindows();
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections;
 using CodeBase.Infrastructure.CoroutineRunner;
-using CodeBase.Infrastructure.Loading.UI;
 using CodeBase.Infrastructure.WindowsManagement;
+using CodeBase.UI.LoadingScreen;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -34,7 +34,8 @@ namespace CodeBase.Infrastructure.Loading
     }
     
     public void CloseLoadingScreen() => 
-      _loadingScreenPresenter?.Dispose();
+      _loadingScreenPresenter?.DisposeAsync()
+        .Catch(Debug.LogError);
     
     public void UpdateProgress(float progress, string message)
     {

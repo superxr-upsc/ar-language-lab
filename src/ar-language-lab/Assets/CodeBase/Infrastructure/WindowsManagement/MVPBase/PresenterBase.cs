@@ -1,5 +1,6 @@
 ﻿using System;
 using R3;
+using RSG;
 
 namespace CodeBase.Infrastructure.WindowsManagement.MVPBase
 {
@@ -7,6 +8,7 @@ namespace CodeBase.Infrastructure.WindowsManagement.MVPBase
     {
         protected CompositeDisposable _compositeDisposable;
         private ViewBase _viewBase;
+        private bool _isClosing;
 
         public PresenterBase(ViewBase viewBase)
         {
@@ -16,16 +18,34 @@ namespace CodeBase.Infrastructure.WindowsManagement.MVPBase
 
         public virtual void Dispose()
         {
+            // Keep IDisposable sync-friendly while still honoring async close animations.
+            DisposeAsync().Catch(UnityEngine.Debug.LogException);
+        }
+
+        public IPromise DisposeAsync() =>
+            Close();
+
+        public IPromise Close()
+        {
+            if (_isClosing || _viewBase == null)
+                return Promise.Resolved();
+
+            _isClosing = true;
             _compositeDisposable.Dispose();
-            
-            _viewBase.Close()
-                .Then(ClearInstance)
-                .Catch(exception => throw exception);
+
+            var viewToClose = _viewBase;
+
+            return viewToClose.Close()
+                .Then(ClearInstance);
         }
 
         protected virtual void ClearInstance()
         {
+            var viewToDestroy = _viewBase.gameObject;
             _viewBase = null;
+
+            if (viewToDestroy != null)
+                UnityEngine.Object.Destroy(viewToDestroy);
         }
     }
 }

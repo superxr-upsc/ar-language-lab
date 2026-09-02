@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c95147ea2565466c978787349a3ec315, type: 3}
-  m_Name: LessonConfig
+  m_Name: SecondLessonConfig
   m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.Lessons.LessonConfig
   Id: LC_6d347f984c114e3e968ab0afea1c3ded
+  LessonIcon: {fileID: -1659708932042841261, guid: 215687feeab0b7445b4a1cd86c82c2e1, type: 3}
+  LessonNameKey: ind_lesson_2_name
+  LessonDescriptionKey: ind_lesson_2_descriptrion
   ObjectsToUse:
-  - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
   - {fileID: 11400000, guid: 77d4e027e2eb73e46a8f3a62618bd54f, type: 2}
   Tasks:
-  - Id: TD_48893d3bd7f44012a5524ed1f72d355f
-    Type: 2
-    DescriptionLocalizationKey: q_place_object_in_hierarchy
+  - Id: TD_e8bf52632df14220a5320fbd26aa4b11
+    Type: 1
+    DescriptionLocalizationKey: q_find_and_scan_object
     TargetObjects:
-    - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
     - {fileID: 11400000, guid: 77d4e027e2eb73e46a8f3a62618bd54f, type: 2}
     SecondaryTargetObjects: []
     RequiredSide: 0

@@ -32,18 +32,24 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 7023668803858595914
-  - m_Id: 10506081929428992
-    m_Localized: Place {SubjectName} next to {ReferenceName}!
+  - m_Id: 12797029279498240
+    m_Localized: Lesson 1
     m_Metadata:
-      m_Items:
-      - rid: 7023668803858595914
-  - m_Id: 10702446869512192
-    m_Localized: Place objects in correct way {Objects} !
+      m_Items: []
+  - m_Id: 12797151488933888
+    m_Localized: Lesson 2
     m_Metadata:
-      m_Items:
-      - rid: 7023668803858595914
+      m_Items: []
   - m_Id: 10703352423940096
     m_Localized: Book
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12797116785262592
+    m_Localized: This is first entry lesson
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12797165716013056
+    m_Localized: And this is lessoin number two
     m_Metadata:
       m_Items: []
   references:
@@ -55,5 +61,3 @@ MonoBehaviour:
         m_Entries: 
         m_SharedEntries:
         - id: 10492190352637952
-        - id: 10506081929428992
-        - id: 10702446869512192

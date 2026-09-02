@@ -82,5 +82,11 @@ namespace CodeBase.Gameplay.Lessons.Saves
         
             _saveService.MarkDirty();
         }
+
+        public void SetSellectedLessonID(string lessonID)
+        {
+            _lessonsSaveData.SelectedLessonID = lessonID;
+            _saveService.MarkDirty();
+        }
     }
 }

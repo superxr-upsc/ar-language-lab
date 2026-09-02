@@ -64,7 +64,7 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
             _sceneLoader.UpdateProgress(0.85f, "Initializing TTS models...");
             await _ttsService.InitializeAsync();
             
-            _stateMachine.Enter<EnterGameplaySceneState>();
+            _stateMachine.Enter<EnterMainMenuState>();
         }
     }
 }

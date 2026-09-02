@@ -10,8 +10,8 @@ namespace CodeBase.Infrastructure.StaticData
         //Declare resources [type], [location in resources folder]
         private static ResourceName[] resources =
         {
-            new (typeof(LessonConfig), "Gameplay"),
-            new (typeof(TaskResolversSettings), "Gameplay")
+            new (typeof(TaskResolversSettings), "Gameplay"),
+            new (typeof(GameLessons), "Gameplay"),
         };
 
         public static string GetLocation<TResource>() where TResource : IResource
