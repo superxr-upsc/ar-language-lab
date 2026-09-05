@@ -8,6 +8,7 @@ namespace CodeBase.Gameplay.ARObjects
     public class ARObjectObserver : DefaultObserverEventHandler
     {
         public event Action<float, float> NearCameraEntered;
+        public event Action NearCameraExited;
 
         [Header("Coverage thresholds in viewport space [0..1]")]
         [SerializeField, Range(0.01f, 1f)] private float _enterCoverage = 0.5f;
@@ -85,9 +86,10 @@ namespace CodeBase.Gameplay.ARObjects
             if (coverage <= _exitCoverage)
             {
                 _isNear = false;
+                NearCameraExited?.Invoke();
             }
         }
-        
+
         protected override void OnTrackingFound()
         {
             base.OnTrackingFound();
@@ -100,6 +102,10 @@ namespace CodeBase.Gameplay.ARObjects
             base.OnTrackingLost();
             
             _isTracked = false;
+            
+            if (_isNear)
+                NearCameraExited?.Invoke();
+            
             _isNear = false;
         }
         

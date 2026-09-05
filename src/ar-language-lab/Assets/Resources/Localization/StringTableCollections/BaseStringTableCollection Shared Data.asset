@@ -47,6 +47,10 @@ MonoBehaviour:
     m_Key: ind_lesson_2_descriptrion
     m_Metadata:
       m_Items: []
+  - m_Id: 13865330399150080
+    m_Key: q_find_and_scan_object_2
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

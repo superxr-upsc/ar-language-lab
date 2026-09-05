@@ -79,6 +79,14 @@ namespace CodeBase.Infrastructure.SaveLoad
             return true;
         }
 
+        public UniTask ResetProgressAsync()
+        {
+            _saveData = new SaveData();
+            MarkDirty();
+            
+            return SaveAsync();
+        }
+
         public void MarkDirty() =>
             _isDirty = true;
 

@@ -18,11 +18,12 @@ MonoBehaviour:
   LessonDescriptionKey: ind_lesson_2_descriptrion
   ObjectsToUse:
   - {fileID: 11400000, guid: 77d4e027e2eb73e46a8f3a62618bd54f, type: 2}
+  - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
   Tasks:
   - Id: TD_e8bf52632df14220a5320fbd26aa4b11
     Type: 1
     DescriptionLocalizationKey: q_find_and_scan_object
     TargetObjects:
-    - {fileID: 11400000, guid: 77d4e027e2eb73e46a8f3a62618bd54f, type: 2}
+    - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
     SecondaryTargetObjects: []
     RequiredSide: 0

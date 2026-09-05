@@ -2,6 +2,7 @@
 using CodeBase.Gameplay.ARObjects;
 using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.Vuforia;
+using CodeBase.UI.Tasks;
 using Cysharp.Threading.Tasks;
 
 namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
@@ -24,9 +25,9 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
             _localization = localization;
         }
 
-        public override void Run()
+        public override void Run(ActiveTaskData viewData)
         {
-            base.Run();
+            base.Run(viewData);
             _selectedObject.Observer.NearCameraEntered += OnNearCameraEntered;
         }
 

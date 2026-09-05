@@ -1,4 +1,5 @@
-﻿using CodeBase.Infrastructure.SaveLoad.Data;
+﻿using System.Threading.Tasks;
+using CodeBase.Infrastructure.SaveLoad.Data;
 using Cysharp.Threading.Tasks;
 
 namespace CodeBase.Infrastructure.SaveLoad
@@ -13,6 +14,8 @@ namespace CodeBase.Infrastructure.SaveLoad
 
         UniTask<bool> TrySaveIfDirtyAsync();
 
+        UniTask ResetProgressAsync();
+        
         void MarkDirty();
         void MarkClean();
         bool IsDirty();

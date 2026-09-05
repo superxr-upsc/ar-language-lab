@@ -5,6 +5,7 @@ using CodeBase.Gameplay.ARObjects;
 using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
 using CodeBase.Infrastructure.Vuforia;
+using CodeBase.UI.Tasks;
 using Cysharp.Threading.Tasks;
 using R3;
 using UnityEngine;
@@ -43,9 +44,9 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
             _sortingDirection = GetCameraRightDirection();
         }
 
-        public override void Run()
+        public override void Run(ActiveTaskData viewData)
         {
-            base.Run();
+            base.Run(viewData);
             _updateSubscription = Observable.EveryUpdate()
                 .Subscribe(_ => EvaluateOrder());
         }

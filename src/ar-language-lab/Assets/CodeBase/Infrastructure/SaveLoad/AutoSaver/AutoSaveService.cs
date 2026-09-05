@@ -10,7 +10,7 @@ namespace CodeBase.Infrastructure.SaveLoad.AutoSaver
         private readonly ISaveService _saveService;
 
         private CancellationTokenSource _cts;
-        private int _autoSaveIntervalSeconds = 180;
+        private int _autoSaveIntervalSeconds = 60;
 
         public AutoSaveService(ISaveService saveService)
         {
@@ -38,6 +38,9 @@ namespace CodeBase.Infrastructure.SaveLoad.AutoSaver
         public void SetAutoSaveIntervalSeconds(int intervalSeconds)
         {
             _autoSaveIntervalSeconds = intervalSeconds;
+            
+            _cts?.Cancel();
+            StartSaving();
         }
         
         private async UniTaskVoid AutoSaveLoopAsync(

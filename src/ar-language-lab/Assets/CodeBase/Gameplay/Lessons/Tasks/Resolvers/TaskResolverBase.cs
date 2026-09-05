@@ -1,6 +1,7 @@
 ﻿using System;
 using CodeBase.Gameplay.SpeechSyntesis;
 using CodeBase.Infrastructure.Vuforia;
+using CodeBase.UI.Tasks;
 using Cysharp.Threading.Tasks;
 
 namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
@@ -19,18 +20,24 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
 
         public event Action<TaskData> TaskCompleted;
 
-        public virtual void Run()
+        public virtual void Run(ActiveTaskData viewData)
         {
             if (!TryResolveTargets())
             {
                 CompleteTask();
                 return;
             }
-            
-            PlayQuestDescriptionForQuest()
+
+            CacheLocalizationData(viewData)
                 .Forget();
         }
-        
+
+        private async UniTaskVoid CacheLocalizationData(ActiveTaskData viewData)
+        {
+            viewData.TaskDescription = await GetQuestDescription();
+            viewData.TaskAudioClip = await _speaker.GenerateAudioClipAsync(viewData.TaskDescription);
+        }
+
         public virtual void Dispose() { }
 
         protected virtual void CompleteTask() => 
@@ -41,11 +48,5 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
 
         protected virtual async UniTask<string> GetQuestDescription() => 
             string.Empty;
-        
-        private async UniTaskVoid PlayQuestDescriptionForQuest()
-        {
-            var questDescription = await GetQuestDescription();
-            await _speaker.SpeakAsync(questDescription);
-        }
     }
 }

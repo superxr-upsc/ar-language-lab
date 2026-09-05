@@ -11,6 +11,7 @@ using CodeBase.Infrastructure.ProjectResourcesProvider;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.StaticData;
 using CodeBase.Infrastructure.Vuforia;
+using CodeBase.Infrastructure.WindowsManagement;
 using Vuforia;
 
 namespace CodeBase.Gameplay.Lessons
@@ -24,6 +25,7 @@ namespace CodeBase.Gameplay.Lessons
         private readonly IVuforiaService _vuforiaService;
         private readonly ISaveService _saveService;
         private readonly IGameStateMachine _gameStateMachine;
+        private readonly IWindowsManagementService _windowsManagementService;
 
         private LessonConfig _lessonConfig;
         private LessonsGameDataProvider _lessonGameDataProvider;
@@ -38,7 +40,8 @@ namespace CodeBase.Gameplay.Lessons
             ILocalizationService localizationService,
             IVuforiaService vuforiaService,
             ISaveService saveService,
-            IGameStateMachine gameStateMachine)
+            IGameStateMachine gameStateMachine,
+            IWindowsManagementService windowsManagementService)
         {
             _gameFactory = gameFactory;
             _resourcesProvider = resourcesProvider;
@@ -47,6 +50,7 @@ namespace CodeBase.Gameplay.Lessons
             _vuforiaService = vuforiaService;
             _saveService = saveService;
             _gameStateMachine = gameStateMachine;
+            _windowsManagementService = windowsManagementService;
         }
 
         public void SetupLesson()
@@ -129,7 +133,11 @@ namespace CodeBase.Gameplay.Lessons
             
             var target = _vuforiaService.CreateTarget(markerDatabaseName);
             var arObject = _gameFactory.CreateFromPrefab<ARObjectBase>(arObjectConfig.Prefab, target.transform);
-            arObject.Initialize(arObjectConfig, _localizationService, _arCameraProvider.GetSpeaker(), target.GetComponent<ARObjectObserver>());
+            arObject.Initialize(arObjectConfig, 
+                _windowsManagementService,
+                _localizationService, 
+                target.GetComponent<ARObjectObserver>(),
+                _arCameraProvider.GetSpeaker());
             
             _lessonObjects[target] = arObject;
             

@@ -20,40 +20,42 @@ namespace CodeBase.Gameplay.SpeechSyntesis
             _ttsService = ttsService;
             _audioSource = GetComponent<AudioSource>();
         }
-        
-        public void Speak(string text)
-        {
-            SpeakAsync(text)
-                .Forget();
-        }
 
-        public async UniTask SpeakAsync(string text)
+        public async UniTask<AudioClip> GenerateAudioClipAsync(string text)
         {
             await _operationLock.WaitAsync();
             
             try
             {
-                if (!_ttsService.IsInitialized)
-                {
-                    GameLogger.LogWarning("TTS Service is not initialized. Cannot speak.");
-                    return;
-                }
+                if (_ttsService.IsInitialized)
+                    return await _ttsService.GenerateAudioClip(text);
                 
-                var clip = await _ttsService.GenerateAudioClip(text);
-                if (clip != null)
-                {
-                    _audioSource.Stop();
-                    _audioSource.clip = clip;
-                    _audioSource.Play();
-                }
-                else
-                {
-                    GameLogger.LogWarning("Failed to generate audio clip for the given text.");
-                }
+                GameLogger.LogWarning("TTS Service is not initialized. Cannot speak.");
+                return null;
             }
             finally
             {
                 _operationLock.Release();
+            }
+        }
+
+        public async UniTask SpeakAsync(string text)
+        {
+            var clip = await GenerateAudioClipAsync(text);
+            Speak(clip);
+        }
+
+        public void Speak(AudioClip clip)
+        {
+            if (clip != null)
+            {
+                _audioSource.Stop();
+                _audioSource.clip = clip;
+                _audioSource.Play();
+            }
+            else
+            {
+                GameLogger.LogWarning("Failed to generate audio clip for the given text.");
             }
         }
     }

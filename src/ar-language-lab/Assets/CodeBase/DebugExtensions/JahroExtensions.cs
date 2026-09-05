@@ -24,6 +24,7 @@ namespace CodeBase.DebugExtensions
             {
                 _gameFactory.Create<JahroSceneCommands>(),
                 _gameFactory.Create<JahroARObjectCommands>(),
+                _gameFactory.Create<JahroSavesCommands>()
             };
         }
 

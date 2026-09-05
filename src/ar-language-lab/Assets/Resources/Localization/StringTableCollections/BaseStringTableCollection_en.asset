@@ -52,6 +52,11 @@ MonoBehaviour:
     m_Localized: And this is lessoin number two
     m_Metadata:
       m_Items: []
+  - m_Id: 13865330399150080
+    m_Localized: Please find the {Objects} and scan it!
+    m_Metadata:
+      m_Items:
+      - rid: 7023668803858595914
   references:
     version: 2
     RefIds:
@@ -61,3 +66,4 @@ MonoBehaviour:
         m_Entries: 
         m_SharedEntries:
         - id: 10492190352637952
+        - id: 13865330399150080

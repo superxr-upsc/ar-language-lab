@@ -34,6 +34,20 @@ namespace CodeBase.Gameplay.Lessons
             
             return (int)((float)completedTasks / Tasks.Length * 100);
         }
+        
+        public float GetCompletedTasksValue(string lastCompletedTask)
+        {
+            var completedTasks = 0;
+            foreach (var taskData in Tasks)    
+            {
+                if (taskData.Id !=  lastCompletedTask)
+                    continue;
+                
+                completedTasks++;
+            }
+            
+            return (float)completedTasks / Tasks.Length;
+        }
 
         //Validation Task ID for task data 
         protected override void EnsureCustomIDValidation()
