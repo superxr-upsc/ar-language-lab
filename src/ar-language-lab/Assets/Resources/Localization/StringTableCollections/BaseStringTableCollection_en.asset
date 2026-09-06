@@ -28,16 +28,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 10492190352637952
-    m_Localized: Please find the {ObjectName} and scan it!
+    m_Localized: Please find the object with red color.
     m_Metadata:
-      m_Items:
-      - rid: 7023668803858595914
+      m_Items: []
   - m_Id: 12797029279498240
     m_Localized: Lesson 1
     m_Metadata:
       m_Items: []
-  - m_Id: 12797151488933888
-    m_Localized: Lesson 2
+  - m_Id: 14280925196222464
+    m_Localized: Please find the object with which you can play Football
     m_Metadata:
       m_Items: []
   - m_Id: 10703352423940096
@@ -48,12 +47,23 @@ MonoBehaviour:
     m_Localized: This is first entry lesson
     m_Metadata:
       m_Items: []
-  - m_Id: 12797165716013056
-    m_Localized: And this is lessoin number two
-    m_Metadata:
-      m_Items: []
   - m_Id: 13865330399150080
-    m_Localized: Please find the {Objects} and scan it!
+    m_Localized: Place {SubjectName} near {ReferenceName}!
+    m_Metadata:
+      m_Items:
+      - rid: 7023668803858595914
+  - m_Id: 14282447372058624
+    m_Localized: Place {SubjectName} on top of the {ReferenceName}!
+    m_Metadata:
+      m_Items:
+      - rid: 7023668803858595914
+  - m_Id: 14282754588049408
+    m_Localized: Place {SubjectName} in front of {ReferenceName}!
+    m_Metadata:
+      m_Items:
+      - rid: 7023668803858595914
+  - m_Id: 14283274211983360
+    m_Localized: 'Place object in corrent way: {Objects}.'
     m_Metadata:
       m_Items:
       - rid: 7023668803858595914
@@ -65,5 +75,7 @@ MonoBehaviour:
       data:
         m_Entries: 
         m_SharedEntries:
-        - id: 10492190352637952
         - id: 13865330399150080
+        - id: 14282447372058624
+        - id: 14282754588049408
+        - id: 14283274211983360

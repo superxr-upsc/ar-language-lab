@@ -20,10 +20,49 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
   - {fileID: 11400000, guid: 77d4e027e2eb73e46a8f3a62618bd54f, type: 2}
   Tasks:
-  - Id: TD_47ae7ba1e17c45d9b231e734096d5e7d
+  - Id: TD_1cbae864c0e84c80a6aa2c3b88fda458
     Type: 1
-    DescriptionLocalizationKey: q_find_and_scan_object
+    DescriptionLocalizationKey: ind_l1_t1_find_object
+    TargetObjects:
+    - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0
+  - Id: TD_fb743c2593da42088a2a354e86c71c7c
+    Type: 1
+    DescriptionLocalizationKey: ind_l1_t2_find_object
     TargetObjects:
     - {fileID: 11400000, guid: 77d4e027e2eb73e46a8f3a62618bd54f, type: 2}
     SecondaryTargetObjects: []
     RequiredSide: 0
+  - Id: TD_49f0d55f280944ba97494f73db4bb775
+    Type: 3
+    DescriptionLocalizationKey: ind_l1_t3_place_object_near
+    TargetObjects:
+    - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
+    SecondaryTargetObjects:
+    - {fileID: 11400000, guid: 77d4e027e2eb73e46a8f3a62618bd54f, type: 2}
+    RequiredSide: 0
+  - Id: TD_70017047ee684c91a9f478e2a21c6c5f
+    Type: 3
+    DescriptionLocalizationKey: ind_l1_t4_place_object_near
+    TargetObjects:
+    - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
+    SecondaryTargetObjects:
+    - {fileID: 11400000, guid: 77d4e027e2eb73e46a8f3a62618bd54f, type: 2}
+    RequiredSide: 1
+  - Id: TD_d590faf78fe14e659c911b67f3346057
+    Type: 3
+    DescriptionLocalizationKey: ind_l1_t5_place_object_near
+    TargetObjects:
+    - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
+    SecondaryTargetObjects:
+    - {fileID: 11400000, guid: 77d4e027e2eb73e46a8f3a62618bd54f, type: 2}
+    RequiredSide: 6
+  - Id: TD_a2933289603b4988bd1dbf6008d9e013
+    Type: 2
+    DescriptionLocalizationKey: ind_l1_t6_place_object_near
+    TargetObjects:
+    - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
+    - {fileID: 11400000, guid: 77d4e027e2eb73e46a8f3a62618bd54f, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 6

@@ -15,7 +15,6 @@ namespace CodeBase.Infrastructure.SaveLoad
         UniTask<bool> TrySaveIfDirtyAsync();
 
         UniTask ResetProgressAsync();
-        
         void MarkDirty();
         void MarkClean();
         bool IsDirty();

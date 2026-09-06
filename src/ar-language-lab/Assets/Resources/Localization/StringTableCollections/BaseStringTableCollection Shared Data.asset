@@ -27,10 +27,6 @@ MonoBehaviour:
     m_Key: ind_book_object
     m_Metadata:
       m_Items: []
-  - m_Id: 10492190352637952
-    m_Key: q_find_and_scan_object
-    m_Metadata:
-      m_Items: []
   - m_Id: 12797029279498240
     m_Key: ind_lesson_1_name
     m_Metadata:
@@ -39,16 +35,28 @@ MonoBehaviour:
     m_Key: ind_lesson_1_descriptrion
     m_Metadata:
       m_Items: []
-  - m_Id: 12797151488933888
-    m_Key: ind_lesson_2_name
+  - m_Id: 10492190352637952
+    m_Key: ind_l1_t1_find_object
     m_Metadata:
       m_Items: []
-  - m_Id: 12797165716013056
-    m_Key: ind_lesson_2_descriptrion
+  - m_Id: 14280925196222464
+    m_Key: ind_l1_t2_find_object
     m_Metadata:
       m_Items: []
   - m_Id: 13865330399150080
-    m_Key: q_find_and_scan_object_2
+    m_Key: ind_l1_t3_place_object_near
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14282447372058624
+    m_Key: ind_l1_t4_place_object_near
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14282754588049408
+    m_Key: ind_l1_t5_place_object_near
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14283274211983360
+    m_Key: ind_l1_t6_place_object_near
     m_Metadata:
       m_Items: []
   m_Metadata:
