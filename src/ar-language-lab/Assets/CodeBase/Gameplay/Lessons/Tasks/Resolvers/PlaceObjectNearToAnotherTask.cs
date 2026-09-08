@@ -16,6 +16,7 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
         private readonly ILocalizationService _localization;
         private readonly ILessonManagementService _lessonManagementService;
         private readonly IProjectResourcesProvider _projectResourcesProvider;
+        private readonly IARCameraProvider _cameraProvider;
         private readonly TaskResolversSettings _settings;
         
         private ARObjectConfig _subjectObjectConfig;
@@ -23,6 +24,9 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
 
         private ARObjectBase _subjectObject;
         private ARObjectBase _referenceObject;
+
+        private Vector3 _sideRightDirection;
+        private Vector3 _sideForwardDirection;
         
         private IDisposable _updateSubscription;
         private int _stableNearAndSideFrames;
@@ -38,12 +42,15 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
             _localization = localization;
             _lessonManagementService = lessonManagementService;
             _projectResourcesProvider = projectResourcesProvider;
+            _cameraProvider = cameraProvider;
             _settings = projectResourcesProvider.LoadResource<TaskResolversSettings>();
         }
 
         public override void Run(ActiveTaskData viewData)
         {
             base.Run(viewData);
+
+            CaptureSideDirections();
 
             _updateSubscription = Observable.EveryUpdate()
                 .Subscribe(_ => EvaluatePlacement());
@@ -57,6 +64,9 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
             _referenceObject = null;
             _subjectObjectConfig = null;
             _referenceObjectConfig = null;
+
+            _sideRightDirection = Vector3.zero;
+            _sideForwardDirection = Vector3.zero;
             
             _projectResourcesProvider.ReleaseResource(_settings);
         }
@@ -146,30 +156,51 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
         private bool IsOnRequiredSide(Vector3 subjectPosition, Vector3 referencePosition)
         {
             var worldDelta = subjectPosition - referencePosition;
-            var localDelta = _referenceObject.transform.InverseTransformDirection(worldDelta);
+            var rightAxisDelta = Vector3.Dot(worldDelta, _sideRightDirection);
+            var upAxisDelta = Vector3.Dot(worldDelta, Vector3.up);
+            var forwardAxisDelta = Vector3.Dot(worldDelta, _sideForwardDirection);
 
             var requiredSide = _taskData.RequiredSide;
             return requiredSide switch
             {
                 PlacementSide.Any => true,
-                PlacementSide.OnTop => IsOnTop(localDelta),
-                PlacementSide.Above => IsPositiveDominant(localDelta.y, localDelta.x, localDelta.z),
-                PlacementSide.Below => IsNegativeDominant(localDelta.y, localDelta.x, localDelta.z),
-                PlacementSide.Left => IsNegativeDominant(localDelta.x, localDelta.y, localDelta.z),
-                PlacementSide.Right => IsPositiveDominant(localDelta.x, localDelta.y, localDelta.z),
-                PlacementSide.Front => IsPositiveDominant(localDelta.z, localDelta.x, localDelta.y),
-                PlacementSide.Back => IsNegativeDominant(localDelta.z, localDelta.x, localDelta.y),
+                PlacementSide.OnTop => IsOnTop(upAxisDelta, rightAxisDelta, forwardAxisDelta),
+                PlacementSide.Above => IsPositiveDominant(upAxisDelta, rightAxisDelta, forwardAxisDelta),
+                PlacementSide.Below => IsNegativeDominant(upAxisDelta, rightAxisDelta, forwardAxisDelta),
+                PlacementSide.Left => IsNegativeDominant(rightAxisDelta, upAxisDelta, forwardAxisDelta),
+                PlacementSide.Right => IsPositiveDominant(rightAxisDelta, upAxisDelta, forwardAxisDelta),
+                PlacementSide.Front => IsPositiveDominant(forwardAxisDelta, rightAxisDelta, upAxisDelta),
+                PlacementSide.Back => IsNegativeDominant(forwardAxisDelta, rightAxisDelta, upAxisDelta),
                 _ => true
             };
         }
 
-        private bool IsOnTop(Vector3 localDelta)
+        private bool IsOnTop(float upAxisDelta, float rightAxisDelta, float forwardAxisDelta)
         {
-            if (localDelta.y < _settings.SideOffsetMeters)
+            if (upAxisDelta < _settings.SideOffsetMeters)
                 return false;
 
-            var horizontalDistance = Mathf.Sqrt(localDelta.x * localDelta.x + localDelta.z * localDelta.z);
+            var horizontalDistance = Mathf.Sqrt(rightAxisDelta * rightAxisDelta + forwardAxisDelta * forwardAxisDelta);
             return horizontalDistance <= _settings.TopHorizontalToleranceMeters;
+        }
+
+        private void CaptureSideDirections()
+        {
+            var camera = _cameraProvider.GetActiveCamera();
+            if (camera == null)
+            {
+                _sideRightDirection = Vector3.right;
+                _sideForwardDirection = Vector3.forward;
+                return;
+            }
+
+            // Keep left/right/front checks horizontal and stable for the whole task.
+            var projectedRight = Vector3.ProjectOnPlane(camera.transform.right, Vector3.up);
+            _sideRightDirection = projectedRight.sqrMagnitude > 0.0001f
+                ? projectedRight.normalized
+                : Vector3.right;
+
+            _sideForwardDirection = Vector3.Cross(Vector3.up, _sideRightDirection).normalized;
         }
 
         private bool IsPositiveDominant(float axisValue, float secondaryAxis, float tertiaryAxis)
