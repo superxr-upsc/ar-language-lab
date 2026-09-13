@@ -98,13 +98,14 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
             return _referenceObject != null;
         }
 
-        protected override async UniTask<string> GetQuestDescription()
+        public override async UniTask<string> GetQuestDescription(string locale = LocalizationConsts.DefaultLocaleCode)
         {
-            var subjectName = await _localization.GetStringAsync(_subjectObjectConfig.LocalisationKey);
-            var referenceName = await _localization.GetStringAsync(_referenceObjectConfig.LocalisationKey);
+            var subjectName = await _localization.GetStringAsync(_subjectObjectConfig.LocalisationKey, locale, LocalizationConsts.DefaultStringTableName);
+            var referenceName = await _localization.GetStringAsync(_referenceObjectConfig.LocalisationKey, locale, LocalizationConsts.DefaultStringTableName);
 
             var questDescription = await _localization.GetStringAsync(
                 _taskData.DescriptionLocalizationKey,
+                locale,
                 LocalizationConsts.DefaultStringTableName,
                 new { SubjectName = subjectName, ReferenceName = referenceName });
             

@@ -89,20 +89,21 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
             return _objects.Count > 1;
         }
 
-        protected override async UniTask<string> GetQuestDescription()
+        public override async UniTask<string> GetQuestDescription(string locale = LocalizationConsts.DefaultLocaleCode)
         {
             var objectNames = new List<string>(_taskData.TargetObjects.Length);
 
             foreach (var config in _taskData.TargetObjects)
             {
                 var name = await _localization.GetStringAsync(
-                    config.LocalisationKey);
+                    config.LocalisationKey, locale, LocalizationConsts.DefaultStringTableName);
 
                 objectNames.Add(name);
             }
 
             var questDescription = await _localization.GetStringAsync(
                 _taskData.DescriptionLocalizationKey,
+                locale,
                 LocalizationConsts.DefaultStringTableName,
                 new
                 {

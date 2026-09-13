@@ -6,6 +6,8 @@ namespace CodeBase.Infrastructure.WindowsManagement.MVPBase
 {
     public class PresenterBase : IDisposable
     {
+
+        public CompositeDisposable Disposable => _compositeDisposable;
         protected CompositeDisposable _compositeDisposable;
         private ViewBase _viewBase;
         private bool _isClosing;

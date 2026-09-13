@@ -4,8 +4,12 @@ using CodeBase.Gameplay.Lessons.Saves;
 using CodeBase.Gameplay.Lessons.Tasks.Extensions;
 using CodeBase.Gameplay.Lessons.Tasks.Resolvers;
 using CodeBase.Infrastructure.GameFactory;
+using CodeBase.Infrastructure.Localization;
+using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.WindowsManagement;
 using CodeBase.UI.Tasks;
+using Cysharp.Threading.Tasks;
+using R3;
 
 namespace CodeBase.Gameplay.Lessons.Tasks
 {
@@ -18,6 +22,7 @@ namespace CodeBase.Gameplay.Lessons.Tasks
         private readonly IGameFactory _gameFactory;
         private readonly LessonsGameDataProvider _lessonGameDataProvider;
         private readonly IWindowsManagementService _windowsManagementService;
+        private readonly ISaveService _saveService;
 
         private Queue<TaskResolverBase> _taskList = new();
         private TaskResolverBase _currentTask;
@@ -28,12 +33,14 @@ namespace CodeBase.Gameplay.Lessons.Tasks
         public LessonTasksService(LessonConfig lessonConfig,
             IGameFactory gameFactory, 
             LessonsGameDataProvider lessonGameDataProvider,
-            IWindowsManagementService windowsManagementService)
+            IWindowsManagementService windowsManagementService,
+            ISaveService saveService)
         {
             _lessonConfig = lessonConfig;
             _gameFactory = gameFactory;
             _lessonGameDataProvider = lessonGameDataProvider;
             _windowsManagementService = windowsManagementService;
+            _saveService = saveService;
             _activeTaskViewData = new ActiveTaskData();
 
             BuildTasksQuery();
@@ -91,6 +98,27 @@ namespace CodeBase.Gameplay.Lessons.Tasks
         {
             _activeTaskPresenter = _windowsManagementService
                 .CreateWindow<ActiveTaskPresenter, ActiveTaskView, ActiveTaskData>(UILayer.NotificationLayer, _activeTaskViewData);
+            
+            _activeTaskPresenter.Translated
+                .Subscribe(OnTaskTranslated)
+                .AddTo(_activeTaskPresenter.Disposable);
+        }
+
+        private void OnTaskTranslated(bool isTranslated)
+        {
+            TranslateAsync(isTranslated)
+                .Forget();
+        }
+
+        private async UniTaskVoid TranslateAsync(bool isTranslated)
+        {
+            var translation = string.Empty;
+            if (isTranslated)
+                translation = await _currentTask.GetQuestDescription(_saveService.SaveData.Settings.Language);
+            else
+                translation = await _currentTask.GetQuestDescription();
+
+            _activeTaskPresenter.UpdateTaskDescription(translation);
         }
         
         private void CloseTaskView()

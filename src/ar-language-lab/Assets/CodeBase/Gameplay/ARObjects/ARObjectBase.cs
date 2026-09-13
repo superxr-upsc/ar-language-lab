@@ -48,7 +48,8 @@ namespace CodeBase.Gameplay.ARObjects
 
         private async UniTaskVoid CacheLicalization()
         {
-            _model.Name = await _localization.GetStringAsync(_data.LocalisationKey);
+            _model.LocalizationKey = _data.LocalisationKey;
+            _model.Name = await _localization.GetStringAsync(_data.LocalisationKey, LocalizationConsts.DefaultLocaleCode, LocalizationConsts.DefaultStringTableName);
             _model.AudioClip = await _speaker.GenerateAudioClipAsync(_model.Name);
         }
 

@@ -46,7 +46,8 @@ namespace CodeBase.UI
 
         private void OnSettingsButtonPressed()
         {
-            GameLogger.Log("Settings button pressed!");
+            _windowsManagementService.CreateWindow<SettingsPresenter, SettingsView, SettingsData>(
+                UILayer.NotificationLayer, new SettingsData());
         }
 
         private void OnSomeOtherButtonPressed()

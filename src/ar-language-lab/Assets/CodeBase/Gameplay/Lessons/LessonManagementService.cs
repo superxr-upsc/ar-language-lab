@@ -108,6 +108,7 @@ namespace CodeBase.Gameplay.Lessons
         private void OnLessonComplete()
         {
             _vuforiaService.SetVuforiaState(false);
+            _vuforiaService.SetDeviceFlashTorch(false);
             _gameStateMachine.Enter<EnterMainMenuState>();
         }
 

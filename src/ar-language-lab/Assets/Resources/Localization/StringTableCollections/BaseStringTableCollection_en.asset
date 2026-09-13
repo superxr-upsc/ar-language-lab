@@ -67,6 +67,14 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 7023668803858595914
+  - m_Id: 16675303638335488
+    m_Localized: 'Camera Auto-Focus:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16675467371380736
+    m_Localized: 'Language:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

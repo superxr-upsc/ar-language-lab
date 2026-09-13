@@ -15,7 +15,9 @@ namespace CodeBase.Infrastructure.Localization
         event Action<string> LocaleChanged;
 
         UniTask InitializeAsync(string localeCode = null);
-        UniTask SetLocaleAsync(string localeCode);
+        UniTaskVoid SetLocaleAsync(string localeCode);
+
+        UniTask<string> GetStringAsync(string key, string locale, string tableName = LocalizationConsts.DefaultStringTableName, params object[] arguments);
         UniTask<string> GetStringAsync(string key, string tableName = LocalizationConsts.DefaultStringTableName, params object[] arguments);
         UniTask<TAsset> GetAssetAsync<TAsset>(string key, string tableName = LocalizationConsts.DefaultAssetTableName) where TAsset : UnityEngine.Object;
     }

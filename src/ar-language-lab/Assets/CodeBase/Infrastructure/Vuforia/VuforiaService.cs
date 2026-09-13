@@ -11,6 +11,7 @@ namespace CodeBase.Infrastructure.Vuforia
     public class VuforiaService : IVuforiaService, IInitializable, IDisposable
     {
         private const string DatabaseName = "ar-language-lab";
+        public bool IsActive => _behaviour != null && _behaviour.enabled;
 
         private readonly IInstantiator _instantiator;
         private readonly VuforiaApplication _application;
@@ -18,6 +19,7 @@ namespace CodeBase.Infrastructure.Vuforia
 
         private UniTaskCompletionSource _initializeSource;
         private VuforiaBehaviour _behaviour;
+
 
         public VuforiaService(IInstantiator instantiator)
         {
@@ -27,7 +29,7 @@ namespace CodeBase.Infrastructure.Vuforia
             
             SubscribeToVuforiaEvents();
         }
-        
+
         public void Initialize()
         {
             _behaviour = VuforiaBehaviour.Instance;

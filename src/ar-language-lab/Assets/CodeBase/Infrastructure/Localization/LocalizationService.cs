@@ -60,7 +60,7 @@ namespace CodeBase.Infrastructure.Localization
             }
         }
 
-        public async UniTask SetLocaleAsync(string localeCode)
+        public async UniTaskVoid SetLocaleAsync(string localeCode)
         {
             if (!_isInitialized)
             {
@@ -71,22 +71,28 @@ namespace CodeBase.Infrastructure.Localization
             await SetLocaleInternalAsync(localeCode);
         }
 
-        public async UniTask<string> GetStringAsync(string key, string tableName = LocalizationConsts.DefaultStringTableName, params object[] arguments)
+        public async UniTask<string> GetStringAsync(string key, string locale, string tableName = LocalizationConsts.DefaultStringTableName, params object[] arguments)
         {
+            var l = LocalizationSettings.AvailableLocales.GetLocale(locale);
             await EnsureInitializedAsync();
 
-            var table = await GetStringTableAsync(tableName, CurrentLocale);
+            var table = await GetStringTableAsync(tableName, l == null ? CurrentLocale : l);
             var entry = table.GetEntry(key);
 
             if (entry == null)
             {
                 throw new KeyNotFoundException(
-                    $"String key '{key}' was not found in table '{tableName}' for locale '{CurrentLocale}'.");
+                    $"String key '{key}' was not found in table '{tableName}' for locale '{l}'.");
             }
 
             return arguments == null || arguments.Length == 0
                 ? entry.GetLocalizedString()
                 : entry.GetLocalizedString(arguments);
+        }
+        
+        public async UniTask<string> GetStringAsync(string key, string tableName = LocalizationConsts.DefaultStringTableName, params object[] arguments)
+        {
+            return await GetStringAsync(key, CurrentLocale.Identifier.Code, tableName, arguments);
         }
 
         public async UniTask<TAsset> GetAssetAsync<TAsset>(string key, string tableName = LocalizationConsts.DefaultAssetTableName)

@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: BaseStringTableCollection_ro
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.StringTable
+  m_LocaleId:
+    m_Code: ro
+  m_SharedData: {fileID: 11400000, guid: 7e93bb5e0752dfb4288c166276a2af32, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 2027872479151915094
+  m_TableData:
+  - m_Id: 13865330399150080
+    m_Localized: "Plaseaz\u0103 {SubjectName} l\xE2ng\u0103 {ReferenceName}!"
+    m_Metadata:
+      m_Items:
+      - rid: 2027872479151915094
+  - m_Id: 14282447372058624
+    m_Localized: Pune {SubjectName} pe {ReferenceName}!
+    m_Metadata:
+      m_Items:
+      - rid: 2027872479151915094
+  - m_Id: 14282754588049408
+    m_Localized: "Pune {SubjectName} \xEEn fa\u021Ba lui {ReferenceName}!"
+    m_Metadata:
+      m_Items:
+      - rid: 2027872479151915094
+  - m_Id: 14283274211983360
+    m_Localized: "Pune obiecte \xEEn ordinea corecta: {Objects}."
+    m_Metadata:
+      m_Items:
+      - rid: 2027872479151915094
+  - m_Id: 16675303638335488
+    m_Localized: 'Camera Auto-Focus:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16675467371380736
+    m_Localized: 'Limba:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6525881227051008
+    m_Localized: "M\u0103r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9838105521717248
+    m_Localized: Minge
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10703352423940096
+    m_Localized: Carte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12797029279498240
+    m_Localized: "Lec\u021Bia 1"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12797116785262592
+    m_Localized: "Aceasta este prima lec\u021Bie introductiv\u0103."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10492190352637952
+    m_Localized: "Te rog s\u0103 g\u0103se\u0219ti obiectul de culoare ro\u0219ie."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 14280925196222464
+    m_Localized: "Te rog s\u0103 g\u0103se\u0219ti obiectul cu care po\u021Bi juca
+      fotbal."
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 2027872479151915094
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 13865330399150080
+        - id: 14282447372058624
+        - id: 14282754588049408
+        - id: 14283274211983360

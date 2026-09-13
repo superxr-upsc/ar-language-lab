@@ -5,6 +5,7 @@ namespace CodeBase.Gameplay.ARObjects.UI
 {
     public class ARObjectViewData : IModel
     {
+        public string LocalizationKey;
         public string Name;
         public AudioClip AudioClip;
     }

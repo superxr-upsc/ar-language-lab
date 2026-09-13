@@ -86,6 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2354481544459480148}
   - component: {fileID: 5326413043495365031}
+  - component: {fileID: 6717376447693144703}
   m_Layer: 5
   m_Name: VerticalContainer
   m_TagString: Untagged
@@ -140,6 +141,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &6717376447693144703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726943646642112069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c9984e7da449cd81a41b1c4860e9a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CodeBase.UI.SafeArea
 --- !u!1 &742873702256512992
 GameObject:
   m_ObjectHideFlags: 0

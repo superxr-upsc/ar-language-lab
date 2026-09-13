@@ -4,6 +4,7 @@ using CodeBase.Gameplay.SpeechSyntesis;
 using CodeBase.Infrastructure.EventBroker;
 using CodeBase.Infrastructure.EventBroker.Handlers;
 using CodeBase.Infrastructure.InputService;
+using CodeBase.Infrastructure.SaveLoad;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Vuforia;
@@ -24,6 +25,7 @@ namespace CodeBase.Infrastructure.Vuforia
         private IInputService _inputService;
         private IEventBrokerService _eventBrokerService;
         private IVuforiaService _vuforiaService;
+        private ISaveService _saveService;
 
         private bool _isAutofocusEnabled = true;
         private bool _isFlashTorchEnabled = false;
@@ -32,11 +34,13 @@ namespace CodeBase.Infrastructure.Vuforia
         [Inject]
         private void Construct(IInputService inputService, 
             IEventBrokerService eventBrokerService,
-            IVuforiaService vuforiaService)
+            IVuforiaService vuforiaService,
+            ISaveService saveService)
         {
             _inputService = inputService;
             _eventBrokerService = eventBrokerService;
             _vuforiaService = vuforiaService;
+            _saveService = saveService;
 
             _inputService.DoubleTapAction.performed += OnDoubleTap;
             
@@ -51,18 +55,20 @@ namespace CodeBase.Infrastructure.Vuforia
 
         public void OnGameLoopInitialized()
         {
-            //TODO : Apply loading from settings data
-            SwitchAutofocus(true);
+            SwitchAutofocus(_saveService.SaveData.Settings.AutoFocus);
             SwitchFlashTorch(false);
         }
         
         public void OnDoubleTap(InputAction.CallbackContext context)
         {
-            // if (!context.performed || _isFocusing)
-            //     return;
-            //
-            // _isFocusing = true;
-            // TriggerAutofocusEvent();
+            if (_vuforiaService.IsActive == false)
+                return;
+            
+            if (!context.performed || _isFocusing)
+                return;
+            
+            _isFocusing = true;
+            TriggerAutofocusEvent();
         }
 
         public void SwitchFlashTorch(bool ON)

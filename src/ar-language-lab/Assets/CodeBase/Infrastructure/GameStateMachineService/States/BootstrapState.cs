@@ -49,15 +49,14 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
         private async UniTaskVoid InitializeAndLoadGameplay()
         {
             _sceneLoader.ShowLoadingScreen();
-            
-            _sceneLoader.UpdateProgress(0.1f, "Initializing Localization...");
-            await _localizationService.InitializeAsync();
-            
-            _sceneLoader.UpdateProgress(0.25f, "Loading Save Data...");
-            await _saveService.LoadAsync<SaveData>();
 
+            _sceneLoader.UpdateProgress(0.1f, "Loading Save Data...");
+            await _saveService.LoadAsync<SaveData>();
             _autoSaveService.StartSaving();
 
+            _sceneLoader.UpdateProgress(0.35f, "Initializing Localization...");
+            await _localizationService.InitializeAsync(_saveService.SaveData.Settings.Language);
+            
             _sceneLoader.UpdateProgress(0.65f, "Initializing Vuforia...");
             await _vuforiaService.InitializeVuforia();
             

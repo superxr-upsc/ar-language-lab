@@ -318,8 +318,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CodeBase.UI.MainMenuView
   _playButton: {fileID: 2756301428370920223}
-  _settingsButton: {fileID: 5144932542366815877}
-  _someOtherButton: {fileID: 7926501768414645091}
+  _settingsButton: {fileID: 7926501768414645091}
+  _someOtherButton: {fileID: 5144932542366815877}
 --- !u!1 &2598711210635728073
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,7 +335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7594789476140364828
 RectTransform:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
         public override void Enter()
         {
             base.Enter();
-
+            
             _saveService.SaveAsync();            
             _sceneLoader.UpdateProgress(0.95f, "A little bit more...");
             _sceneLoader.LoadScene(Scenes.MainMenuSceneInfo.Name, OnEnteredInMainMenuScene);

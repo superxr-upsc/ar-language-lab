@@ -1,5 +1,6 @@
 ﻿using System;
 using CodeBase.Gameplay.SpeechSyntesis;
+using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.Vuforia;
 using CodeBase.UI.Tasks;
 using Cysharp.Threading.Tasks;
@@ -32,6 +33,9 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
                 .Forget();
         }
 
+        public virtual async UniTask<string> GetQuestDescription(string locale = LocalizationConsts.DefaultLocaleCode) => 
+            string.Empty;
+
         private async UniTaskVoid CacheLocalizationData(ActiveTaskData viewData)
         {
             viewData.TaskDescription = await GetQuestDescription();
@@ -45,8 +49,5 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
 
         protected virtual bool TryResolveTargets() => 
             false;
-
-        protected virtual async UniTask<string> GetQuestDescription() => 
-            string.Empty;
     }
 }

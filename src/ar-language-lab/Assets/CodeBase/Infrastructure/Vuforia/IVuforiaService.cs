@@ -5,6 +5,7 @@ namespace CodeBase.Infrastructure.Vuforia
 {
     public interface IVuforiaService
     {
+        bool IsActive { get; }
         UniTask InitializeVuforia();
         void SetupVuforiaBehaviour();
         World GetWorld();

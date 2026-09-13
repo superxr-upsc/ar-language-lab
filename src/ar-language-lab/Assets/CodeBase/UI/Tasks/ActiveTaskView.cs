@@ -8,9 +8,11 @@ namespace CodeBase.UI.Tasks
     public class ActiveTaskView : ViewBase
     {
         public Button PlayAudioButton => _playAudioButton;
+        public Button TranslateButton => _translateButton;
         
         [SerializeField] private TMP_Text _taskDescriptionText;
         [SerializeField] private Button _playAudioButton;
+        [SerializeField] private Button _translateButton;
         [SerializeField] private RectTransform _progressBarBackground;
         [SerializeField] private RectTransform _progressBar;
         

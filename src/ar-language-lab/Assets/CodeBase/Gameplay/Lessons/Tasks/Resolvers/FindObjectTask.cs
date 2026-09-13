@@ -50,10 +50,10 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
             return _selectedObject != null;
         }
 
-        protected override async UniTask<string> GetQuestDescription()
+        public override async UniTask<string> GetQuestDescription(string locale = LocalizationConsts.DefaultLocaleCode)
         {
-            var objectName = await _localization.GetStringAsync(_selectedObjectConfig.LocalisationKey);
-            var questDescription = await _localization.GetStringAsync(_taskData.DescriptionLocalizationKey, LocalizationConsts.DefaultStringTableName, new { ObjectName = objectName });
+            var objectName = await _localization.GetStringAsync(_selectedObjectConfig.LocalisationKey, locale, LocalizationConsts.DefaultStringTableName);
+            var questDescription = await _localization.GetStringAsync(_taskData.DescriptionLocalizationKey, locale, LocalizationConsts.DefaultStringTableName, new { ObjectName = objectName });
             return questDescription;
         }
 
