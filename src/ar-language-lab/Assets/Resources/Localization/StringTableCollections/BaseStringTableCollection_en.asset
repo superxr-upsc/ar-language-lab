@@ -16,57 +16,54 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: 7e93bb5e0752dfb4288c166276a2af32, type: 2}
   m_Metadata:
-    m_Items:
-    - rid: 7023668803858595914
+    m_Items: []
   m_TableData:
-  - m_Id: 6525881227051008
-    m_Localized: Apple
+  - m_Id: 20312949757476864
+    m_Localized: Strawberry
     m_Metadata:
       m_Items: []
-  - m_Id: 9838105521717248
-    m_Localized: Ball
+  - m_Id: 20312924818145280
+    m_Localized: Banana
     m_Metadata:
       m_Items: []
   - m_Id: 10492190352637952
-    m_Localized: Please find the object with red color.
+    m_Localized: Find the red fruit.
     m_Metadata:
       m_Items: []
   - m_Id: 12797029279498240
-    m_Localized: Lesson 1
+    m_Localized: Fruits
     m_Metadata:
       m_Items: []
   - m_Id: 14280925196222464
-    m_Localized: Please find the object with which you can play Football
+    m_Localized: Find the yellow fruit.
     m_Metadata:
       m_Items: []
-  - m_Id: 10703352423940096
-    m_Localized: Book
+  - m_Id: 20312754273550336
+    m_Localized: Apple
     m_Metadata:
       m_Items: []
   - m_Id: 12797116785262592
-    m_Localized: This is first entry lesson
+    m_Localized: Learn to recognize four basic fruits and follow simple spatial instructions.
     m_Metadata:
       m_Items: []
   - m_Id: 13865330399150080
-    m_Localized: Place {SubjectName} near {ReferenceName}!
+    m_Localized: Find the small red berry.
     m_Metadata:
-      m_Items:
-      - rid: 7023668803858595914
+      m_Items: []
   - m_Id: 14282447372058624
-    m_Localized: Place {SubjectName} on top of the {ReferenceName}!
+    m_Localized: Place the banana next to the apple.
     m_Metadata:
-      m_Items:
-      - rid: 7023668803858595914
+      m_Items: []
   - m_Id: 14282754588049408
-    m_Localized: Place {SubjectName} in front of {ReferenceName}!
+    m_Localized: Place the orange to the right of the apple.
     m_Metadata:
-      m_Items:
-      - rid: 7023668803858595914
+      m_Items: []
   - m_Id: 14283274211983360
-    m_Localized: 'Place object in corrent way: {Objects}.'
+    m_Localized: 'Place the strawberry to the left of the banana.
+
+'
     m_Metadata:
-      m_Items:
-      - rid: 7023668803858595914
+      m_Items: []
   - m_Id: 16675303638335488
     m_Localized: 'Camera Auto-Focus:'
     m_Metadata:
@@ -75,15 +72,731 @@ MonoBehaviour:
     m_Localized: 'Language:'
     m_Metadata:
       m_Items: []
+  - m_Id: 20307549771431936
+    m_Localized: 'Arrange the fruits from smallest to largest.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307626510417920
+    m_Localized: 'Find the orange fruit.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307721528180736
+    m_Localized: 'Arrange the fruits from lightest to heaviest.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20313009102684160
+    m_Localized: Orange
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20313814539075584
+    m_Localized: Chair
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20313850211631104
+    m_Localized: Table
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20313886030987264
+    m_Localized: Sofa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20313908470513664
+    m_Localized: Bed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20313947896971264
+    m_Localized: Window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20313980608348160
+    m_Localized: Cup
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20313998618689536
+    m_Localized: Spoon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314017518223360
+    m_Localized: Kettle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314053757009920
+    m_Localized: Stove
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314091941953536
+    m_Localized: Bread
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314123227267072
+    m_Localized: Tree
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314185848225792
+    m_Localized: Flower
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314232946065408
+    m_Localized: Sun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314266169147392
+    m_Localized: Cloud
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314286226309120
+    m_Localized: Stone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314324524498944
+    m_Localized: Bird
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314356153745408
+    m_Localized: Cat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314374155698176
+    m_Localized: Dog
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314392451252224
+    m_Localized: Fish
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314421375172608
+    m_Localized: Elephant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314469660000256
+    m_Localized: Bicycle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314519287005184
+    m_Localized: Car
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314544163422208
+    m_Localized: Bus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314563968925696
+    m_Localized: Airplane
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314601281454080
+    m_Localized: Hat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314624463372288
+    m_Localized: T-shirt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314668071550976
+    m_Localized: Jacket
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314691211526144
+    m_Localized: Pants
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314732726747136
+    m_Localized: Shoes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314798787035136
+    m_Localized: Book
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314831523577856
+    m_Localized: Pencil
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314865384194048
+    m_Localized: Notebook
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314910284218368
+    m_Localized: Ruler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314987916591104
+    m_Localized: Backpack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20315197434658816
+    m_Localized: Rain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20315651694559232
+    m_Localized: Snow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20315682174566400
+    m_Localized: Rainbow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307817955229696
+    m_Localized: Home
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307853795557376
+    m_Localized: 'Learn to recognize common objects at home and understand simple
+      spatial relationships.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307891829506048
+    m_Localized: 'Find the object you can sit on.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307946326097920
+    m_Localized: 'Find the object you sleep on.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307949824147456
+    m_Localized: 'Find the object you can look outside through.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307951912910848
+    m_Localized: 'Place the chair next to the table.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307953829707776
+    m_Localized: 'Place the table to the right of the chair.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307955503235072
+    m_Localized: 'Place the sofa below the window.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307957063516160
+    m_Localized: 'Arrange the objects from smallest to largest.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307958636380160
+    m_Localized: 'Find the soft furniture you can sit on.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307960284741632
+    m_Localized: 'Arrange the objects from shortest to tallest.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308099091038208
+    m_Localized: Kitchen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308128627326976
+    m_Localized: 'Learn to recognize common kitchen objects and interact with them
+      in a simple real-world situation.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308178598264832
+    m_Localized: 'Find the object you can drink from.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308221354999808
+    m_Localized: 'Find the object you can use to stir a drink.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308239470198784
+    m_Localized: 'Find the food.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308252283797504
+    m_Localized: 'Place the spoon next to the cup.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308264728297472
+    m_Localized: 'Place the bread to the left of the cup.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308276908556288
+    m_Localized: 'Place the kettle on the fire.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308287440453632
+    m_Localized: 'Place the cup next to the kettle.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308305513709568
+    m_Localized: 'Arrange the objects in the order used to make tea.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308322022490112
+    m_Localized: 'Find the object you can use to boil water.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308368147251200
+    m_Localized: Nature
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308404935491584
+    m_Localized: 'Explore nature and learn to recognize plants, objects and things
+      you can see in the sky.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308448417841152
+    m_Localized: 'Find the plant with a flower.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308490746757120
+    m_Localized: 'Find the tall plant.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308532085817344
+    m_Localized: 'Find the hard object.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308545469841408
+    m_Localized: 'Place the flower next to the tree.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308559311044608
+    m_Localized: 'Place the sun above the tree.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308572065923072
+    m_Localized: 'Place the cloud above the tree.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308584174878720
+    m_Localized: 'Arrange the objects from smallest to largest.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308595273007104
+    m_Localized: 'Place the stone to the right of the flower.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308607616843776
+    m_Localized: 'Arrange the objects from shortest to tallest.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308707730685952
+    m_Localized: Animals
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308804287758336
+    m_Localized: 'Learn to recognize different animals and follow simple instructions
+      about their position and size.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308867009380352
+    m_Localized: 'Find the animal that can fly.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308898806398976
+    m_Localized: Find the animal that lives in water.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308902472220672
+    m_Localized: ' Find the largest animal.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308905781526528
+    m_Localized: Place the dog next to the cat.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308908621070336
+    m_Localized: Place the bird above the dog.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308911947153408
+    m_Localized: 'Place the fish to the left of the cat.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308916665745408
+    m_Localized: Arrange the animals from smallest to largest.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308919056498688
+    m_Localized: Find the pet that can bark.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308921224953856
+    m_Localized: Arrange the animals from shortest to tallest.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309083263500288
+    m_Localized: Transport
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309124564811776
+    m_Localized: 'Learn to recognize different types of transport and compare them
+      by speed and size.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309146425524224
+    m_Localized: 'Find the vehicle with two wheels.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309176226054144
+    m_Localized: 'Find the vehicle that can fly.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309189488443392
+    m_Localized: 'Find the vehicle that carries many people.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309192348958720
+    m_Localized: 'Place the bicycle next to the car.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309194219618304
+    m_Localized: 'Place the bus to the right of the car.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309195926700032
+    m_Localized: 'Place the airplane above the bus.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309197956743168
+    m_Localized: 'Arrange the vehicles from slowest to fastest.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309199701573632
+    m_Localized: 'Arrange the vehicles from smallest to largest.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309285961629696
+    m_Localized: Clothes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309323907497984
+    m_Localized: Learn to recognize common clothes and understand their position
+      on the body.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309358686666752
+    m_Localized: 'Find the item you wear on your head.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309402210959360
+    m_Localized: 'Find the items you wear on your feet.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309405826449408
+    m_Localized: 'Find the item you wear over your clothes to keep warm.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309407906824192
+    m_Localized: 'Place the T-shirt next to the jacket.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309409823621120
+    m_Localized: 'Place the pants below the T-shirt.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309411530702848
+    m_Localized: Place the shoes below the pants.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309413460082688
+    m_Localized: 'Arrange the clothes from top to bottom.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309416245100544
+    m_Localized: 'Find the clothing item you wear on your upper body.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309419751538688
+    m_Localized: 'Arrange the clothes from smallest to largest.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309596939911168
+    m_Localized: School
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309631597445120
+    m_Localized: 'Learn to recognize common school objects and follow simple instructions
+      about their position and size.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309669086134272
+    m_Localized: 'Find the object you use for writing.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309691592769536
+    m_Localized: Find the object you read.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309704574140416
+    m_Localized: 'Find the bag you use to carry your school things.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309714984402944
+    m_Localized: 'Place the pencil next to the notebook.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309727533760512
+    m_Localized: 'Place the ruler to the right of the book.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309738388619264
+    m_Localized: 'Place the notebook next to the backpack.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309749511913472
+    m_Localized: 'Arrange the objects from shortest to longest.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309761323073536
+    m_Localized: 'Find the object you use to draw straight lines.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309773373308928
+    m_Localized: 'Arrange the objects from smallest to largest.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309806281818112
+    m_Localized: Weather
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309837105758208
+    m_Localized: 'Learn to recognize common weather phenomena and understand their
+      relationships in nature.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309854851858432
+    m_Localized: 'Find the object that gives us light and warmth.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309894165069824
+    m_Localized: 'Find the object you can see in the sky.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309905053483008
+    m_Localized: 'Find the colorful arc in the sky.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309917346988032
+    m_Localized: 'Place the cloud above the sun.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309927992131584
+    m_Localized: 'Place the rain below the cloud.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309939929120768
+    m_Localized: Place the rainbow below the cloud.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309979502379008
+    m_Localized: 'Arrange the weather events in the correct order.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309990759890944
+    m_Localized: 'Find the weather that is cold and white.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310001157570560
+    m_Localized: 'Arrange the objects from smallest to largest.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310036091928576
+    m_Localized: Around Us
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310060985122816
+    m_Localized: 'Review what you have learned and practice recognizing objects and
+      following spatial instructions.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310110440161280
+    m_Localized: 'Find the fruit.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310155931582464
+    m_Localized: 'Find the plant.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310165876277248
+    m_Localized: Find the animal that can bark.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310176584335360
+    m_Localized: 'Place the apple next to the tree.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310188148031488
+    m_Localized: 'Place the dog to the left of the tree.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310199011278848
+    m_Localized: 'Place the car to the right of the tree.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310209094385664
+    m_Localized: 'Arrange the objects from smallest to largest.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310221673103360
+    m_Localized: 'Put the objects in order, starting with the smallest one.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310232506990592
+    m_Localized: 'Arrange the objects from shortest to tallest.
+
+'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
-    RefIds:
-    - rid: 7023668803858595914
-      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
-      data:
-        m_Entries: 
-        m_SharedEntries:
-        - id: 13865330399150080
-        - id: 14282447372058624
-        - id: 14282754588049408
-        - id: 14283274211983360
+    RefIds: []

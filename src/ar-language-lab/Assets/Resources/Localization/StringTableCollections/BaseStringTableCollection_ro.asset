@@ -16,29 +16,24 @@ MonoBehaviour:
     m_Code: ro
   m_SharedData: {fileID: 11400000, guid: 7e93bb5e0752dfb4288c166276a2af32, type: 2}
   m_Metadata:
-    m_Items:
-    - rid: 2027872479151915094
+    m_Items: []
   m_TableData:
   - m_Id: 13865330399150080
-    m_Localized: "Plaseaz\u0103 {SubjectName} l\xE2ng\u0103 {ReferenceName}!"
+    m_Localized: "G\u0103se\u0219te fructul ro\u0219u mic."
     m_Metadata:
-      m_Items:
-      - rid: 2027872479151915094
+      m_Items: []
   - m_Id: 14282447372058624
-    m_Localized: Pune {SubjectName} pe {ReferenceName}!
+    m_Localized: "Pune banana l\xE2ng\u0103 m\u0103r."
     m_Metadata:
-      m_Items:
-      - rid: 2027872479151915094
+      m_Items: []
   - m_Id: 14282754588049408
-    m_Localized: "Pune {SubjectName} \xEEn fa\u021Ba lui {ReferenceName}!"
+    m_Localized: "Pune portocala \xEEn dreapta m\u0103rului.\r\n"
     m_Metadata:
-      m_Items:
-      - rid: 2027872479151915094
+      m_Items: []
   - m_Id: 14283274211983360
-    m_Localized: "Pune obiecte \xEEn ordinea corecta: {Objects}."
+    m_Localized: "Pune c\u0103p\u0219una \xEEn st\xE2nga bananei.\r\n"
     m_Metadata:
-      m_Items:
-      - rid: 2027872479151915094
+      m_Items: []
   - m_Id: 16675303638335488
     m_Localized: 'Camera Auto-Focus:'
     m_Metadata:
@@ -47,44 +42,626 @@ MonoBehaviour:
     m_Localized: 'Limba:'
     m_Metadata:
       m_Items: []
-  - m_Id: 6525881227051008
+  - m_Id: 20312949757476864
+    m_Localized: "C\u0103p\u0219un\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20312924818145280
+    m_Localized: "Banan\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20312754273550336
     m_Localized: "M\u0103r"
     m_Metadata:
       m_Items: []
-  - m_Id: 9838105521717248
-    m_Localized: Minge
-    m_Metadata:
-      m_Items: []
-  - m_Id: 10703352423940096
-    m_Localized: Carte
-    m_Metadata:
-      m_Items: []
   - m_Id: 12797029279498240
-    m_Localized: "Lec\u021Bia 1"
+    m_Localized: Fructe
     m_Metadata:
       m_Items: []
   - m_Id: 12797116785262592
-    m_Localized: "Aceasta este prima lec\u021Bie introductiv\u0103."
+    m_Localized: "\xCEnva\u021B\u0103 s\u0103 recuno\u0219ti patru fructe de baz\u0103
+      \u0219i s\u0103 urmezi instruc\u021Biuni spa\u021Biale simple."
     m_Metadata:
       m_Items: []
   - m_Id: 10492190352637952
-    m_Localized: "Te rog s\u0103 g\u0103se\u0219ti obiectul de culoare ro\u0219ie."
+    m_Localized: "G\u0103se\u0219te fructul ro\u0219u."
     m_Metadata:
       m_Items: []
   - m_Id: 14280925196222464
-    m_Localized: "Te rog s\u0103 g\u0103se\u0219ti obiectul cu care po\u021Bi juca
-      fotbal."
+    m_Localized: "G\u0103se\u0219te fructul galben."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20313009102684160
+    m_Localized: "Portocal\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20313814539075584
+    m_Localized: Scaun
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20313850211631104
+    m_Localized: "Mas\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20313886030987264
+    m_Localized: Canapea
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20313908470513664
+    m_Localized: Pat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20313947896971264
+    m_Localized: "Fereastr\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20313980608348160
+    m_Localized: "Can\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20313998618689536
+    m_Localized: "Lingur\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314017518223360
+    m_Localized: "Fierb\u0103tor"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314053757009920
+    m_Localized: Aragaz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314091941953536
+    m_Localized: "P\xE2ine"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314123227267072
+    m_Localized: Copac
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314185848225792
+    m_Localized: Floare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314232946065408
+    m_Localized: Soare
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314266169147392
+    m_Localized: Nor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314286226309120
+    m_Localized: "Piatr\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314324524498944
+    m_Localized: "Pas\u0103re"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314356153745408
+    m_Localized: "Pisic\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314374155698176
+    m_Localized: "C\xE2ine"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314392451252224
+    m_Localized: "Pe\u0219te"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314421375172608
+    m_Localized: Elefant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314469660000256
+    m_Localized: "Biciclet\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314519287005184
+    m_Localized: "Ma\u0219in\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314544163422208
+    m_Localized: Autobuz
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314563968925696
+    m_Localized: Avion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314601281454080
+    m_Localized: "P\u0103l\u0103rie"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314624463372288
+    m_Localized: Tricou
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314668071550976
+    m_Localized: "Geac\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314691211526144
+    m_Localized: Pantaloni
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314732726747136
+    m_Localized: Pantofi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314798787035136
+    m_Localized: Carte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314831523577856
+    m_Localized: Creion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314865384194048
+    m_Localized: Caiet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314910284218368
+    m_Localized: "Rigl\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20314987916591104
+    m_Localized: Ghiozdan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20315197434658816
+    m_Localized: Ploaie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20315651694559232
+    m_Localized: "Z\u0103pad\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20315682174566400
+    m_Localized: Curcubeu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307549771431936
+    m_Localized: "Ordoneaz\u0103 fructele de la cel mai mic la cel mai mare.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307626510417920
+    m_Localized: "G\u0103se\u0219te fructul portocaliu.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307721528180736
+    m_Localized: "Ordoneaz\u0103 fructele de la cel mai u\u0219or la cel mai greu.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307817955229696
+    m_Localized: "Cas\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307853795557376
+    m_Localized: " \xCEnva\u021B\u0103 s\u0103 recuno\u0219ti obiecte obi\u0219nuite
+      din cas\u0103 \u0219i s\u0103 \xEEn\u021Belegi rela\u021Bii spa\u021Biale simple.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307891829506048
+    m_Localized: "G\u0103se\u0219te obiectul pe care po\u021Bi sta.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307946326097920
+    m_Localized: "G\u0103se\u0219te obiectul pe care dormi.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307949824147456
+    m_Localized: "G\u0103se\u0219te obiectul prin care po\u021Bi privi afar\u0103.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307951912910848
+    m_Localized: "Pune scaunul l\xE2ng\u0103 mas\u0103.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307953829707776
+    m_Localized: "Pune masa \xEEn dreapta scaunului.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307955503235072
+    m_Localized: "Pune canapeaua sub fereastr\u0103.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307957063516160
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai mic la cel mai mare.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307958636380160
+    m_Localized: "G\u0103se\u0219te mobila moale pe care po\u021Bi sta.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20307960284741632
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai scund la cel mai \xEEnalt.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308099091038208
+    m_Localized: "Buc\u0103t\u0103rie"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308128627326976
+    m_Localized: "\xCEnva\u021B\u0103 s\u0103 recuno\u0219ti obiecte obi\u0219nuite
+      din buc\u0103t\u0103rie \u0219i s\u0103 interac\u021Bionezi cu ele \xEEntr-o
+      situa\u021Bie simpl\u0103 din via\u021Ba de zi cu zi.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308178598264832
+    m_Localized: "G\u0103se\u0219te obiectul din care po\u021Bi bea.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308221354999808
+    m_Localized: "G\u0103se\u0219te obiectul cu care po\u021Bi amesteca o b\u0103utur\u0103.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308239470198784
+    m_Localized: "G\u0103se\u0219te alimentul.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308252283797504
+    m_Localized: "Pune lingura l\xE2ng\u0103 can\u0103.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308264728297472
+    m_Localized: "Pune p\xE2inea \xEEn st\xE2nga c\u0103nii.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308276908556288
+    m_Localized: "Pune fierb\u0103torul pe foc."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308287440453632
+    m_Localized: "Pune cana l\xE2ng\u0103 fierb\u0103tor.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308305513709568
+    m_Localized: "Ordoneaz\u0103 obiectele \xEEn ordinea \xEEn care sunt folosite
+      pentru a prepara ceaiul.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308322022490112
+    m_Localized: "G\u0103se\u0219te obiectul \xEEn care po\u021Bi fierbe apa.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308368147251200
+    m_Localized: "Natur\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308404935491584
+    m_Localized: "Descoper\u0103 natura \u0219i \xEEnva\u021B\u0103 s\u0103 recuno\u0219ti
+      plante, obiecte \u0219i lucruri pe care le po\u021Bi vedea pe cer.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308448417841152
+    m_Localized: "G\u0103se\u0219te planta care are o floare.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308490746757120
+    m_Localized: "G\u0103se\u0219te planta \xEEnalt\u0103.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308532085817344
+    m_Localized: "G\u0103se\u0219te obiectul tare.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308545469841408
+    m_Localized: "Pune floarea l\xE2ng\u0103 copac.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308559311044608
+    m_Localized: 'Pune soarele deasupra copacului.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308572065923072
+    m_Localized: 'Pune norul deasupra copacului.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308584174878720
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai mic la cel mai mare.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308595273007104
+    m_Localized: "Pune piatra \xEEn dreapta florii.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308607616843776
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai scund la cel mai \xEEnalt.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308707730685952
+    m_Localized: Animale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308804287758336
+    m_Localized: "\xCEnva\u021B\u0103 s\u0103 recuno\u0219ti diferite animale \u0219i
+      s\u0103 urmezi instruc\u021Biuni simple despre pozi\u021Bia \u0219i m\u0103rimea
+      lor.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308867009380352
+    m_Localized: "G\u0103se\u0219te animalul care poate zbura.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308898806398976
+    m_Localized: "G\u0103se\u0219te animalul care tr\u0103ie\u0219te \xEEn ap\u0103."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308902472220672
+    m_Localized: "G\u0103se\u0219te cel mai mare animal."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308905781526528
+    m_Localized: "Pune c\xE2inele l\xE2ng\u0103 pisic\u0103."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308908621070336
+    m_Localized: "Pune pas\u0103rea deasupra c\xE2inelui."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308911947153408
+    m_Localized: "Pune pe\u0219tele \xEEn st\xE2nga pisicii.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308916665745408
+    m_Localized: "Ordoneaz\u0103 animalele de la cel mai mic la cel mai mare.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308919056498688
+    m_Localized: "G\u0103se\u0219te animalul de companie care poate l\u0103tra.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20308921224953856
+    m_Localized: "Ordoneaz\u0103 animalele de la cel mai scund la cel mai \xEEnalt.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309083263500288
+    m_Localized: Transport
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309124564811776
+    m_Localized: "\xCEnva\u021B\u0103 s\u0103 recuno\u0219ti diferite tipuri de transport
+      \u0219i s\u0103 le compari dup\u0103 vitez\u0103 \u0219i m\u0103rime.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309146425524224
+    m_Localized: "G\u0103se\u0219te vehiculul cu dou\u0103 ro\u021Bi.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309176226054144
+    m_Localized: "G\u0103se\u0219te vehiculul care poate zbura.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309189488443392
+    m_Localized: "G\u0103se\u0219te vehiculul care transport\u0103 mul\u021Bi oameni.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309192348958720
+    m_Localized: "Pune bicicleta l\xE2ng\u0103 ma\u0219in\u0103.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309194219618304
+    m_Localized: "Pune autobuzul \xEEn dreapta ma\u0219inii.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309195926700032
+    m_Localized: Pune avionul deasupra autobuzului.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309197956743168
+    m_Localized: "Ordoneaz\u0103 vehiculele de la cel mai lent la cel mai rapid.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309199701573632
+    m_Localized: "Ordoneaz\u0103 vehiculele de la cel mai mic la cel mai mare.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309285961629696
+    m_Localized: Haine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309323907497984
+    m_Localized: "\xCEnva\u021B\u0103 s\u0103 recuno\u0219ti articole vestimentare
+      obi\u0219nuite \u0219i s\u0103 \xEEn\u021Belegi pozi\u021Bia lor pe corp.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309358686666752
+    m_Localized: "G\u0103se\u0219te obiectul pe care \xEEl por\u021Bi pe cap.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309402210959360
+    m_Localized: "G\u0103se\u0219te obiectele pe care le por\u021Bi \xEEn picioare.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309405826449408
+    m_Localized: "G\u0103se\u0219te obiectul pe care \xEEl por\u021Bi peste haine
+      pentru a te \xEEnc\u0103lzi.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309407906824192
+    m_Localized: "Pune tricoul l\xE2ng\u0103 geac\u0103.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309409823621120
+    m_Localized: 'Pune pantalonii sub tricou.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309411530702848
+    m_Localized: 'Pune pantofii sub pantaloni.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309413460082688
+    m_Localized: "Ordoneaz\u0103 hainele de sus \xEEn jos.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309416245100544
+    m_Localized: "G\u0103se\u0219te articolul vestimentar pe care \xEEl por\u021Bi
+      pe partea de sus a corpului.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309419751538688
+    m_Localized: "Ordoneaz\u0103 hainele de la cea mai mic\u0103 la cea mai mare.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309596939911168
+    m_Localized: "\u0218coal\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309631597445120
+    m_Localized: "\xCEnva\u021B\u0103 s\u0103 recuno\u0219ti obiecte \u0219colare
+      obi\u0219nuite \u0219i s\u0103 urmezi instruc\u021Biuni simple despre pozi\u021Bia
+      \u0219i m\u0103rimea lor.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309669086134272
+    m_Localized: "G\u0103se\u0219te obiectul pe care \xEEl folose\u0219ti pentru
+      a scrie.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309691592769536
+    m_Localized: "G\u0103se\u0219te obiectul pe care \xEEl cite\u0219ti.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309704574140416
+    m_Localized: "G\u0103se\u0219te geanta \xEEn care \xEE\u021Bi cari lucrurile
+      pentru \u0219coal\u0103."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309714984402944
+    m_Localized: "Pune creionul l\xE2ng\u0103 caiet."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309727533760512
+    m_Localized: "Pune rigla \xEEn dreapta c\u0103r\u021Bii.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309738388619264
+    m_Localized: "Pune caietul l\xE2ng\u0103 ghiozdan.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309749511913472
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai scurt la cel mai lung.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309761323073536
+    m_Localized: "G\u0103se\u0219te obiectul pe care \xEEl folose\u0219ti pentru
+      a trasa linii drepte.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309773373308928
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai mic la cel mai mare."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309806281818112
+    m_Localized: Vreme
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309837105758208
+    m_Localized: "\xCEnva\u021B\u0103 s\u0103 recuno\u0219ti fenomene meteorologice
+      obi\u0219nuite \u0219i s\u0103 \xEEn\u021Belegi rela\u021Biile dintre ele \xEEn
+      natur\u0103.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309854851858432
+    m_Localized: "G\u0103se\u0219te obiectul care ne ofer\u0103 lumin\u0103 \u0219i
+      c\u0103ldur\u0103.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309894165069824
+    m_Localized: "G\u0103se\u0219te obiectul pe care \xEEl po\u021Bi vedea pe cer.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309905053483008
+    m_Localized: "G\u0103se\u0219te arcul colorat de pe cer.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309917346988032
+    m_Localized: 'Pune norul deasupra soarelui.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309927992131584
+    m_Localized: 'Pune ploaia sub nor.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309939929120768
+    m_Localized: 'Pune curcubeul sub nor.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309979502379008
+    m_Localized: "Ordoneaz\u0103 fenomenele meteorologice \xEEn ordinea corect\u0103.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20309990759890944
+    m_Localized: "G\u0103se\u0219te fenomenul meteorologic rece \u0219i alb.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310001157570560
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai mic la cel mai mare.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310036091928576
+    m_Localized: "\xCEn jurul nostru\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310060985122816
+    m_Localized: "Recapituleaz\u0103 ceea ce ai \xEEnv\u0103\u021Bat \u0219i exerseaz\u0103
+      recunoa\u0219terea obiectelor \u0219i urmarea instruc\u021Biunilor spa\u021Biale.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310110440161280
+    m_Localized: "G\u0103se\u0219te fructul.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310155931582464
+    m_Localized: "G\u0103se\u0219te planta."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310165876277248
+    m_Localized: "G\u0103se\u0219te animalul care poate l\u0103tra.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310176584335360
+    m_Localized: "Pune m\u0103rul l\xE2ng\u0103 copac.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310188148031488
+    m_Localized: "Pune c\xE2inele \xEEn st\xE2nga copacului.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310199011278848
+    m_Localized: "Pune ma\u0219ina \xEEn dreapta copacului.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310209094385664
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai mic la cel mai mare.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310221673103360
+    m_Localized: "A\u0219az\u0103 obiectele \xEEn ordine, \xEEncep\xE2nd cu cel mai
+      mic.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20310232506990592
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai scund la cel mai \xEEnalt."
     m_Metadata:
       m_Items: []
   references:
     version: 2
-    RefIds:
-    - rid: 2027872479151915094
-      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
-      data:
-        m_Entries: 
-        m_SharedEntries:
-        - id: 13865330399150080
-        - id: 14282447372058624
-        - id: 14282754588049408
-        - id: 14283274211983360
+    RefIds: []
