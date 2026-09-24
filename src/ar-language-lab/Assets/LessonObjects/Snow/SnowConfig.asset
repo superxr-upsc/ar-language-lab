@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db7b3efa4a1e4c8bb88ccb3520718202, type: 3}
+  m_Name: SnowConfig
+  m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.ARObjects.ARObjectConfig
+  Id: OC_8b7a912d356a40ad81fc407e99a1b117
+  LocalisationKey: ind_snow_object
+  Prefab: {fileID: 814978661188191895, guid: 8723690c2beb1d449ac8c0a9f16353a7, type: 3}

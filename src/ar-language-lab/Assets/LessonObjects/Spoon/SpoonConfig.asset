@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db7b3efa4a1e4c8bb88ccb3520718202, type: 3}
+  m_Name: SpoonConfig
+  m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.ARObjects.ARObjectConfig
+  Id: OC_98a6ae611d924e619bcc7d8af551149a
+  LocalisationKey: ind_spoon_object
+  Prefab: {fileID: 7518259363981519074, guid: dcb2be7cd8f940c4c91cd088bba6e923, type: 3}

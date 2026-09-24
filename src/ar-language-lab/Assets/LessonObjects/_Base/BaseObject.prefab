@@ -76,4 +76,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc47e0dbd0548e78abca75453f5c19f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.ARObjects.ARObjectBase
-  _observer: {fileID: 0}
