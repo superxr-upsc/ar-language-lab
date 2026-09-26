@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: en
   m_SharedData: {fileID: 11400000, guid: 7e93bb5e0752dfb4288c166276a2af32, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 2027872775275544659
   m_TableData:
   - m_Id: 20312949757476864
     m_Localized: Strawberry
@@ -65,19 +66,20 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 16675303638335488
-    m_Localized: 'Camera Auto-Focus:'
+    m_Localized: 'Camera Auto-Focus :'
     m_Metadata:
       m_Items: []
   - m_Id: 16675467371380736
-    m_Localized: 'Language:'
+    m_Localized: 'Language :'
     m_Metadata:
       m_Items: []
   - m_Id: 20307549771431936
     m_Localized: 'Arrange the fruits from smallest to largest.
 
-'
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20307626510417920
     m_Localized: 'Find the orange fruit.
 
@@ -87,9 +89,10 @@ MonoBehaviour:
   - m_Id: 20307721528180736
     m_Localized: 'Arrange the fruits from lightest to heaviest.
 
-'
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20313009102684160
     m_Localized: Orange
     m_Metadata:
@@ -292,9 +295,10 @@ MonoBehaviour:
   - m_Id: 20307957063516160
     m_Localized: 'Arrange the objects from smallest to largest.
 
-'
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20307958636380160
     m_Localized: 'Find the soft furniture you can sit on.
 
@@ -304,9 +308,10 @@ MonoBehaviour:
   - m_Id: 20307960284741632
     m_Localized: 'Arrange the objects from shortest to tallest.
 
-'
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20308099091038208
     m_Localized: Kitchen
     m_Metadata:
@@ -363,9 +368,10 @@ MonoBehaviour:
   - m_Id: 20308305513709568
     m_Localized: 'Arrange the objects in the order used to make tea.
 
-'
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20308322022490112
     m_Localized: 'Find the object you can use to boil water.
 
@@ -422,9 +428,10 @@ MonoBehaviour:
   - m_Id: 20308584174878720
     m_Localized: 'Arrange the objects from smallest to largest.
 
-'
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20308595273007104
     m_Localized: 'Place the stone to the right of the flower.
 
@@ -434,9 +441,10 @@ MonoBehaviour:
   - m_Id: 20308607616843776
     m_Localized: 'Arrange the objects from shortest to tallest.
 
-'
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20308707730685952
     m_Localized: Animals
     m_Metadata:
@@ -477,17 +485,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 20308916665745408
-    m_Localized: Arrange the animals from smallest to largest.
+    m_Localized: 'Arrange the animals from smallest to largest.
+
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20308919056498688
     m_Localized: Find the pet that can bark.
     m_Metadata:
       m_Items: []
   - m_Id: 20308921224953856
-    m_Localized: Arrange the animals from shortest to tallest.
+    m_Localized: 'Arrange the animals from shortest to tallest.
+
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20309083263500288
     m_Localized: Transport
     m_Metadata:
@@ -540,13 +554,15 @@ MonoBehaviour:
 
 '
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20309199701573632
     m_Localized: 'Arrange the vehicles from smallest to largest.
 
 '
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20309285961629696
     m_Localized: Clothes
     m_Metadata:
@@ -593,9 +609,10 @@ MonoBehaviour:
   - m_Id: 20309413460082688
     m_Localized: 'Arrange the clothes from top to bottom.
 
-'
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20309416245100544
     m_Localized: 'Find the clothing item you wear on your upper body.
 
@@ -605,9 +622,10 @@ MonoBehaviour:
   - m_Id: 20309419751538688
     m_Localized: 'Arrange the clothes from smallest to largest.
 
-'
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20309596939911168
     m_Localized: School
     m_Metadata:
@@ -656,9 +674,10 @@ MonoBehaviour:
   - m_Id: 20309749511913472
     m_Localized: 'Arrange the objects from shortest to longest.
 
-'
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20309761323073536
     m_Localized: 'Find the object you use to draw straight lines.
 
@@ -668,9 +687,10 @@ MonoBehaviour:
   - m_Id: 20309773373308928
     m_Localized: 'Arrange the objects from smallest to largest.
 
-'
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20309806281818112
     m_Localized: Weather
     m_Metadata:
@@ -719,9 +739,10 @@ MonoBehaviour:
   - m_Id: 20309979502379008
     m_Localized: 'Arrange the weather events in the correct order.
 
-'
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20309990759890944
     m_Localized: 'Find the weather that is cold and white.
 
@@ -731,9 +752,10 @@ MonoBehaviour:
   - m_Id: 20310001157570560
     m_Localized: 'Arrange the objects from smallest to largest.
 
-'
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20310036091928576
     m_Localized: Around Us
     m_Metadata:
@@ -782,21 +804,67 @@ MonoBehaviour:
   - m_Id: 20310209094385664
     m_Localized: 'Arrange the objects from smallest to largest.
 
-'
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20310221673103360
     m_Localized: 'Put the objects in order, starting with the smallest one.
 
-'
+      {Objects}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544659
   - m_Id: 20310232506990592
     m_Localized: 'Arrange the objects from shortest to tallest.
 
+      {Objects}
+
 '
+    m_Metadata:
+      m_Items:
+      - rid: 2027872775275544659
+  - m_Id: 21417919915393024
+    m_Localized: 'Music :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21417994670473216
+    m_Localized: 'SFX :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21424435544358912
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21424553253306368
+    m_Localized: Play
     m_Metadata:
       m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2027872775275544659
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 20307549771431936
+        - id: 20307721528180736
+        - id: 20307957063516160
+        - id: 20307960284741632
+        - id: 20308305513709568
+        - id: 20308584174878720
+        - id: 20308607616843776
+        - id: 20308916665745408
+        - id: 20308921224953856
+        - id: 20309197956743168
+        - id: 20309199701573632
+        - id: 20309413460082688
+        - id: 20309419751538688
+        - id: 20309773373308928
+        - id: 20309749511913472
+        - id: 20310001157570560
+        - id: 20309979502379008
+        - id: 20310209094385664
+        - id: 20310221673103360
+        - id: 20310232506990592

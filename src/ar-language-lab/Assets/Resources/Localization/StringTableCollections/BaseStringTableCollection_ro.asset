@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: ro
   m_SharedData: {fileID: 11400000, guid: 7e93bb5e0752dfb4288c166276a2af32, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - rid: 2027872775275544661
   m_TableData:
   - m_Id: 13865330399150080
     m_Localized: "G\u0103se\u0219te fructul ro\u0219u mic."
@@ -35,11 +36,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 16675303638335488
-    m_Localized: 'Camera Auto-Focus:'
+    m_Localized: 'Camera Auto-Focus :'
     m_Metadata:
       m_Items: []
   - m_Id: 16675467371380736
-    m_Localized: 'Limba:'
+    m_Localized: 'Limba :'
     m_Metadata:
       m_Items: []
   - m_Id: 20312949757476864
@@ -224,17 +225,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 20307549771431936
-    m_Localized: "Ordoneaz\u0103 fructele de la cel mai mic la cel mai mare.\r\n"
+    m_Localized: "Ordoneaz\u0103 fructele de la cel mai mic la cel mai mare.\r\n{Objects}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20307626510417920
     m_Localized: "G\u0103se\u0219te fructul portocaliu.\r\n"
     m_Metadata:
       m_Items: []
   - m_Id: 20307721528180736
-    m_Localized: "Ordoneaz\u0103 fructele de la cel mai u\u0219or la cel mai greu.\r\n"
+    m_Localized: "Ordoneaz\u0103 fructele de la cel mai u\u0219or la cel mai greu.\r\n{Objects}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20307817955229696
     m_Localized: "Cas\u0103"
     m_Metadata:
@@ -269,17 +272,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 20307957063516160
-    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai mic la cel mai mare.\r\n"
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai mic la cel mai mare.\r\n{Objects}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20307958636380160
     m_Localized: "G\u0103se\u0219te mobila moale pe care po\u021Bi sta.\r\n"
     m_Metadata:
       m_Items: []
   - m_Id: 20307960284741632
-    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai scund la cel mai \xEEnalt.\r\n"
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai scund la cel mai \xEEnalt.\r\n{Objects}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20308099091038208
     m_Localized: "Buc\u0103t\u0103rie"
     m_Metadata:
@@ -320,9 +325,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 20308305513709568
     m_Localized: "Ordoneaz\u0103 obiectele \xEEn ordinea \xEEn care sunt folosite
-      pentru a prepara ceaiul.\r\n"
+      pentru a prepara ceaiul.\r\n{Objects}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20308322022490112
     m_Localized: "G\u0103se\u0219te obiectul \xEEn care po\u021Bi fierbe apa.\r\n"
     m_Metadata:
@@ -365,17 +371,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 20308584174878720
-    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai mic la cel mai mare.\r\n"
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai mic la cel mai mare.\r\n{Objects}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20308595273007104
     m_Localized: "Pune piatra \xEEn dreapta florii.\r\n"
     m_Metadata:
       m_Items: []
   - m_Id: 20308607616843776
-    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai scund la cel mai \xEEnalt.\r\n"
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai scund la cel mai \xEEnalt.\r\n{Objects}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20308707730685952
     m_Localized: Animale
     m_Metadata:
@@ -411,17 +419,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 20308916665745408
-    m_Localized: "Ordoneaz\u0103 animalele de la cel mai mic la cel mai mare.\r\n"
+    m_Localized: "Ordoneaz\u0103 animalele de la cel mai mic la cel mai mare.\r\n{Objects}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20308919056498688
     m_Localized: "G\u0103se\u0219te animalul de companie care poate l\u0103tra.\r\n"
     m_Metadata:
       m_Items: []
   - m_Id: 20308921224953856
-    m_Localized: "Ordoneaz\u0103 animalele de la cel mai scund la cel mai \xEEnalt.\r\n"
+    m_Localized: "Ordoneaz\u0103 animalele de la cel mai scund la cel mai \xEEnalt.\r\n{Objects}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20309083263500288
     m_Localized: Transport
     m_Metadata:
@@ -458,11 +468,13 @@ MonoBehaviour:
   - m_Id: 20309197956743168
     m_Localized: "Ordoneaz\u0103 vehiculele de la cel mai lent la cel mai rapid.\r\n"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20309199701573632
     m_Localized: "Ordoneaz\u0103 vehiculele de la cel mai mic la cel mai mare.\r\n"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20309285961629696
     m_Localized: Haine
     m_Metadata:
@@ -502,18 +514,20 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 20309413460082688
-    m_Localized: "Ordoneaz\u0103 hainele de sus \xEEn jos.\r\n"
+    m_Localized: "Ordoneaz\u0103 hainele de sus \xEEn jos.\r\n{Objects}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20309416245100544
     m_Localized: "G\u0103se\u0219te articolul vestimentar pe care \xEEl por\u021Bi
       pe partea de sus a corpului.\r\n"
     m_Metadata:
       m_Items: []
   - m_Id: 20309419751538688
-    m_Localized: "Ordoneaz\u0103 hainele de la cea mai mic\u0103 la cea mai mare.\r\n"
+    m_Localized: "Ordoneaz\u0103 hainele de la cea mai mic\u0103 la cea mai mare.\r\n{Objects}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20309596939911168
     m_Localized: "\u0218coal\u0103"
     m_Metadata:
@@ -551,18 +565,20 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 20309749511913472
-    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai scurt la cel mai lung.\r\n"
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai scurt la cel mai lung.\r\n{Objects}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20309761323073536
     m_Localized: "G\u0103se\u0219te obiectul pe care \xEEl folose\u0219ti pentru
       a trasa linii drepte.\r\n"
     m_Metadata:
       m_Items: []
   - m_Id: 20309773373308928
-    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai mic la cel mai mare."
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai mic la cel mai mare.\n{Objects}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20309806281818112
     m_Localized: Vreme
     m_Metadata:
@@ -605,17 +621,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 20309979502379008
-    m_Localized: "Ordoneaz\u0103 fenomenele meteorologice \xEEn ordinea corect\u0103.\r\n"
+    m_Localized: "Ordoneaz\u0103 fenomenele meteorologice \xEEn ordinea corect\u0103.\r\n{Objects}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20309990759890944
     m_Localized: "G\u0103se\u0219te fenomenul meteorologic rece \u0219i alb.\r\n"
     m_Metadata:
       m_Items: []
   - m_Id: 20310001157570560
-    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai mic la cel mai mare.\r\n"
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai mic la cel mai mare.\r\n{Objects}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20310036091928576
     m_Localized: "\xCEn jurul nostru\r\n"
     m_Metadata:
@@ -650,18 +668,62 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 20310209094385664
-    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai mic la cel mai mare.\r\n"
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai mic la cel mai mare.\r\n{Objects}"
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - rid: 2027872775275544661
   - m_Id: 20310221673103360
     m_Localized: "A\u0219az\u0103 obiectele \xEEn ordine, \xEEncep\xE2nd cu cel mai
-      mic.\r\n"
+      mic.\r\n{Objects}"
+    m_Metadata:
+      m_Items:
+      - rid: 2027872775275544661
+  - m_Id: 20310232506990592
+    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai scund la cel mai \xEEnalt.\n{Objects}"
+    m_Metadata:
+      m_Items:
+      - rid: 2027872775275544661
+  - m_Id: 21417919915393024
+    m_Localized: 'Music :'
     m_Metadata:
       m_Items: []
-  - m_Id: 20310232506990592
-    m_Localized: "Ordoneaz\u0103 obiectele de la cel mai scund la cel mai \xEEnalt."
+  - m_Id: 21417994670473216
+    m_Localized: 'SFX :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21424435544358912
+    m_Localized: Setari
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21424553253306368
+    m_Localized: Joca
     m_Metadata:
       m_Items: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 2027872775275544661
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 
+        m_SharedEntries:
+        - id: 20307549771431936
+        - id: 20307721528180736
+        - id: 20307957063516160
+        - id: 20307960284741632
+        - id: 20308305513709568
+        - id: 20308584174878720
+        - id: 20308607616843776
+        - id: 20308916665745408
+        - id: 20308921224953856
+        - id: 20309197956743168
+        - id: 20309199701573632
+        - id: 20309413460082688
+        - id: 20309419751538688
+        - id: 20309773373308928
+        - id: 20309749511913472
+        - id: 20310001157570560
+        - id: 20309979502379008
+        - id: 20310209094385664
+        - id: 20310221673103360
+        - id: 20310232506990592

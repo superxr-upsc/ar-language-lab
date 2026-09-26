@@ -38,10 +38,17 @@ namespace CodeBase.Gameplay.Lessons
         public float GetCompletedTasksValue(string lastCompletedTask)
         {
             var completedTasks = 0;
+            
+            if (string.IsNullOrEmpty(lastCompletedTask))
+                return 0f;
+            
             foreach (var taskData in Tasks)    
             {
-                if (taskData.Id !=  lastCompletedTask)
-                    continue;
+                if (taskData.Id == lastCompletedTask)
+                {
+                    completedTasks++;
+                    break;
+                }
                 
                 completedTasks++;
             }

@@ -4,6 +4,7 @@ using CodeBase.Infrastructure.WindowsManagement.MVPBase;
 using PrimeTween;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CodeBase.UI.LoadingScreen
 {
@@ -11,9 +12,7 @@ namespace CodeBase.UI.LoadingScreen
     {
         [SerializeField] private TMP_Text _loadingText;
         [SerializeField] private TMP_Text _progressText;
-
-        [SerializeField] private RectTransform _progressBar;
-        [SerializeField] private RectTransform _progressBarBackground;
+        [SerializeField] private Slider _progressSlider;
         
         [SerializeField] private CanvasGroup _canvasGroup;
         private Coroutine _loadingAnimationCoroutine;
@@ -46,13 +45,7 @@ namespace CodeBase.UI.LoadingScreen
         
         public void UpdateProgressBar(float progress)
         {
-            var clampedProgress = Mathf.Clamp01(progress);
-            var backgroundWidth = _progressBarBackground.rect.width;
-            var rightInset = (1f - clampedProgress) * backgroundWidth;
-
-            var offsetMax = _progressBar.offsetMax;
-            offsetMax.x = -rightInset;
-            _progressBar.offsetMax = offsetMax;
+            _progressSlider.value = progress;
         }
 
         private IEnumerator LoadingAnimation()

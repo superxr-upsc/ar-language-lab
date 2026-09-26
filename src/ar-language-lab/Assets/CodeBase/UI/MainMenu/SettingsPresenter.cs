@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using CodeBase.Infrastructure.Localization;
+﻿using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.WindowsManagement.MVPBase;
-using Cysharp.Threading.Tasks;
 using R3;
 
 namespace CodeBase.UI
@@ -16,13 +13,6 @@ namespace CodeBase.UI
         private readonly ISaveService _saveService;
         private readonly ILocalizationService _localizationService;
 
-        private Dictionary<int, string> _languageCodeToLanguageName = new Dictionary<int, string>() 
-            {
-                { 0, "en" },
-                { 1, "ru" },
-                { 2, "ro" },
-            };
-
         public SettingsPresenter(SettingsData data, SettingsView view,
             ISaveService saveService,
             ILocalizationService localizationService) : base(view)
@@ -32,17 +22,17 @@ namespace CodeBase.UI
             _saveService = saveService;
             _localizationService = localizationService;
 
-            var languageIndex = _languageCodeToLanguageName.FirstOrDefault(x => x.Value == _saveService.SaveData.Settings.Language).Key;
-            _view.SetSelectedLanguage(languageIndex);
+            _view.SetSelectedLanguage(_saveService.SaveData.Settings.Language);
             _view.SetAutoFocusToggle(_saveService.SaveData.Settings.AutoFocus);
+            
+            _view.Init();
             
             _view.AutoFocusToggle
                 .OnValueChangedAsObservable()
                 .Subscribe(OnAutoFocusToggleChanged)
                 .AddTo(_compositeDisposable);
             
-            _view.LanguageDropdown
-                .OnValueChangedAsObservable()
+            _view.LanguageSelected
                 .Subscribe(OnLanguageDropdownChanged)
                 .AddTo(_compositeDisposable);
             
@@ -57,13 +47,12 @@ namespace CodeBase.UI
             _saveService.MarkDirty();
         }
 
-        private void OnLanguageDropdownChanged(int index)
+        private void OnLanguageDropdownChanged(string languageId)
         {
-            var languageCode = _languageCodeToLanguageName[index];
-            _saveService.SaveData.Settings.Language = languageCode;
+            _saveService.SaveData.Settings.Language = languageId;
             _saveService.MarkDirty();
             
-            _localizationService.SetLocaleAsync(languageCode)
+            _localizationService.SetLocaleAsync(languageId)
                 .Forget();
         }
 

@@ -623,6 +623,22 @@ MonoBehaviour:
     m_Key: ind_rainbow_object
     m_Metadata:
       m_Items: []
+  - m_Id: 21417919915393024
+    m_Key: ind_music_settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21417994670473216
+    m_Key: ind_sfx_settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21424435544358912
+    m_Key: ind_settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 21424553253306368
+    m_Key: ind_play_game
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
