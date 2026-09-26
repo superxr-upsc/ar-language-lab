@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c95147ea2565466c978787349a3ec315, type: 3}
+  m_Name: Lesson2
+  m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.Lessons.LessonConfig
+  Id: LC_78afc747b9704565b75e2d5db49bd6f7
+  LessonIcon: {fileID: 21300000, guid: d47573729c060494da3e478fbcf9d30d, type: 3}
+  LessonNameKey: ind_lesson_2_name
+  LessonDescriptionKey: ind_lesson_2_description
+  ObjectsToUse:
+  - {fileID: 11400000, guid: 8ce9854fbdbc4df46a1328f24764c635, type: 2}
+  - {fileID: 11400000, guid: 1b4bfacf61460244292901f276724840, type: 2}
+  - {fileID: 11400000, guid: cbc92a2d575265d409efb76b2977fab0, type: 2}
+  - {fileID: 11400000, guid: da4a9130b8653404d9feed019546e4d0, type: 2}
+  - {fileID: 11400000, guid: 55786ff582f9c474ba11a250a6e2551e, type: 2}
+  Tasks:
+  - Id: TD_95cd825b2fac4562b132a0a60d8ca64f
+    Type: 1
+    DescriptionLocalizationKey: ind_l2_t1
+    TargetObjects:
+    - {fileID: 11400000, guid: 8ce9854fbdbc4df46a1328f24764c635, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0
+  - Id: TD_1a18f310f9c542ce9adad95570c7b860
+    Type: 1
+    DescriptionLocalizationKey: ind_l2_t2
+    TargetObjects:
+    - {fileID: 11400000, guid: da4a9130b8653404d9feed019546e4d0, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0
+  - Id: TD_1cd6f88e73f2459e8f9cff77c595f11c
+    Type: 1
+    DescriptionLocalizationKey: ind_l2_t3
+    TargetObjects:
+    - {fileID: 11400000, guid: 55786ff582f9c474ba11a250a6e2551e, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0
+  - Id: TD_c5cf867a83284e96a70eb9aaf97e2c83
+    Type: 3
+    DescriptionLocalizationKey: ind_l2_t4
+    TargetObjects:
+    - {fileID: 11400000, guid: 8ce9854fbdbc4df46a1328f24764c635, type: 2}
+    SecondaryTargetObjects:
+    - {fileID: 11400000, guid: 1b4bfacf61460244292901f276724840, type: 2}
+    RequiredSide: 0
+  - Id: TD_aa698cf9705a47a9ac9b74505c9b802e
+    Type: 3
+    DescriptionLocalizationKey: ind_l2_t5
+    TargetObjects:
+    - {fileID: 11400000, guid: 1b4bfacf61460244292901f276724840, type: 2}
+    SecondaryTargetObjects:
+    - {fileID: 11400000, guid: 8ce9854fbdbc4df46a1328f24764c635, type: 2}
+    RequiredSide: 5
+  - Id: TD_0f710524b79845219a72190b4681f986
+    Type: 3
+    DescriptionLocalizationKey: ind_l2_t6
+    TargetObjects:
+    - {fileID: 11400000, guid: cbc92a2d575265d409efb76b2977fab0, type: 2}
+    SecondaryTargetObjects:
+    - {fileID: 11400000, guid: 55786ff582f9c474ba11a250a6e2551e, type: 2}
+    RequiredSide: 3
+  - Id: TD_3080923f7b3e41d0861958350440b6f0
+    Type: 2
+    DescriptionLocalizationKey: ind_l2_t7
+    TargetObjects:
+    - {fileID: 11400000, guid: 55786ff582f9c474ba11a250a6e2551e, type: 2}
+    - {fileID: 11400000, guid: 8ce9854fbdbc4df46a1328f24764c635, type: 2}
+    - {fileID: 11400000, guid: 1b4bfacf61460244292901f276724840, type: 2}
+    - {fileID: 11400000, guid: cbc92a2d575265d409efb76b2977fab0, type: 2}
+    - {fileID: 11400000, guid: da4a9130b8653404d9feed019546e4d0, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0
+  - Id: TD_f81d49c25e37405b837d28e026404eb2
+    Type: 1
+    DescriptionLocalizationKey: ind_l2_t8
+    TargetObjects:
+    - {fileID: 11400000, guid: cbc92a2d575265d409efb76b2977fab0, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0
+  - Id: TD_3db3a1b72279429ca6779a83cbed6139
+    Type: 2
+    DescriptionLocalizationKey: ind_l2_t9
+    TargetObjects:
+    - {fileID: 11400000, guid: 8ce9854fbdbc4df46a1328f24764c635, type: 2}
+    - {fileID: 11400000, guid: 1b4bfacf61460244292901f276724840, type: 2}
+    - {fileID: 11400000, guid: cbc92a2d575265d409efb76b2977fab0, type: 2}
+    - {fileID: 11400000, guid: 55786ff582f9c474ba11a250a6e2551e, type: 2}
+    - {fileID: 11400000, guid: da4a9130b8653404d9feed019546e4d0, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0

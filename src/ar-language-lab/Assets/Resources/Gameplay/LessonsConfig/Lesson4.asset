@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c95147ea2565466c978787349a3ec315, type: 3}
+  m_Name: Lesson4
+  m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.Lessons.LessonConfig
+  Id: LC_e920f6d9082743638280b2bc4bb4617d
+  LessonIcon: {fileID: 21300000, guid: 0c9617c77acc2a94681187edd3634897, type: 3}
+  LessonNameKey: ind_lesson_4_name
+  LessonDescriptionKey: ind_lesson_4_description
+  ObjectsToUse:
+  - {fileID: 11400000, guid: b250193f33d8a574894617bc6954baee, type: 2}
+  - {fileID: 11400000, guid: 1fb7dff3278d3af4a935799623e6dba5, type: 2}
+  - {fileID: 11400000, guid: af36635f9e4481440bbe61a021229339, type: 2}
+  - {fileID: 11400000, guid: bd4b10c5185a1cf43997688785d28310, type: 2}
+  - {fileID: 11400000, guid: bd362bb61fd705d46aeb8fb187a22073, type: 2}
+  Tasks:
+  - Id: TD_a43a9ebca3d442418c3552027f1bc9b1
+    Type: 1
+    DescriptionLocalizationKey: ind_l4_t1
+    TargetObjects:
+    - {fileID: 11400000, guid: 1fb7dff3278d3af4a935799623e6dba5, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0
+  - Id: TD_abdb36010f02405daea2273910f453f6
+    Type: 1
+    DescriptionLocalizationKey: ind_l4_t2
+    TargetObjects:
+    - {fileID: 11400000, guid: b250193f33d8a574894617bc6954baee, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0
+  - Id: TD_13513868a307400488ee100ebc572e27
+    Type: 1
+    DescriptionLocalizationKey: ind_l4_t3
+    TargetObjects:
+    - {fileID: 11400000, guid: bd362bb61fd705d46aeb8fb187a22073, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0
+  - Id: TD_f28fddb7b9f245fb8106c7b7a4ccdb9e
+    Type: 3
+    DescriptionLocalizationKey: ind_l4_t4
+    TargetObjects:
+    - {fileID: 11400000, guid: 1fb7dff3278d3af4a935799623e6dba5, type: 2}
+    SecondaryTargetObjects:
+    - {fileID: 11400000, guid: b250193f33d8a574894617bc6954baee, type: 2}
+    RequiredSide: 0
+  - Id: TD_087f02e49d884958a36bf46d16d79a33
+    Type: 3
+    DescriptionLocalizationKey: ind_l4_t5
+    TargetObjects:
+    - {fileID: 11400000, guid: af36635f9e4481440bbe61a021229339, type: 2}
+    SecondaryTargetObjects:
+    - {fileID: 11400000, guid: b250193f33d8a574894617bc6954baee, type: 2}
+    RequiredSide: 2
+  - Id: TD_5779d33b12764671849dfb62fdf44d2a
+    Type: 3
+    DescriptionLocalizationKey: ind_l4_t6
+    TargetObjects:
+    - {fileID: 11400000, guid: bd4b10c5185a1cf43997688785d28310, type: 2}
+    SecondaryTargetObjects:
+    - {fileID: 11400000, guid: b250193f33d8a574894617bc6954baee, type: 2}
+    RequiredSide: 2
+  - Id: TD_4b1aae7e01ba478bba4ff955665babcf
+    Type: 2
+    DescriptionLocalizationKey: ind_l4_t7
+    TargetObjects:
+    - {fileID: 11400000, guid: 1fb7dff3278d3af4a935799623e6dba5, type: 2}
+    - {fileID: 11400000, guid: bd362bb61fd705d46aeb8fb187a22073, type: 2}
+    - {fileID: 11400000, guid: bd4b10c5185a1cf43997688785d28310, type: 2}
+    - {fileID: 11400000, guid: b250193f33d8a574894617bc6954baee, type: 2}
+    - {fileID: 11400000, guid: af36635f9e4481440bbe61a021229339, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0
+  - Id: TD_332bf3527bba4fdabd13a526ea776cf8
+    Type: 3
+    DescriptionLocalizationKey: ind_l4_t8
+    TargetObjects:
+    - {fileID: 11400000, guid: bd362bb61fd705d46aeb8fb187a22073, type: 2}
+    SecondaryTargetObjects:
+    - {fileID: 11400000, guid: 1fb7dff3278d3af4a935799623e6dba5, type: 2}
+    RequiredSide: 5
+  - Id: TD_15a92e385d0a45469feada9e69da0667
+    Type: 2
+    DescriptionLocalizationKey: ind_l4_t9
+    TargetObjects:
+    - {fileID: 11400000, guid: 1fb7dff3278d3af4a935799623e6dba5, type: 2}
+    - {fileID: 11400000, guid: bd362bb61fd705d46aeb8fb187a22073, type: 2}
+    - {fileID: 11400000, guid: bd4b10c5185a1cf43997688785d28310, type: 2}
+    - {fileID: 11400000, guid: b250193f33d8a574894617bc6954baee, type: 2}
+    - {fileID: 11400000, guid: af36635f9e4481440bbe61a021229339, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0

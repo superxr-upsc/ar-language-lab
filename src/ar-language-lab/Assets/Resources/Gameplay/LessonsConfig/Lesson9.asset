@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c95147ea2565466c978787349a3ec315, type: 3}
+  m_Name: Lesson9
+  m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.Lessons.LessonConfig
+  Id: LC_5445fcdfb9b5492293c41107b8c979e5
+  LessonIcon: {fileID: 21300000, guid: 4ddf0da9708f3a346b8a7d5b8d57666c, type: 3}
+  LessonNameKey: ind_lesson_9_name
+  LessonDescriptionKey: ind_lesson_9_description
+  ObjectsToUse:
+  - {fileID: 11400000, guid: af36635f9e4481440bbe61a021229339, type: 2}
+  - {fileID: 11400000, guid: bd4b10c5185a1cf43997688785d28310, type: 2}
+  - {fileID: 11400000, guid: 91c32c4525add724e815d1e09232b1ac, type: 2}
+  - {fileID: 11400000, guid: f51e5aabc73ecbf448bf493155de84d8, type: 2}
+  - {fileID: 11400000, guid: 993096abe0a471046be6ccc002b118c3, type: 2}
+  Tasks:
+  - Id: TD_65ff7a3fb9314410a17a2d20adc42bc0
+    Type: 1
+    DescriptionLocalizationKey: ind_l9_t1
+    TargetObjects:
+    - {fileID: 11400000, guid: af36635f9e4481440bbe61a021229339, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0
+  - Id: TD_cec541c45692469898ba0a95e76c17f6
+    Type: 1
+    DescriptionLocalizationKey: ind_l9_t2
+    TargetObjects:
+    - {fileID: 11400000, guid: bd4b10c5185a1cf43997688785d28310, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0
+  - Id: TD_fbd34460ac0f4661a8761402f4552375
+    Type: 1
+    DescriptionLocalizationKey: ind_l9_t3
+    TargetObjects:
+    - {fileID: 11400000, guid: 993096abe0a471046be6ccc002b118c3, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0
+  - Id: TD_e7f26db8c4a54bea8ec3c745aa8700a1
+    Type: 3
+    DescriptionLocalizationKey: ind_l9_t4
+    TargetObjects:
+    - {fileID: 11400000, guid: bd4b10c5185a1cf43997688785d28310, type: 2}
+    SecondaryTargetObjects:
+    - {fileID: 11400000, guid: af36635f9e4481440bbe61a021229339, type: 2}
+    RequiredSide: 2
+  - Id: TD_3caaabc176da4135a3587221a55c9b11
+    Type: 3
+    DescriptionLocalizationKey: ind_l9_t5
+    TargetObjects:
+    - {fileID: 11400000, guid: 91c32c4525add724e815d1e09232b1ac, type: 2}
+    SecondaryTargetObjects:
+    - {fileID: 11400000, guid: bd4b10c5185a1cf43997688785d28310, type: 2}
+    RequiredSide: 3
+  - Id: TD_a7b0a22146a7473699da877d1ac55863
+    Type: 3
+    DescriptionLocalizationKey: ind_l9_t6
+    TargetObjects:
+    - {fileID: 11400000, guid: 993096abe0a471046be6ccc002b118c3, type: 2}
+    SecondaryTargetObjects:
+    - {fileID: 11400000, guid: bd4b10c5185a1cf43997688785d28310, type: 2}
+    RequiredSide: 3
+  - Id: TD_dcec54ad18bb4cc6aa06c38b06864cbe
+    Type: 2
+    DescriptionLocalizationKey: ind_l9_t7
+    TargetObjects:
+    - {fileID: 11400000, guid: bd4b10c5185a1cf43997688785d28310, type: 2}
+    - {fileID: 11400000, guid: 91c32c4525add724e815d1e09232b1ac, type: 2}
+    - {fileID: 11400000, guid: 993096abe0a471046be6ccc002b118c3, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0
+  - Id: TD_5dc2108dcdce4a8ebed54621dc76043f
+    Type: 1
+    DescriptionLocalizationKey: ind_l9_t8
+    TargetObjects:
+    - {fileID: 11400000, guid: f51e5aabc73ecbf448bf493155de84d8, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0
+  - Id: TD_5018306c22b64fed873c66e82eceecb3
+    Type: 2
+    DescriptionLocalizationKey: ind_l9_t9
+    TargetObjects:
+    - {fileID: 11400000, guid: f51e5aabc73ecbf448bf493155de84d8, type: 2}
+    - {fileID: 11400000, guid: 993096abe0a471046be6ccc002b118c3, type: 2}
+    - {fileID: 11400000, guid: bd4b10c5185a1cf43997688785d28310, type: 2}
+    - {fileID: 11400000, guid: af36635f9e4481440bbe61a021229339, type: 2}
+    SecondaryTargetObjects: []
+    RequiredSide: 0

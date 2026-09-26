@@ -12,7 +12,7 @@ namespace CodeBase.Gameplay.ARObjects
 
         [Header("Coverage thresholds in viewport space [0..1]")]
         [SerializeField, Range(0.01f, 1f)] private float _enterCoverage = 0.5f;
-        [SerializeField, Range(0.001f, 1f)] private float _exitCoverage = 0.15f;
+        [SerializeField, Range(0.001f, 1f)] private float _exitCoverage = 0.35f;
 
         [Header("Trigger behavior")]
         [SerializeField] private bool _triggerOnlyOnce;

@@ -14,3 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.Lessons.GameLessons
   Lessons:
   - {fileID: 11400000, guid: 4aaf8b70f35b7194da1eefaea103b48c, type: 2}
+  - {fileID: 11400000, guid: a8bc284752df47d46b7ce379e144f081, type: 2}
+  - {fileID: 11400000, guid: 13ea3e2dc84c8884ab0a67d3ced87c42, type: 2}
+  - {fileID: 11400000, guid: 21f4569de283ebf4385c784def1c25ba, type: 2}
+  - {fileID: 11400000, guid: 92a42dc88daeb7a49b94fa65a8ebbb03, type: 2}
+  - {fileID: 11400000, guid: 2a420eedeae46c245b47c7b2fe29c1a8, type: 2}
+  - {fileID: 11400000, guid: 520d605a270ddff498f16e0cddddb8b8, type: 2}
+  - {fileID: 11400000, guid: 09526812c6ad5fa4385e408a4d65cf26, type: 2}
+  - {fileID: 11400000, guid: 416ae6d4cbe64c94193f9c46ea1f81e5, type: 2}
+  - {fileID: 11400000, guid: e42f200e8226a684b98c13021bbc613b, type: 2}
