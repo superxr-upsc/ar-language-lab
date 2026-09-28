@@ -639,6 +639,18 @@ MonoBehaviour:
     m_Key: ind_play_game
     m_Metadata:
       m_Items: []
+  - m_Id: 22112425212018688
+    m_Key: ind_lesson_complete_header
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22112471181590528
+    m_Key: ind_lesson_complete_description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22112513908965376
+    m_Key: ind_lesson_complete_button
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

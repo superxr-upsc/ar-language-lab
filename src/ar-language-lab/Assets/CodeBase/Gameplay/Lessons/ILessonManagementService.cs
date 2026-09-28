@@ -7,6 +7,7 @@ namespace CodeBase.Gameplay.Lessons
         void SetupLesson();
         void CleanupLesson();
         void StartLesson();
+        void LoadMainMenu();
         ARObjectBase GetObject(ARObjectConfig selectedObjectConfig);
     }
 }

@@ -3,6 +3,7 @@ using CodeBase.Common.Extensions;
 using CodeBase.Gameplay.ARObjects;
 using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
+using CodeBase.Infrastructure.VisualFX;
 using CodeBase.Infrastructure.Vuforia;
 using CodeBase.UI.Tasks;
 using Cysharp.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
         private readonly ILocalizationService _localization;
         private readonly ILessonManagementService _lessonManagementService;
         private readonly IProjectResourcesProvider _projectResourcesProvider;
+        private readonly IVisualFXPlayer _visualFXPlayer;
         private readonly IARCameraProvider _cameraProvider;
         private readonly TaskResolversSettings _settings;
         
@@ -30,18 +32,21 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
         
         private IDisposable _updateSubscription;
         private int _stableNearAndSideFrames;
+        private VisualFX _completeTaskFx;
 
         public PlaceObjectNearToAnotherTask(
             TaskData taskData,
             IARCameraProvider cameraProvider,
             ILocalizationService localization,
             ILessonManagementService lessonManagementService,
-            IProjectResourcesProvider projectResourcesProvider) 
+            IProjectResourcesProvider projectResourcesProvider,
+            IVisualFXPlayer visualFXPlayer) 
             : base(taskData, cameraProvider)
         {
             _localization = localization;
             _lessonManagementService = lessonManagementService;
             _projectResourcesProvider = projectResourcesProvider;
+            _visualFXPlayer = visualFXPlayer;
             _cameraProvider = cameraProvider;
             _settings = projectResourcesProvider.LoadResource<TaskResolversSettings>();
         }
@@ -54,6 +59,8 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
 
             _updateSubscription = Observable.EveryUpdate()
                 .Subscribe(_ => EvaluatePlacement());
+
+            _completeTaskFx = _projectResourcesProvider.LoadResource<VisualFX>();
         }
 
         public override void Dispose()
@@ -151,7 +158,10 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
             _stableNearAndSideFrames = isValidPlacement ? _stableNearAndSideFrames + 1 : 0;
 
             if (_stableNearAndSideFrames >= _settings.RequiredStableFrames)
+            {
+                _visualFXPlayer.PlayEffectInstant(_completeTaskFx, _subjectObject.transform.position);
                 CompleteTask();
+            }
         }
 
         private bool IsOnRequiredSide(Vector3 subjectPosition, Vector3 referencePosition)

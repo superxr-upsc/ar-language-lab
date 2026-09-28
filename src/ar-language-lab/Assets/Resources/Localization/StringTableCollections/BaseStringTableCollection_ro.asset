@@ -699,6 +699,20 @@ MonoBehaviour:
     m_Localized: Joca
     m_Metadata:
       m_Items: []
+  - m_Id: 22112425212018688
+    m_Localized: Felicitari!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22112471181590528
+    m_Localized: 'Ai invatat multe cuvinte noi!
+
+      Bravo!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 22112513908965376
+    m_Localized: Mai departe
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

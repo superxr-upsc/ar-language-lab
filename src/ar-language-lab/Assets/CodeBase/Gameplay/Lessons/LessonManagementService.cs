@@ -12,6 +12,7 @@ using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.StaticData;
 using CodeBase.Infrastructure.Vuforia;
 using CodeBase.Infrastructure.WindowsManagement;
+using CodeBase.UI.LessonCompleteWindow;
 using Vuforia;
 
 namespace CodeBase.Gameplay.Lessons
@@ -94,6 +95,12 @@ namespace CodeBase.Gameplay.Lessons
             _lessonObjects.Clear();
         }
 
+        public void LoadMainMenu()
+        {
+            _windowsManagementService.CloseAllWindows();
+            _gameStateMachine.Enter<EnterMainMenuState>();
+        }
+
         public void Dispose()
         {
             CleanupLesson();
@@ -109,7 +116,11 @@ namespace CodeBase.Gameplay.Lessons
         {
             _vuforiaService.SetVuforiaState(false);
             _vuforiaService.SetDeviceFlashTorch(false);
-            _gameStateMachine.Enter<EnterMainMenuState>();
+            
+            _windowsManagementService.CloseAllWindows();
+            _windowsManagementService
+                .CreateWindow<LessonCompletePresenter, LessonCompleteView, LessonCompleteData>
+                    (UILayer.NotificationLayer, new LessonCompleteData());
         }
 
         private void SetupGameplayObjects()

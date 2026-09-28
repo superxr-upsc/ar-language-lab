@@ -12,6 +12,7 @@ namespace CodeBase.Infrastructure.StaticData
         {
             new (typeof(TaskResolversSettings), "Gameplay"),
             new (typeof(GameLessons), "Gameplay"),
+            new (typeof(VisualFX.VisualFX), "Common")
         };
 
         public static string GetLocation<TResource>() where TResource : IResource

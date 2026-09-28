@@ -34,10 +34,10 @@ namespace CodeBase.UI.LessonsListWindow
 
         public void OnLessonSelected(string lessonID)
         {
-            var lessonProgress = _saveService.SaveData.Lessons.Progress.Find(progress => progress.LessonId == lessonID);
-            if (lessonProgress != null && lessonProgress.IsComplete)
-                return; 
-            
+            // var lessonProgress = _saveService.SaveData.Lessons.Progress.Find(progress => progress.LessonId == lessonID);
+            // if (lessonProgress != null)
+            //     return; 
+            //
             _lessonGameDataProvider.SetSellectedLessonID(lessonID);
             _gameStateMachine.Enter<EnterGameplaySceneState>();
         }

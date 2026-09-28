@@ -13,6 +13,7 @@ using CodeBase.Infrastructure.ProjectResourcesProvider;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.SaveLoad.AutoSaver;
 using CodeBase.Infrastructure.TimerService;
+using CodeBase.Infrastructure.VisualFX;
 using CodeBase.Infrastructure.Vuforia;
 using CodeBase.Infrastructure.WindowsManagement;
 using UnityEngine;
@@ -53,6 +54,13 @@ namespace CodeBase.Infrastructure.Installers
             BindVuforiaService();
             BindARCameraProvider();
             BindLessonManagementService();
+            BindVFXService();
+        }
+
+        private void BindVFXService()
+        {
+            Container.BindInterfacesTo<VisualFXPlayer>()
+                .AsSingle();
         }
 
         private void BindSaveSystem()

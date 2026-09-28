@@ -1,6 +1,8 @@
 ﻿using CodeBase.Common.Extensions;
 using CodeBase.Gameplay.ARObjects;
 using CodeBase.Infrastructure.Localization;
+using CodeBase.Infrastructure.ProjectResourcesProvider;
+using CodeBase.Infrastructure.VisualFX;
 using CodeBase.Infrastructure.Vuforia;
 using CodeBase.UI.Tasks;
 using Cysharp.Threading.Tasks;
@@ -11,17 +13,24 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
     {
         private readonly ILocalizationService _localization;
         private readonly ILessonManagementService _lessonManagementService;
+        private readonly IVisualFXPlayer _visualFXPlayer;
+        private readonly IProjectResourcesProvider _projectResourcesProvider;
 
         private ARObjectConfig _selectedObjectConfig;
         private ARObjectBase _selectedObject;
+        private VisualFX _completeTaskFx;
 
         public FindObjectTask(TaskData taskData, 
             IARCameraProvider cameraProvider, 
             ILocalizationService localization, 
-            ILessonManagementService lessonManagementService) 
+            ILessonManagementService lessonManagementService,
+            IVisualFXPlayer visualFXPlayer,
+            IProjectResourcesProvider projectResourcesProvider) 
             : base(taskData, cameraProvider)
         {
             _lessonManagementService = lessonManagementService;
+            _visualFXPlayer = visualFXPlayer;
+            _projectResourcesProvider = projectResourcesProvider;
             _localization = localization;
         }
 
@@ -29,6 +38,7 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
         {
             base.Run(viewData);
             _selectedObject.Observer.NearCameraEntered += OnNearCameraEntered;
+            _completeTaskFx = _projectResourcesProvider.LoadResource<VisualFX>();
         }
 
         public override void Dispose()
@@ -57,7 +67,13 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
             return questDescription;
         }
 
-        private void OnNearCameraEntered(float arg1, float arg2) => 
+        private void OnNearCameraEntered(float arg1, float arg2)
+        {
+            if (_selectedObject != null) 
+                _selectedObject.Observer.NearCameraEntered -= OnNearCameraEntered;
+            
+            _visualFXPlayer.PlayEffectInstant(_completeTaskFx, _selectedObject.transform.position);
             CompleteTask();
+        }
     }
 }

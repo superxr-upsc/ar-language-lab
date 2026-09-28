@@ -63,7 +63,7 @@ namespace CodeBase.Gameplay.Lessons.Tasks
             _currentTask = _taskList.Dequeue();
 
             _currentTask.TaskCompleted += OnTaskCompleted;
-            _currentTask.Run(_activeTaskViewData);
+            _currentTask.Run(_activeTaskViewData); 
             
             CreateTaskView();
             _activeTaskViewData.SetCurrentProgress(_lessonConfig.GetCompletedTasksValue(_lessonGameDataProvider.GetLastCompletedTaskId(_lessonConfig.Id)));
@@ -94,10 +94,10 @@ namespace CodeBase.Gameplay.Lessons.Tasks
             _currentTask.TaskCompleted -= OnTaskCompleted;
             _lessonGameDataProvider.SaveCompletedTask(_lessonConfig.Id, taskData.Id);
 
-            _coroutineRunner.RunCoroutine(DelayBeforeRunNextTask());
+            _coroutineRunner.RunCoroutine(DelayBeforeSelectNextTask());
         }
 
-        private IEnumerator DelayBeforeRunNextTask()
+        private IEnumerator DelayBeforeSelectNextTask()
         {
             yield return new WaitForSeconds(1f);
             CloseTaskView();

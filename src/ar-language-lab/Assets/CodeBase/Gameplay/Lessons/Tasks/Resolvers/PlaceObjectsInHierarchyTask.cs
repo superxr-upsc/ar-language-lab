@@ -4,6 +4,7 @@ using CodeBase.Common.Extensions;
 using CodeBase.Gameplay.ARObjects;
 using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
+using CodeBase.Infrastructure.VisualFX;
 using CodeBase.Infrastructure.Vuforia;
 using CodeBase.UI.Tasks;
 using Cysharp.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
         private readonly ILocalizationService _localization;
         private readonly ILessonManagementService _lessonManagementService;
         private readonly IProjectResourcesProvider _projectResourcesProvider;
+        private readonly IVisualFXPlayer _visualFXPlayer;
         private readonly TaskResolversSettings _settings;
         private readonly Camera _camera;
 
@@ -26,18 +28,22 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
         private Vector3 _sortingDirection;
 
         private int _stableCorrectFrames;
+        private VisualFX _completeTaskFx;
+        
 
         public PlaceObjectsInHierarchyTask(
             TaskData taskData,
             IARCameraProvider cameraProvider,
             ILocalizationService localization,
             ILessonManagementService lessonManagementService,
-            IProjectResourcesProvider projectResourcesProvider)
+            IProjectResourcesProvider projectResourcesProvider,
+            IVisualFXPlayer visualFXPlayer)
             : base(taskData, cameraProvider)
         {
             _localization = localization;
             _lessonManagementService = lessonManagementService;
             _projectResourcesProvider = projectResourcesProvider;
+            _visualFXPlayer = visualFXPlayer;
             _settings = projectResourcesProvider.LoadResource<TaskResolversSettings>();
             _camera = cameraProvider.GetActiveCamera();
             
@@ -49,6 +55,8 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
             base.Run(viewData);
             _updateSubscription = Observable.EveryUpdate()
                 .Subscribe(_ => EvaluateOrder());
+            
+            _completeTaskFx = _projectResourcesProvider.LoadResource<VisualFX>();
         }
 
         public override void Dispose()
@@ -129,7 +137,16 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
                 : 0;
 
             if (_stableCorrectFrames >= _settings.RequiredStableFrames)
+            {
+                var delay = 0f;
+                foreach (var obj in _objects)
+                {
+                    _visualFXPlayer.PlayEffectWithDelay(_completeTaskFx, obj.transform.position, delay);
+                    delay += 0.05f;
+                }
+                
                 CompleteTask();
+            }
         }
 
         private bool IsObjectsInCorrectOrder()

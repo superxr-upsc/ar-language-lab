@@ -76,6 +76,7 @@ namespace CodeBase.Gameplay.Lessons.Saves
                     LastCompletedTaskId = string.Empty,
                     IsComplete = true
                 };
+                
             
                 _lessonsSaveData.Progress.Add(newLessonProgress);
             }
