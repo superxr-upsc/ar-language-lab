@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 17c54861eaa06ed4482c74b695584220, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0111
+      value: 0.027
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 17c54861eaa06ed4482c74b695584220, type: 3}
       propertyPath: m_LocalPosition.z
@@ -639,7 +639,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1335735170336174120, guid: 6a97d1cab0af60b4999238fed1d8afc9, type: 3}
       propertyPath: m_Name
-      value: BaseObject Variant
+      value: Flower
       objectReference: {fileID: 0}
     - target: {fileID: 8763637017817318127, guid: 6a97d1cab0af60b4999238fed1d8afc9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -679,6 +679,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8763637017817318127, guid: 6a97d1cab0af60b4999238fed1d8afc9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9013286236331889158, guid: 6a97d1cab0af60b4999238fed1d8afc9, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

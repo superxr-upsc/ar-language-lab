@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6410612391099864466, guid: 6e32c8b72ba083c41bbffcf962d74faf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.06637
+      value: 0.0133
       objectReference: {fileID: 0}
     - target: {fileID: 6410612391099864466, guid: 6e32c8b72ba083c41bbffcf962d74faf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -72,7 +72,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 777507402807306016, guid: 8723690c2beb1d449ac8c0a9f16353a7, type: 3}
       propertyPath: m_Name
-      value: BaseObject Variant
+      value: Elephant
       objectReference: {fileID: 0}
     - target: {fileID: 7051950637269243367, guid: 8723690c2beb1d449ac8c0a9f16353a7, type: 3}
       propertyPath: m_LocalPosition.x

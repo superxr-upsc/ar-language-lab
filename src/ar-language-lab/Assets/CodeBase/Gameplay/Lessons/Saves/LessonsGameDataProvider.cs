@@ -1,4 +1,6 @@
-﻿using CodeBase.Infrastructure.SaveLoad;
+﻿using System.Linq;
+using CodeBase.Infrastructure.ProjectResourcesProvider;
+using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.SaveLoad.Data;
 
 namespace CodeBase.Gameplay.Lessons.Saves
@@ -6,12 +8,18 @@ namespace CodeBase.Gameplay.Lessons.Saves
     public class LessonsGameDataProvider
     {
         private readonly ISaveService _saveService;
+        private readonly IProjectResourcesProvider _projectResourcesProvider;
         private readonly LessonsSaveData _lessonsSaveData;
-    
-        public LessonsGameDataProvider(ISaveService saveService)
+        private readonly GameLessons _config;
+
+        public LessonsGameDataProvider(ISaveService saveService,
+            IProjectResourcesProvider projectResourcesProvider)
         {
             _saveService = saveService;
+            _projectResourcesProvider = projectResourcesProvider;
             _lessonsSaveData = saveService.SaveData.Lessons;
+
+            _config = _projectResourcesProvider.LoadResource<GameLessons>();
         }
 
         public LessonProgress[] GetAllProgress() => 
@@ -23,6 +31,16 @@ namespace CodeBase.Gameplay.Lessons.Saves
             return lessonProgress != null && lessonProgress.IsComplete;
         }
 
+        public string GetNextLessonId(string lessonId)
+        {
+            var nextLesson = _config.Lessons
+                .SkipWhile(lesson => lesson.Id != lessonId)
+                .Skip(1)
+                .FirstOrDefault();
+            
+            return nextLesson != null ? nextLesson.Id : string.Empty;
+        }
+        
         public string GetLastCompletedTaskId(string lessonId)
         {
             var lessonProgress = GetProgressById(lessonId);
@@ -80,13 +98,54 @@ namespace CodeBase.Gameplay.Lessons.Saves
             
                 _lessonsSaveData.Progress.Add(newLessonProgress);
             }
+
+            OpenNextLesson(currentLessonId);
         
             _saveService.MarkDirty();
         }
 
-        public void SetSellectedLessonID(string lessonID)
+        private void OpenNextLesson(string currentLessonId)
+        {
+            var nextLessonId = GetNextLessonId(currentLessonId);
+            if (string.IsNullOrEmpty(nextLessonId))
+            {
+                return;
+            }
+            
+            var lessonProgress = GetProgressById(nextLessonId);
+            if (lessonProgress != null)
+            {
+                lessonProgress.IsOpen = true;
+            }
+            else
+            {
+                var newLessonProgress = new LessonProgress
+                {
+                    LessonId = nextLessonId,
+                    LastCompletedTaskId = string.Empty,
+                    IsComplete = false,
+                    IsOpen = true
+                };
+                
+            
+                _lessonsSaveData.Progress.Add(newLessonProgress);
+            }
+        }
+
+        public void SetSelectedLessonID(string lessonID)
         {
             _lessonsSaveData.SelectedLessonID = lessonID;
+            _saveService.MarkDirty();
+        }
+
+        public void ClearCompletedLessonData(string lessonID)
+        {
+            var lessonProgress = GetProgressById(lessonID);
+            if (lessonProgress == null)
+                return;
+            
+            lessonProgress.Clear();
+            lessonProgress.IsOpen = true;
             _saveService.MarkDirty();
         }
     }

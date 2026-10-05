@@ -2,6 +2,7 @@
 using CodeBase.Gameplay.Lessons.Saves;
 using CodeBase.Infrastructure.GameStateMachineService.StateMachine;
 using CodeBase.Infrastructure.GameStateMachineService.States;
+using CodeBase.Infrastructure.ProjectResourcesProvider;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.WindowsManagement.MVPBase;
 using R3;
@@ -17,14 +18,17 @@ namespace CodeBase.UI.LessonsListWindow
         private LessonsListView _view;
         private readonly LessonsGameDataProvider _lessonGameDataProvider;
 
-        public LessonsListPresenter(GameLessons model, LessonsListView view, ISaveService saveService, IGameStateMachine gameStateMachine) : base(view)
+        public LessonsListPresenter(GameLessons model, LessonsListView view, 
+            ISaveService saveService, 
+            IGameStateMachine gameStateMachine,
+            IProjectResourcesProvider resourcesProvider) : base(view)
         {
             _model = model;
             _view = view;
         
             _saveService = saveService;
             _gameStateMachine = gameStateMachine;
-            _lessonGameDataProvider = new LessonsGameDataProvider(saveService);
+            _lessonGameDataProvider = new LessonsGameDataProvider(saveService, resourcesProvider);
 
             _view.Initialize(_model.Lessons, _lessonGameDataProvider, OnLessonSelected);
             _view.CloseButton.OnClickAsObservable()
@@ -34,11 +38,14 @@ namespace CodeBase.UI.LessonsListWindow
 
         public void OnLessonSelected(string lessonID)
         {
-            // var lessonProgress = _saveService.SaveData.Lessons.Progress.Find(progress => progress.LessonId == lessonID);
-            // if (lessonProgress != null)
-            //     return; 
-            //
-            _lessonGameDataProvider.SetSellectedLessonID(lessonID);
+            var lessonProgress = _lessonGameDataProvider.GetProgressById(lessonID);
+            if (lessonProgress == null || lessonProgress.IsOpen == false)
+                return;
+            
+            if (lessonProgress != null && lessonProgress.IsComplete) 
+                _lessonGameDataProvider.ClearCompletedLessonData(lessonID); 
+            
+            _lessonGameDataProvider.SetSelectedLessonID(lessonID);
             _gameStateMachine.Enter<EnterGameplaySceneState>();
         }
 

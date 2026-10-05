@@ -72,7 +72,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2719894090850675406, guid: 82f815065105ccc499afc2a828858bfe, type: 3}
       propertyPath: m_Name
-      value: BaseObject Variant
+      value: Bus
       objectReference: {fileID: 0}
     - target: {fileID: 5668004582702422025, guid: 82f815065105ccc499afc2a828858bfe, type: 3}
       propertyPath: m_LocalPosition.x

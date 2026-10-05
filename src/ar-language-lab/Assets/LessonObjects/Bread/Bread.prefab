@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9127526260113304546}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.3205443, y: -0.6807535, z: -0.59589916, w: 0.28058922}
+  m_LocalRotation: {x: 0.5224695, y: -0.4828237, z: -0.45122597, w: -0.53879684}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3696343422854069787}
-  m_LocalEulerAnglesHint: {x: -97.605, y: 0, z: -129.57199}
+  m_LocalEulerAnglesHint: {x: -92.882, y: -75.975006, z: -201.322}
 --- !u!33 &5833742920636676800
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8433381247503362655, guid: 0da0726b075eb544086ec25b4fea6783, type: 3}
       propertyPath: m_Name
-      value: BaseObject Variant
+      value: Bread
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

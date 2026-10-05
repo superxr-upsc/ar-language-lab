@@ -5,5 +5,14 @@
         public string LessonId;
         public string LastCompletedTaskId;
         public bool IsComplete;
+        public bool IsOpen;
+
+        public void Clear()
+        {
+            LessonId = null;
+            LastCompletedTaskId = null;
+            IsComplete = false;
+            IsOpen = false;
+        }
     }
 }

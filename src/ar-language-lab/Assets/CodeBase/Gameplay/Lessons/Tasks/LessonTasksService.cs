@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using CodeBase.Gameplay.Lessons.Saves;
 using CodeBase.Gameplay.Lessons.Tasks.Extensions;
 using CodeBase.Gameplay.Lessons.Tasks.Resolvers;
@@ -86,7 +87,22 @@ namespace CodeBase.Gameplay.Lessons.Tasks
 
         private void BuildTasksQuery()
         {
-            _taskList = new Queue<TaskResolverBase>(_lessonConfig.Tasks.ToResolvers(_gameFactory));    
+            var tasks = _lessonConfig.Tasks;
+            var lastCompletedTask = _lessonGameDataProvider.GetLastCompletedTaskId(_lessonConfig.Id);
+
+            if (!string.IsNullOrEmpty(lastCompletedTask))
+            {
+                var tasksToRun = tasks
+                        .SkipWhile(task => task.Id != lastCompletedTask)
+                        .Skip(1)
+                        .ToArray();
+            
+                _taskList = new Queue<TaskResolverBase>(tasksToRun.ToResolvers(_gameFactory));    
+            }
+            else
+            {
+                _taskList = new Queue<TaskResolverBase>(tasks.ToResolvers(_gameFactory));    
+            }
         }
 
         private void OnTaskCompleted(TaskData taskData)

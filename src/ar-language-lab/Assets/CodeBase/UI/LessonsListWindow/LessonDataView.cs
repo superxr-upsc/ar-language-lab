@@ -20,6 +20,8 @@ namespace CodeBase.UI.LessonsListWindow
         [SerializeField] private TMP_Text _lessonName;
         [SerializeField] private TMP_Text _lessonDescription;
         [SerializeField] private TMP_Text _lessonProgressText;
+
+        [SerializeField] private GameObject _lockedScreen;
         
         private ILocalizationService _localizationService;
 
@@ -33,6 +35,7 @@ namespace CodeBase.UI.LessonsListWindow
         {
             _lessonIcon.sprite = lessonConfig.LessonIcon;
             _doneIcon.gameObject.SetActive(false);
+            _lockedScreen.gameObject.SetActive(true);
             
             UpdateLocalizedText(lessonConfig).Forget();
 
@@ -42,6 +45,11 @@ namespace CodeBase.UI.LessonsListWindow
             }
             else
             {
+                if (lessonProgress.IsComplete || lessonProgress.IsOpen)
+                {
+                    _lockedScreen.gameObject.SetActive(false);
+                }
+                
                 if (lessonProgress.IsComplete)
                 {
                     _lessonProgressText.gameObject.SetActive(false);

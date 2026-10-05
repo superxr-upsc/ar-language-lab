@@ -9,12 +9,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 3340622869529141546}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a0fb3978ac87ff14f8f992ea703a8988, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.64609
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a0fb3978ac87ff14f8f992ea703a8988, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.64609
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a0fb3978ac87ff14f8f992ea703a8988, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.64609
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a0fb3978ac87ff14f8f992ea703a8988, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0fb3978ac87ff14f8f992ea703a8988, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0955
+      value: 0.0604
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a0fb3978ac87ff14f8f992ea703a8988, type: 3}
       propertyPath: m_LocalPosition.z
@@ -71,6 +83,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 211214609843967025, guid: 6ea88590da3424e4da0212563b58eb2d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 211214609843967025, guid: 6ea88590da3424e4da0212563b58eb2d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 211214609843967025, guid: 6ea88590da3424e4da0212563b58eb2d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 211214609843967025, guid: 6ea88590da3424e4da0212563b58eb2d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -110,9 +134,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 460902001892558040, guid: 6ea88590da3424e4da0212563b58eb2d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7636328094441826038, guid: 6ea88590da3424e4da0212563b58eb2d, type: 3}
       propertyPath: m_Name
-      value: BaseObject Variant
+      value: T-Shirt
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

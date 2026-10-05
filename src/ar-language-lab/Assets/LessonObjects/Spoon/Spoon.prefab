@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e33167aae6ff6f2499674b7cfe57c468, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.99
+      value: 0.8029494
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e33167aae6ff6f2499674b7cfe57c468, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.99
+      value: 0.8029494
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e33167aae6ff6f2499674b7cfe57c468, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.99
+      value: 0.8029494
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e33167aae6ff6f2499674b7cfe57c468, type: 3}
       propertyPath: m_LocalPosition.x
@@ -128,7 +128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4650202748260737637, guid: d44cd89cd6e20d84488a70b58a7fc5cc, type: 3}
       propertyPath: m_Name
-      value: BaseObject Variant
+      value: Spoon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

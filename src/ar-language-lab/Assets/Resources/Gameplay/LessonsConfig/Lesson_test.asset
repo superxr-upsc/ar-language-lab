@@ -17,12 +17,16 @@ MonoBehaviour:
   LessonNameKey: ind_lesson_1_name
   LessonDescriptionKey: ind_lesson_1_description
   ObjectsToUse:
+  - {fileID: 11400000, guid: cf33a6e0c86f9ae42b7241e28b9e6140, type: 2}
   - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
+  - {fileID: 11400000, guid: 1d709ad34270ca940ac4b2cece9f62e5, type: 2}
+  - {fileID: 11400000, guid: af36635f9e4481440bbe61a021229339, type: 2}
   Tasks:
   - Id: TD_a8c8c2d18e88431085e6659e7cc84b7b
     Type: 1
     DescriptionLocalizationKey: ind_l1_t1
     TargetObjects:
     - {fileID: 11400000, guid: a9e0f277c13000e41b2b3c79764d545d, type: 2}
-    SecondaryTargetObjects: []
-    RequiredSide: 0
+    SecondaryTargetObjects:
+    - {fileID: 11400000, guid: af36635f9e4481440bbe61a021229339, type: 2}
+    RequiredSide: 1

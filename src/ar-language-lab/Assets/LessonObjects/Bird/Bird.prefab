@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8673383312050995095, guid: 01d396283b9de544d9a3d99a95ac472f, type: 3}
       propertyPath: m_Name
-      value: BaseObject Variant
+      value: Bird
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -84,7 +84,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0f51385bd9f19a548ab8e33f4e4051c4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.030266546
+      value: -0.0055
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0f51385bd9f19a548ab8e33f4e4051c4, type: 3}
       propertyPath: m_LocalRotation.w

@@ -56,7 +56,7 @@ namespace CodeBase.Gameplay.Lessons
 
         public void SetupLesson()
         {
-            _lessonGameDataProvider = new LessonsGameDataProvider(_saveService);
+            _lessonGameDataProvider = new LessonsGameDataProvider(_saveService, _resourcesProvider);
             _lessonConfig = GetSelectedLesson();
 
             SetupGameplayObjects();

@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 1380562035379859011}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ff398d47970015d4096ca5d8035ba643, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.79671
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ff398d47970015d4096ca5d8035ba643, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.79671
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ff398d47970015d4096ca5d8035ba643, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.79671
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ff398d47970015d4096ca5d8035ba643, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -112,7 +124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6545784053018991282, guid: 1b9907491953a884fa744f66f2da6ce6, type: 3}
       propertyPath: m_Name
-      value: BaseObject Variant
+      value: Notebook
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

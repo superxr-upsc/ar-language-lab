@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7625466175986256213, guid: dcb2be7cd8f940c4c91cd088bba6e923, type: 3}
       propertyPath: m_Name
-      value: BaseObject Variant
+      value: Stove
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -75,16 +75,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 8774751407402792549}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: dd994c04850b2b148bc245a15f87612e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.77019
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd994c04850b2b148bc245a15f87612e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.77019
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd994c04850b2b148bc245a15f87612e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.77019
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dd994c04850b2b148bc245a15f87612e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd994c04850b2b148bc245a15f87612e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0823
+      value: -0.0776
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd994c04850b2b148bc245a15f87612e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.0039
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dd994c04850b2b148bc245a15f87612e, type: 3}
       propertyPath: m_LocalRotation.w

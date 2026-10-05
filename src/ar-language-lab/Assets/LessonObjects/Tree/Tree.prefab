@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cec67db5e2cc7d941bc2bdb19fd421ec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0756
+      value: -0.059
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cec67db5e2cc7d941bc2bdb19fd421ec, type: 3}
       propertyPath: m_LocalPosition.z
@@ -84,7 +84,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1731086981575642567, guid: f753d0f6f7f17254ea2aecaab78053f6, type: 3}
       propertyPath: m_Name
-      value: BaseObject Variant
+      value: Tree
       objectReference: {fileID: 0}
     - target: {fileID: 8291622865850842880, guid: f753d0f6f7f17254ea2aecaab78053f6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -124,6 +124,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8291622865850842880, guid: f753d0f6f7f17254ea2aecaab78053f6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8618432200482123753, guid: f753d0f6f7f17254ea2aecaab78053f6, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

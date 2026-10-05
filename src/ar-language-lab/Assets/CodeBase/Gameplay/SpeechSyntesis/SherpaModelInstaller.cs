@@ -10,14 +10,14 @@ namespace CodeBase.Gameplay.SpeechSyntesis
 {
     public sealed class SherpaModelInstaller
     {
-        private const string ModelId =
+        public const string ModelId =
             "vits-piper-en_GB-sweetbbak-amy";
 
         private const string StreamingAssetZip =
-            "sherpa-models/vits-piper-en_GB-sweetbbak-amy.zip";
+            "sherpa-models/" + ModelId + ".zip";
 
         private const string ModelRelativePath =
-            "sherpa-onnx/models/speech-synthesis/vits-piper-en_GB-sweetbbak-amy";
+            "sherpa-onnx/models/speech-synthesis/" + ModelId;
 
         private const string InstallMarker =
             ".installed";

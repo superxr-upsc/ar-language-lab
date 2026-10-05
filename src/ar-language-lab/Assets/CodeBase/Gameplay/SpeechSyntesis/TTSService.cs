@@ -11,13 +11,13 @@ namespace CodeBase.Gameplay.SpeechSyntesis
     [RequireComponent(typeof(SpeechSynthesizerComponent))]
     public class TTSService : MonoBehaviour, ITTSService
     {
-        private const string DefaultModelId = "vits-piper-en_GB-sweetbbak-amy";
         private const int InitializationTimeoutSeconds = 45;
 
         private SpeechSynthesizerComponent _synthesizer;
         private UniTaskCompletionSource _initializeSource;
         private SherpaModelInstaller _modelInstaller;
-        
+
+        private string _defaultModelId => SherpaModelInstaller.ModelId;
         private bool _isInitialized;
         private int _initAttemptCounter;
 
@@ -56,7 +56,7 @@ namespace CodeBase.Gameplay.SpeechSyntesis
             
             try
             {
-                _synthesizer.ModelId = DefaultModelId;
+                _synthesizer.ModelId = _defaultModelId;
                 
                 await _modelInstaller.EnsureInstalledAsync();
 
