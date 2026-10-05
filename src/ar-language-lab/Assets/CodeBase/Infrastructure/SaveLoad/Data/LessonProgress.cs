@@ -9,7 +9,6 @@
 
         public void Clear()
         {
-            LessonId = null;
             LastCompletedTaskId = null;
             IsComplete = false;
             IsOpen = false;

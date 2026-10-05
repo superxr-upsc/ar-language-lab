@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: GameLessons
   m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.Lessons.GameLessons
   Lessons:
-  - {fileID: 11400000, guid: e5516ef8c6dc19d4ba10e0d3a02e0825, type: 2}
   - {fileID: 11400000, guid: 4aaf8b70f35b7194da1eefaea103b48c, type: 2}
   - {fileID: 11400000, guid: a8bc284752df47d46b7ce379e144f081, type: 2}
   - {fileID: 11400000, guid: 13ea3e2dc84c8884ab0a67d3ced87c42, type: 2}
