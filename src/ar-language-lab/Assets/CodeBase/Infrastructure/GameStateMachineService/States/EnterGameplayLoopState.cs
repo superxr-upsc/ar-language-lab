@@ -1,9 +1,12 @@
-﻿using CodeBase.Gameplay.Lessons;
+using System;
+using System.Threading;
+using CodeBase.Gameplay.Lessons;
 using CodeBase.Infrastructure.EventBroker;
 using CodeBase.Infrastructure.EventBroker.Handlers;
 using CodeBase.Infrastructure.GameStateMachineService.StateInfrastructure;
 using CodeBase.Infrastructure.Loading;
 using CodeBase.Infrastructure.Vuforia;
+using Cysharp.Threading.Tasks;
 
 namespace CodeBase.Infrastructure.GameStateMachineService.States
 {
@@ -13,6 +16,8 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
         private readonly IVuforiaService _vuforiaService;
         private readonly ILessonManagementService _lessonManagementService;
         private readonly ISceneLoader _sceneLoader;
+
+        private CancellationTokenSource _stateCts;
 
         public EnterGameplayLoopState(IEventBrokerService eventBrokerService,
             IVuforiaService vuforiaService,
@@ -28,22 +33,54 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
         public override void Enter()
         {
             base.Enter();
+
+            CancelStateCts();
+            _stateCts = new CancellationTokenSource();
             
-            _sceneLoader.UpdateProgress(1f, "");
-            _vuforiaService.SetupVuforiaBehaviour();
-            _lessonManagementService.SetupLesson();
-            
-            _eventBrokerService.Rise<IGameLoopInitializable>(x => x.OnGameLoopInitialized());
-            _sceneLoader.CloseLoadingScreen();
-            _lessonManagementService.StartLesson();
+            SetupLesson(_stateCts.Token)
+                .Forget();
         }
 
         protected override void Exit()
         {
+            CancelStateCts();
             _lessonManagementService.CleanupLesson();
             
             _eventBrokerService.Rise<IGameLoopDisposable>(x => x.OnGameLoopDisposed());
             base.Exit();
+        }
+
+        private async UniTaskVoid SetupLesson(CancellationToken cancellationToken)
+        {
+            try
+            {
+                _vuforiaService.SetupVuforiaBehaviour();
+                _sceneLoader.UpdateProgress(0.9f, "Preparing lesson...");
+                
+                await _lessonManagementService.SetupLesson();
+
+                if (cancellationToken.IsCancellationRequested)
+                    return;
+
+                _sceneLoader.UpdateProgress(1f, string.Empty);
+
+                _eventBrokerService.Rise<IGameLoopInitializable>(x => x.OnGameLoopInitialized());
+                _sceneLoader.CloseLoadingScreen();
+                _lessonManagementService.StartLesson();
+            }
+            catch (OperationCanceledException)
+            {
+            }
+        }
+
+        private void CancelStateCts()
+        {
+            if (_stateCts == null)
+                return;
+
+            _stateCts.Cancel();
+            _stateCts.Dispose();
+            _stateCts = null;
         }
     }
 }

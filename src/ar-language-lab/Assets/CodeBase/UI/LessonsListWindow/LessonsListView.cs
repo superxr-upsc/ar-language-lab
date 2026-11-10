@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using CodeBase.Gameplay.Lessons;
 using CodeBase.Gameplay.Lessons.Saves;
+using CodeBase.Gameplay.Lessons.Tasks;
 using CodeBase.Infrastructure.GameFactory;
-using CodeBase.Infrastructure.SaveLoad.Data;
 using CodeBase.Infrastructure.WindowsManagement.MVPBase;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -14,6 +14,7 @@ namespace CodeBase.UI.LessonsListWindow
     public class LessonsListView : ViewBase
     { 
         public Button CloseButton;
+        public TMP_Dropdown PerspectiveDropDown;
         
         [SerializeField] private LessonDataView _lessonDataViewPrefab;
         [SerializeField] private Transform _lessonsListContainer;
@@ -26,8 +27,10 @@ namespace CodeBase.UI.LessonsListWindow
             _gameFactory = gameFactory;
         }
         
-        public void Initialize(LessonConfig[] modelLessons, LessonsGameDataProvider lessonsProgress, Action<string> onLessonSelected)
+        public void Initialize(LessonConfig[] modelLessons, LessonsGameDataProvider lessonsProgress, Perspective perspective, Action<string> onLessonSelected)
         {
+            PerspectiveDropDown.SetValueWithoutNotify((int)perspective);
+            
             CreateLessonsList(modelLessons, lessonsProgress, onLessonSelected);
         }
 

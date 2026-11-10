@@ -1,10 +1,14 @@
 ﻿using CodeBase.Gameplay.ARObjects;
+using CodeBase.Gameplay.Lessons.Tasks;
+using Cysharp.Threading.Tasks;
 
 namespace CodeBase.Gameplay.Lessons
 {
     public interface ILessonManagementService
     {
-        void SetupLesson();
+        UniTask SetupLesson();
+        void SetPerspective(Perspective perspective);
+        Perspective GetPerspective();
         void CleanupLesson();
         void StartLesson();
         void LoadMainMenu();

@@ -14858,3 +14858,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc47e0dbd0548e78abca75453f5c19f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.ARObjects.ARObjectBase
+  _objectView: {fileID: 2946198780359262450}
+  _invisibleMaterial: {fileID: 2100000, guid: 357949be85aecb44d95243edc7f962ad, type: 2}

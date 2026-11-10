@@ -1,4 +1,6 @@
-﻿using CodeBase.Gameplay.SpeechSyntesis;
+﻿using CodeBase.Gameplay.Lessons;
+using CodeBase.Gameplay.Lessons.Tasks;
+using CodeBase.Gameplay.SpeechSyntesis;
 using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.Vuforia;
 using CodeBase.Infrastructure.WindowsManagement.MVPBase;
@@ -14,17 +16,20 @@ namespace CodeBase.UI.Tasks
         private readonly ActiveTaskView _viewBase;
         private readonly ILocalizationService _localizationService;
         private readonly Speaker _speaker;
+        private readonly ILessonManagementService _lessonManagementService;
 
         public ReactiveProperty<bool> Translated { get; }
 
         public ActiveTaskPresenter(ActiveTaskData model, ActiveTaskView viewBase,
             IARCameraProvider arCameraProvider,
-            ILocalizationService localizationService) : base(viewBase)
+            ILocalizationService localizationService,
+            ILessonManagementService lessonManagementService) : base(viewBase)
         {
             _model = model;
             _viewBase = viewBase;
             _localizationService = localizationService;
             _speaker = arCameraProvider.GetSpeaker();
+            _lessonManagementService = lessonManagementService;
 
             Translated = new ReactiveProperty<bool>(false);
             Translated.AddTo(_compositeDisposable);
@@ -32,7 +37,7 @@ namespace CodeBase.UI.Tasks
             _viewBase.SetTaskDescription(model.TaskDescription);
             
             model.CurrentProgress
-                .Subscribe(progress => viewBase.UpdateProgressBar(progress))
+                .Subscribe(viewBase.UpdateProgressBar)
                 .AddTo(_compositeDisposable);
 
             _viewBase.PlayAudioButton
@@ -44,8 +49,16 @@ namespace CodeBase.UI.Tasks
                 .OnClickAsObservable()
                 .Subscribe(_ => TranslateTaskDescription())
                 .AddTo(_compositeDisposable);
+            
+            if (_lessonManagementService.GetPerspective() == Perspective.Video)
+                HideAudioButtonForVisualPerspective();
         }
 
+        private void HideAudioButtonForVisualPerspective()
+        {
+            _viewBase.PlayAudioButton.gameObject.SetActive(false);
+        }
+        
         public void UpdateTaskDescription(string taskDescription) => 
             _viewBase.SetTaskDescription(taskDescription);
         

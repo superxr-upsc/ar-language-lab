@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c95147ea2565466c978787349a3ec315, type: 3}
   m_Name: Lesson3
   m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Gameplay.Lessons.LessonConfig
-  Id: LC_e938dccd588c4ba0b23a85ec8eec5fca
+  Id: LC_8a3cac78fee446a295e6e751c87e7297
   LessonIcon: {fileID: 21300000, guid: 40263fc617caf494ba70b05a1efd6edd, type: 3}
   LessonNameKey: ind_lesson_3_name
   LessonDescriptionKey: ind_lesson_3_description

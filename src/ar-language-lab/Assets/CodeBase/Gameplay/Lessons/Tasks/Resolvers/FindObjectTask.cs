@@ -25,8 +25,9 @@ namespace CodeBase.Gameplay.Lessons.Tasks.Resolvers
             ILocalizationService localization, 
             ILessonManagementService lessonManagementService,
             IVisualFXPlayer visualFXPlayer,
-            IProjectResourcesProvider projectResourcesProvider) 
-            : base(taskData, cameraProvider)
+            IProjectResourcesProvider projectResourcesProvider,
+            Perspective perspective) 
+            : base(taskData, cameraProvider, perspective)
         {
             _lessonManagementService = lessonManagementService;
             _visualFXPlayer = visualFXPlayer;

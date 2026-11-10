@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Threading;
 using CodeBase.Gameplay.ARObjects;
 using CodeBase.Gameplay.Lessons.Saves;
 using CodeBase.Gameplay.Lessons.Tasks;
@@ -13,6 +14,7 @@ using CodeBase.Infrastructure.StaticData;
 using CodeBase.Infrastructure.Vuforia;
 using CodeBase.Infrastructure.WindowsManagement;
 using CodeBase.UI.LessonCompleteWindow;
+using Cysharp.Threading.Tasks;
 using Vuforia;
 
 namespace CodeBase.Gameplay.Lessons
@@ -28,12 +30,14 @@ namespace CodeBase.Gameplay.Lessons
         private readonly IGameStateMachine _gameStateMachine;
         private readonly IWindowsManagementService _windowsManagementService;
 
+        private Perspective _perspective = Perspective.None;
         private LessonConfig _lessonConfig;
         private LessonsGameDataProvider _lessonGameDataProvider;
 
         private Dictionary<MultiTargetBehaviour, ARObjectBase> _lessonObjects = new();
 
         private LessonTasksService _lessonTasksService;
+        private CancellationTokenSource _lessonCts;
 
         public LessonManagementService(IGameFactory gameFactory,
             IProjectResourcesProvider resourcesProvider,
@@ -54,19 +58,32 @@ namespace CodeBase.Gameplay.Lessons
             _windowsManagementService = windowsManagementService;
         }
 
-        public void SetupLesson()
+        public void SetPerspective(Perspective perspective) => 
+            _perspective = perspective;
+        
+        public Perspective GetPerspective() => 
+            _perspective;
+
+        public async UniTask SetupLesson()
         {
+            ResetLessonCancellationToken();
+            var cancellationToken = _lessonCts.Token;
+
             _lessonGameDataProvider = new LessonsGameDataProvider(_saveService, _resourcesProvider);
             _lessonConfig = GetSelectedLesson();
 
-            SetupGameplayObjects();
-            SetupQuests();
+            await SetupGameplayObjectsAsync(cancellationToken);
+            await SetupQuestsAsync(cancellationToken);
         }
 
         public void StartLesson()
         {
-            _lessonTasksService.SelectAndRunNewTask();
+            if (_lessonTasksService == null || (_lessonCts != null && _lessonCts.IsCancellationRequested))
+                return;
+
             _lessonTasksService.OnLessonComplete += OnLessonComplete;
+            _lessonTasksService.SelectAndRunNewTask();
+            _lessonTasksService.StartBackgroundTasksCaching(_lessonCts?.Token ?? CancellationToken.None);
         }
 
         public ARObjectBase GetObject(ARObjectConfig config)
@@ -82,6 +99,9 @@ namespace CodeBase.Gameplay.Lessons
 
         public void CleanupLesson()
         {
+            CancelLessonCancellationToken();
+            _arCameraProvider.GetSpeaker()?.Stop();
+
             if (_lessonTasksService != null)
             {
                 _lessonTasksService.OnLessonComplete -= OnLessonComplete;
@@ -108,12 +128,20 @@ namespace CodeBase.Gameplay.Lessons
 
         private LessonConfig GetSelectedLesson()
         {
-            var gameLessons = _resourcesProvider.LoadResource<GameLessons>();
+            var path = "Gameplay";
+            if (_perspective == Perspective.Audio)
+            {
+                path = "Gameplay/AudioPerspective";
+            }
+            
+            var gameLessons = _resourcesProvider.LoadResource<GameLessons>(path);
             return gameLessons.GetLesson(_saveService.SaveData.Lessons.SelectedLessonID);
         }
 
         private void OnLessonComplete()
         {
+            CancelLessonCancellationToken();
+
             _vuforiaService.SetVuforiaState(false);
             _vuforiaService.SetDeviceFlashTorch(false);
             
@@ -123,18 +151,31 @@ namespace CodeBase.Gameplay.Lessons
                     (UILayer.NotificationLayer, new LessonCompleteData());
         }
 
-        private void SetupGameplayObjects()
+        private async UniTask SetupGameplayObjectsAsync(CancellationToken cancellationToken)
         {
+            var createdObjects = new List<ARObjectBase>(_lessonConfig.ObjectsToUse.Length);
+
             for (var index = 0; index < _lessonConfig.ObjectsToUse.Length; index++)
             {
+                cancellationToken.ThrowIfCancellationRequested();
+
                 var arObjectConfig = _lessonConfig.ObjectsToUse[index];
-                CreateArObject(arObjectConfig, index);
+                var arObject = CreateArObject(arObjectConfig, index);
+                if (arObject != null)
+                    createdObjects.Add(arObject);
+            }
+
+            foreach (var arObject in createdObjects)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await arObject.CacheLocalizationAsync(cancellationToken);
             }
         }
 
-        private void SetupQuests()
+        private async UniTask SetupQuestsAsync(CancellationToken cancellationToken)
         {
-            _lessonTasksService = _gameFactory.Create<LessonTasksService>(_lessonConfig, _lessonGameDataProvider);
+            _lessonTasksService = _gameFactory.Create<LessonTasksService>(_lessonConfig, _lessonGameDataProvider, _perspective);
+            await _lessonTasksService.PreloadInitialTasksAsync(cancellationToken);
         }
 
         private ARObjectBase CreateArObject(ARObjectConfig arObjectConfig, int index)
@@ -149,11 +190,31 @@ namespace CodeBase.Gameplay.Lessons
                 _windowsManagementService,
                 _localizationService, 
                 target.GetComponent<ARObjectObserver>(),
-                _arCameraProvider.GetSpeaker());
+                _arCameraProvider.GetSpeaker(),
+                _perspective);
             
             _lessonObjects[target] = arObject;
+
+            if (_perspective == Perspective.Audio)
+                arObject.HideObjectViewForAudioPerspective();
             
             return arObject;
+        }
+
+        private void ResetLessonCancellationToken()
+        {
+            CancelLessonCancellationToken();
+            _lessonCts = new CancellationTokenSource();
+        }
+
+        private void CancelLessonCancellationToken()
+        {
+            if (_lessonCts == null)
+                return;
+
+            _lessonCts.Cancel();
+            _lessonCts.Dispose();
+            _lessonCts = null;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using CodeBase.Gameplay.ARObjects.UI;
+using System.Threading;
+using CodeBase.Gameplay.ARObjects.UI;
+using CodeBase.Gameplay.Lessons.Tasks;
 using CodeBase.Gameplay.SpeechSyntesis;
 using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.WindowsManagement;
@@ -10,27 +12,32 @@ namespace CodeBase.Gameplay.ARObjects
     public class ARObjectBase : MonoBehaviour
     {
         public ARObjectObserver Observer => _observer;
+        public GameObject _objectView;
+        public Material _invisibleMaterial;
 
         private IWindowsManagementService _windowsManagementService;
         private ILocalizationService _localization;
         private ARObjectObserver _observer;
         private Speaker _speaker;
-        
+
         private ARObjectPresenter _presenter;
 
         private ARObjectConfig _data;
         private ARObjectViewData _model;
+        private Perspective _perspective;
 
         public void Initialize(ARObjectConfig arObjectConfig, 
             IWindowsManagementService windowsManagementService,
             ILocalizationService localization,
             ARObjectObserver observer,
-            Speaker speaker)
+            Speaker speaker,
+            Perspective perspective)
         {
             _data = arObjectConfig;
             _speaker = speaker;
             _localization = localization;
             _observer = observer;
+            _perspective = perspective;
             _windowsManagementService = windowsManagementService;
             
             _observer.NearCameraEntered += NotifyNearCameraEntered;
@@ -41,16 +48,19 @@ namespace CodeBase.Gameplay.ARObjects
             _model = new ARObjectViewData();
 
             _observer.SetupRenderers();
-            
-            CacheLicalization()
-                .Forget();
         }
 
-        private async UniTaskVoid CacheLicalization()
+        public async UniTask CacheLocalizationAsync(CancellationToken cancellationToken = default)
         {
             _model.LocalizationKey = _data.LocalisationKey;
-            _model.Name = await _localization.GetStringAsync(_data.LocalisationKey, LocalizationConsts.DefaultLocaleCode, LocalizationConsts.DefaultStringTableName);
-            _model.AudioClip = await _speaker.GenerateAudioClipAsync(_model.Name);
+            _model.Name = await _localization.GetStringAsync(
+                _data.LocalisationKey,
+                LocalizationConsts.DefaultLocaleCode,
+                LocalizationConsts.DefaultStringTableName);
+
+            cancellationToken.ThrowIfCancellationRequested();
+
+            _model.AudioClip = await _speaker.GenerateAudioClipAsync(_model.Name, cancellationToken);
         }
 
         public bool IsEqualTo(ARObjectConfig arObjectConfig) => 
@@ -62,6 +72,15 @@ namespace CodeBase.Gameplay.ARObjects
             _observer.NearCameraExited -= NotifyNearCameraExited;
         }
 
+        public void HideObjectViewForAudioPerspective()
+        {
+            var renderers = _objectView.GetComponentsInChildren<Renderer>(false);
+            foreach (var renderer in renderers)
+            {
+                renderer.sharedMaterial = _invisibleMaterial;
+            }
+        }
+        
         private void NotifyNearCameraExited()
         {
             if (_presenter == null) 
@@ -79,6 +98,9 @@ namespace CodeBase.Gameplay.ARObjects
             _presenter ??=
                 _windowsManagementService.CreateWindow<ARObjectPresenter, ARObjectView, ARObjectViewData>(UILayer.InformationLayer,
                     _model);
+
+            if (_perspective is Perspective.Audio or Perspective.Mix)
+                _speaker.Speak(_model.AudioClip);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Eitan.Sherpa.Onnx.Unity.Mono.Components;
+using Eitan.Sherpa.Onnx.Unity.Mono.Components;
 using System;
 using System.Threading;
 using CodeBase.Common.LoggerService;
@@ -95,14 +95,19 @@ namespace CodeBase.Gameplay.SpeechSyntesis
             await initializationTask;
         }
 
-        public async UniTask<AudioClip> GenerateAudioClip(string text)
+        public async UniTask<AudioClip> GenerateAudioClip(string text, CancellationToken cancellationToken = default)
         {
             if (_isInitialized)
-                return await _synthesizer.GenerateClipAsync(text.Trim());
+                return await _synthesizer.GenerateClipAsync(text.Trim(), cancellationToken: cancellationToken);
 
             GameLogger.LogWarning("TTS Service is not initialized. Cannot generate audio clip.");
             return null;
+        }
 
+        public void CancelActiveGeneration()
+        {
+            if (_synthesizer != null)
+                _synthesizer.CancelActiveGeneration();
         }
 
         private void OnDestroy()

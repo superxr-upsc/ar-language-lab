@@ -1,5 +1,6 @@
 ﻿using CodeBase.Common.LoggerService;
 using CodeBase.Gameplay.Lessons;
+using CodeBase.Gameplay.Lessons.Tasks;
 using CodeBase.Infrastructure.ProjectResourcesProvider;
 using CodeBase.Infrastructure.WindowsManagement;
 using CodeBase.Infrastructure.WindowsManagement.MVPBase;
@@ -18,12 +19,16 @@ namespace CodeBase.UI
 
         private IWindowsManagementService _windowsManagementService;
         private IProjectResourcesProvider _projectResourcesProvider;
+        private ILessonManagementService _lessonManagementService;
 
         [Inject]
-        private void Construct(IWindowsManagementService windowsManagementService, IProjectResourcesProvider projectResourcesProvider)
+        private void Construct(IWindowsManagementService windowsManagementService, 
+            IProjectResourcesProvider projectResourcesProvider,
+            ILessonManagementService lessonManagementService)
         {
             _windowsManagementService = windowsManagementService;
             _projectResourcesProvider = projectResourcesProvider;
+            _lessonManagementService = lessonManagementService;
             
             _playButton.onClick.AddListener(OnPlayButtonPressed);
             _settingsButton.onClick.AddListener(OnSettingsButtonPressed);
@@ -39,7 +44,13 @@ namespace CodeBase.UI
         
         private void OnPlayButtonPressed()
         {
-            var gameLessonsData = _projectResourcesProvider.LoadResource<GameLessons>();
+            var path = "Gameplay";
+            if (_lessonManagementService.GetPerspective() == Perspective.Audio)
+            {
+                path = "Gameplay/AudioPerspective";
+            }
+            
+            var gameLessonsData = _projectResourcesProvider.LoadResource<GameLessons>(path);
             _windowsManagementService.CreateWindow<LessonsListPresenter, LessonsListView, GameLessons>(
                 UILayer.NotificationLayer, gameLessonsData);
         }

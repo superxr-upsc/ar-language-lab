@@ -1,4 +1,5 @@
-﻿using Cysharp.Threading.Tasks;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace CodeBase.Gameplay.SpeechSyntesis
@@ -7,6 +8,7 @@ namespace CodeBase.Gameplay.SpeechSyntesis
     {
         bool IsInitialized { get; }
         UniTask InitializeAsync();
-        UniTask<AudioClip> GenerateAudioClip(string text);
+        UniTask<AudioClip> GenerateAudioClip(string text, CancellationToken cancellationToken = default);
+        void CancelActiveGeneration();
     }
 }
