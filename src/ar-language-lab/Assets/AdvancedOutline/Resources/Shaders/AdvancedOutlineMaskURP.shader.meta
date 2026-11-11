@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: c05fc2ac70c32c944b576462f447bddb
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 384346
+  packageName: Advanced Outline Shader
+  packageVersion: 1.1.0
+  assetPath: Assets/AdvancedOutline/Resources/Shaders/AdvancedOutlineMaskURP.shader
+  uploadId: 1033698

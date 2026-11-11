@@ -748,6 +748,7 @@ GameObject:
   - component: {fileID: 8212013655735630655}
   - component: {fileID: 2729633019429014622}
   - component: {fileID: 2087823419347631733}
+  - component: {fileID: 6404294144775996266}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -874,6 +875,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6404294144775996266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752655809817760468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: befe6fae79ec73f4b981d3db1758e038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Infrastructure.Localization.Localisation.LocalizedTMPText
+  _localizationId: ind_perspective_settings
+  _tmpText: {fileID: 2087823419347631733}
 --- !u!1 &3420733926881044421
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,6 +901,7 @@ GameObject:
   - component: {fileID: 9085129045942353331}
   - component: {fileID: 8670415282970784125}
   - component: {fileID: 5530005072425594321}
+  - component: {fileID: 8535807287360873955}
   m_Layer: 5
   m_Name: Perspective
   m_TagString: Untagged
@@ -1021,6 +1037,24 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AlphaFadeSpeed: 0.15
+--- !u!114 &8535807287360873955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3420733926881044421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0af5fa909c44d241a9520c0a7db9b5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Infrastructure.Localization.Localisation.LocalizedTMPDropdown
+  _localizationIds:
+  - ind_perspective_standart
+  - ind_perspective_audio
+  - ind_perspective_video
+  - ind_perspective_mixed
+  _tmpDropdown: {fileID: 5530005072425594321}
 --- !u!1 &3421587482832739857
 GameObject:
   m_ObjectHideFlags: 0

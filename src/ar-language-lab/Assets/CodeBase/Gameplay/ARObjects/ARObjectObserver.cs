@@ -56,6 +56,24 @@ namespace CodeBase.Gameplay.ARObjects
         public void SetupRenderers() => 
             SetupCoverageSources();
 
+        public bool IsInView()
+        {
+            if (!_isTracked)
+                return false;
+
+            var targetCamera = _cameraProvider?.GetActiveCamera();
+            if (targetCamera == null)
+                return false;
+
+            if (TryCalculateCoverageBounds(out var bounds))
+                return TryCalculateViewportRect(targetCamera, bounds, out _);
+
+            var viewportPoint = targetCamera.WorldToViewportPoint(transform.position);
+            return viewportPoint.z > 0f &&
+                   viewportPoint.x is >= 0f and <= 1f &&
+                   viewportPoint.y is >= 0f and <= 1f;
+        }
+
         public void ChangeEnterTrackingMaxDistance(float distance) => 
             _enterCoverage = Mathf.Clamp01(distance);
         

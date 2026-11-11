@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using CodeBase.Gameplay.Lessons;
+using CodeBase.Gameplay.Lessons.Tasks;
 using CodeBase.Infrastructure.EventBroker;
 using CodeBase.Infrastructure.EventBroker.Handlers;
 using CodeBase.Infrastructure.GameStateMachineService.StateInfrastructure;
@@ -66,7 +67,11 @@ namespace CodeBase.Infrastructure.GameStateMachineService.States
 
                 _eventBrokerService.Rise<IGameLoopInitializable>(x => x.OnGameLoopInitialized());
                 _sceneLoader.CloseLoadingScreen();
-                _lessonManagementService.StartLesson();
+
+                if (_lessonManagementService.GetPerspective() == Perspective.Audio)
+                    _lessonManagementService.StartAudioLesson();
+                else
+                    _lessonManagementService.StartLesson();
             }
             catch (OperationCanceledException)
             {

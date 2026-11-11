@@ -7,8 +7,8 @@ namespace CodeBase.Infrastructure.Vuforia
     {
         private ARCamera _cachedCamera;
 
-        public Speaker GetSpeaker() => GetCachedArCamera().Speaker;
-        public Camera GetActiveCamera() => GetCachedArCamera().Camera;
+        public Speaker GetSpeaker() => GetCachedArCamera()?.Speaker;
+        public Camera GetActiveCamera() => GetCachedArCamera()?.Camera;
         public ARCamera GetActiveARCamera() => GetCachedArCamera();
 
         private ARCamera GetCachedArCamera()
@@ -18,7 +18,11 @@ namespace CodeBase.Infrastructure.Vuforia
                 return _cachedCamera;
             }
 
-            _cachedCamera = Camera.main.GetComponent<ARCamera>();
+            if (Camera.main != null)
+            {
+                Camera.main.TryGetComponent(out _cachedCamera);
+            }
+
             if (_cachedCamera != null)
             {
                 return _cachedCamera;

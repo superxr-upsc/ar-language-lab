@@ -44,13 +44,7 @@ namespace CodeBase.UI
         
         private void OnPlayButtonPressed()
         {
-            var path = "Gameplay";
-            if (_lessonManagementService.GetPerspective() == Perspective.Audio)
-            {
-                path = "Gameplay/AudioPerspective";
-            }
-            
-            var gameLessonsData = _projectResourcesProvider.LoadResource<GameLessons>(path);
+            var gameLessonsData = _projectResourcesProvider.LoadResource<GameLessons>();
             _windowsManagementService.CreateWindow<LessonsListPresenter, LessonsListView, GameLessons>(
                 UILayer.NotificationLayer, gameLessonsData);
         }

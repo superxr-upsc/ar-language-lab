@@ -23,7 +23,6 @@ MonoBehaviour:
   m_HasScriptingDefines: 1
   m_ScriptingDefines:
   - DEBUG_LOGS_ENABLED
-  - WITHOUT_PERSPECTIVE
   m_PlayerSettingsYaml:
     m_Settings: []
   references:

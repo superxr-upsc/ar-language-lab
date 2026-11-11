@@ -854,6 +854,31 @@ MonoBehaviour:
     m_Localized: Continue
     m_Metadata:
       m_Items: []
+  - m_Id: 38085260904398848
+    m_Localized: 'Perspective :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38085347873292288
+    m_Localized: Standart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38085357662797824
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38085501258989568
+    m_Localized: Video
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38085530837221376
+    m_Localized: Mixed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38088893121331200
+    m_Localized: Task {taskNumber}
+    m_Metadata:
+      m_Items:
+      - rid: 2027872775275544659
   references:
     version: 2
     RefIds:
@@ -882,3 +907,4 @@ MonoBehaviour:
         - id: 20310209094385664
         - id: 20310221673103360
         - id: 20310232506990592
+        - id: 38088893121331200

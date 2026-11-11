@@ -13,6 +13,7 @@ namespace CodeBase.Gameplay.ARObjects
     {
         public ARObjectObserver Observer => _observer;
         public GameObject _objectView;
+        public GameObject _outlineObject;
         public Material _invisibleMaterial;
 
         private IWindowsManagementService _windowsManagementService;
@@ -40,13 +41,11 @@ namespace CodeBase.Gameplay.ARObjects
             _perspective = perspective;
             _windowsManagementService = windowsManagementService;
             
-            _observer.NearCameraEntered += NotifyNearCameraEntered;
-            _observer.NearCameraExited += NotifyNearCameraExited;
-            
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.identity;
             _model = new ARObjectViewData();
 
+            SetOutlineState(false);
             _observer.SetupRenderers();
         }
 
@@ -66,10 +65,32 @@ namespace CodeBase.Gameplay.ARObjects
         public bool IsEqualTo(ARObjectConfig arObjectConfig) => 
             _data.Equals(arObjectConfig);
 
+        public void SubscribeToNotifyEvents()
+        {
+            _observer.NearCameraEntered += NotifyNearCameraEntered;
+            _observer.NearCameraExited += NotifyNearCameraExited;
+        }
+
+        public void SetOutlineState(bool isActive)
+        {
+            if (_outlineObject != null)
+                _outlineObject.SetActive(isActive);
+        }
+
+        public float PlayNameAudio()
+        {
+            if (_model?.AudioClip == null)
+                return 0f;
+
+            _speaker.Speak(_model.AudioClip);
+            return _model.AudioClip.length;
+        }
+
         public void Cleanup()
         {
             _observer.NearCameraEntered -= NotifyNearCameraEntered;
             _observer.NearCameraExited -= NotifyNearCameraExited;
+            SetOutlineState(false);
         }
 
         public void HideObjectViewForAudioPerspective()
@@ -77,10 +98,15 @@ namespace CodeBase.Gameplay.ARObjects
             var renderers = _objectView.GetComponentsInChildren<Renderer>(false);
             foreach (var renderer in renderers)
             {
-                renderer.sharedMaterial = _invisibleMaterial;
+                var invisibleMaterials = new Material[renderer.sharedMaterials.Length];
+                
+                for (int i = 0; i < invisibleMaterials.Length; i++) 
+                    invisibleMaterials[i] = _invisibleMaterial;
+                
+                renderer.sharedMaterials = invisibleMaterials;
             }
         }
-        
+
         private void NotifyNearCameraExited()
         {
             if (_presenter == null) 

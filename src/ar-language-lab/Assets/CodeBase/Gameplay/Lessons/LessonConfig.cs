@@ -37,10 +37,15 @@ namespace CodeBase.Gameplay.Lessons
         
         public float GetCompletedTasksValue(string lastCompletedTask)
         {
+             return (float)GetCompletedTasksCount(lastCompletedTask) / Tasks.Length;
+        }
+
+        public int GetCompletedTasksCount(string lastCompletedTask)
+        {
             var completedTasks = 0;
             
             if (string.IsNullOrEmpty(lastCompletedTask))
-                return 0f;
+                return 0;
             
             foreach (var taskData in Tasks)    
             {
@@ -53,7 +58,7 @@ namespace CodeBase.Gameplay.Lessons
                 completedTasks++;
             }
             
-            return (float)completedTasks / Tasks.Length;
+            return completedTasks;
         }
 
         //Validation Task ID for task data 

@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using CodeBase.Gameplay.ARObjects;
 using CodeBase.Gameplay.Lessons.Saves;
 using CodeBase.Gameplay.Lessons.Tasks;
+using CodeBase.Infrastructure.CoroutineRunner;
 using CodeBase.Infrastructure.GameFactory;
 using CodeBase.Infrastructure.GameStateMachineService.StateMachine;
 using CodeBase.Infrastructure.GameStateMachineService.States;
@@ -15,6 +17,7 @@ using CodeBase.Infrastructure.Vuforia;
 using CodeBase.Infrastructure.WindowsManagement;
 using CodeBase.UI.LessonCompleteWindow;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 using Vuforia;
 
 namespace CodeBase.Gameplay.Lessons
@@ -29,6 +32,7 @@ namespace CodeBase.Gameplay.Lessons
         private readonly ISaveService _saveService;
         private readonly IGameStateMachine _gameStateMachine;
         private readonly IWindowsManagementService _windowsManagementService;
+        private readonly ICoroutineRunner _coroutineRunner;
 
         private Perspective _perspective = Perspective.None;
         private LessonConfig _lessonConfig;
@@ -38,6 +42,7 @@ namespace CodeBase.Gameplay.Lessons
 
         private LessonTasksService _lessonTasksService;
         private CancellationTokenSource _lessonCts;
+        private Coroutine _previewObjectsCoroutine;
 
         public LessonManagementService(IGameFactory gameFactory,
             IProjectResourcesProvider resourcesProvider,
@@ -46,12 +51,14 @@ namespace CodeBase.Gameplay.Lessons
             IVuforiaService vuforiaService,
             ISaveService saveService,
             IGameStateMachine gameStateMachine,
-            IWindowsManagementService windowsManagementService)
+            IWindowsManagementService windowsManagementService,
+            ICoroutineRunner coroutineRunner)
         {
             _gameFactory = gameFactory;
             _resourcesProvider = resourcesProvider;
             _arCameraProvider = arCameraProvider;
             _localizationService = localizationService;
+            _coroutineRunner = coroutineRunner;
             _vuforiaService = vuforiaService;
             _saveService = saveService;
             _gameStateMachine = gameStateMachine;
@@ -76,11 +83,25 @@ namespace CodeBase.Gameplay.Lessons
             await SetupQuestsAsync(cancellationToken);
         }
 
+        public void StartAudioLesson()
+        {
+            if (_lessonTasksService == null || (_lessonCts != null && _lessonCts.IsCancellationRequested))
+                return;
+
+            StopPreviewObjectsCoroutine();
+            _previewObjectsCoroutine = _coroutineRunner.RunCoroutine(PreviewCurrentObjects());
+        }
+        
         public void StartLesson()
         {
             if (_lessonTasksService == null || (_lessonCts != null && _lessonCts.IsCancellationRequested))
                 return;
 
+            foreach (var lessonObject in _lessonObjects)
+            {
+                lessonObject.Value.SubscribeToNotifyEvents();
+            }
+            
             _lessonTasksService.OnLessonComplete += OnLessonComplete;
             _lessonTasksService.SelectAndRunNewTask();
             _lessonTasksService.StartBackgroundTasksCaching(_lessonCts?.Token ?? CancellationToken.None);
@@ -100,6 +121,7 @@ namespace CodeBase.Gameplay.Lessons
         public void CleanupLesson()
         {
             CancelLessonCancellationToken();
+            StopPreviewObjectsCoroutine();
             _arCameraProvider.GetSpeaker()?.Stop();
 
             if (_lessonTasksService != null)
@@ -126,15 +148,82 @@ namespace CodeBase.Gameplay.Lessons
             CleanupLesson();
         }
 
+        private IEnumerator PreviewCurrentObjects()
+        {
+            while (!AreAllObjectsInView())
+            {
+                yield return null;
+            }
+
+            var orderedObjects = GetObjectsOrderedLeftToRight();
+
+            foreach (var arObject in orderedObjects)
+            {
+                if (arObject == null)
+                    continue;
+
+                arObject.SetOutlineState(true);
+                var clipDuration = arObject.PlayNameAudio();
+
+                if (clipDuration > 0f)
+                    yield return new WaitForSeconds(clipDuration + 0.5f);
+
+                arObject.SetOutlineState(false);
+            }
+
+            _previewObjectsCoroutine = null;
+            StartLesson();
+        }
+
+        private bool AreAllObjectsInView()
+        {
+            if (_lessonObjects.Count == 0)
+                return false;
+
+            foreach (var arObject in _lessonObjects.Values)
+            {
+                if (arObject == null || !arObject.Observer.IsInView())
+                    return false;
+            }
+
+            return true;
+        }
+
+        private List<ARObjectBase> GetObjectsOrderedLeftToRight()
+        {
+            var activeCamera = _arCameraProvider.GetActiveCamera();
+            var orderedObjects = new List<ARObjectBase>(_lessonObjects.Values);
+
+            orderedObjects.Sort((left, right) =>
+            {
+                var leftX = GetViewportHorizontalPosition(left.transform.position, activeCamera);
+                var rightX = GetViewportHorizontalPosition(right.transform.position, activeCamera);
+                return leftX.CompareTo(rightX);
+            });
+
+            return orderedObjects;
+        }
+
+        private static float GetViewportHorizontalPosition(Vector3 worldPosition, Camera camera)
+        {
+            if (camera == null)
+                return worldPosition.x;
+
+            return camera.WorldToViewportPoint(worldPosition).x;
+        }
+
+        private void StopPreviewObjectsCoroutine()
+        {
+            if (_previewObjectsCoroutine == null)
+                return;
+
+            _coroutineRunner.EndCoroutine(_previewObjectsCoroutine);
+            _previewObjectsCoroutine = null;
+        }
+        
         private LessonConfig GetSelectedLesson()
         {
-            var path = "Gameplay";
-            if (_perspective == Perspective.Audio)
-            {
-                path = "Gameplay/AudioPerspective";
-            }
-            
-            var gameLessons = _resourcesProvider.LoadResource<GameLessons>(path);
+            var gameLessons = _resourcesProvider.LoadResource<GameLessons>();
             return gameLessons.GetLesson(_saveService.SaveData.Lessons.SelectedLessonID);
         }
 

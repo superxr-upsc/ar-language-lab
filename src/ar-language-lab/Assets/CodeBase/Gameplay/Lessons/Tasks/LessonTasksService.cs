@@ -8,6 +8,7 @@ using CodeBase.Gameplay.Lessons.Tasks.Extensions;
 using CodeBase.Gameplay.Lessons.Tasks.Resolvers;
 using CodeBase.Infrastructure.CoroutineRunner;
 using CodeBase.Infrastructure.GameFactory;
+using CodeBase.Infrastructure.Localization;
 using CodeBase.Infrastructure.SaveLoad;
 using CodeBase.Infrastructure.WindowsManagement;
 using CodeBase.UI.Tasks;
@@ -30,28 +31,31 @@ namespace CodeBase.Gameplay.Lessons.Tasks
         private readonly ICoroutineRunner _coroutineRunner;
         private readonly ISaveService _saveService;
         private readonly Perspective _perspective;
+        private readonly ILocalizationService _localizationService;
 
         private Queue<TaskResolverBase> _taskList = new();
         private TaskResolverBase _currentTask;
-        
+
         private ActiveTaskData _activeTaskViewData;
         private ActiveTaskPresenter _activeTaskPresenter;
 
         private CancellationTokenSource _backgroundCachingCts;
         private Coroutine _nextTaskDelayCoroutine;
-        
+
         public LessonTasksService(LessonConfig lessonConfig,
             IGameFactory gameFactory, 
             LessonsGameDataProvider lessonGameDataProvider,
             IWindowsManagementService windowsManagementService,
             ICoroutineRunner coroutineRunner,
             ISaveService saveService,
-            Perspective perspective)
+            Perspective perspective,
+            ILocalizationService localizationService)
         {
             _lessonConfig = lessonConfig;
             _gameFactory = gameFactory;
             _lessonGameDataProvider = lessonGameDataProvider;
             _windowsManagementService = windowsManagementService;
+            _localizationService = localizationService;
             _coroutineRunner = coroutineRunner;
             _saveService = saveService;
             _perspective = perspective;
@@ -210,11 +214,41 @@ namespace CodeBase.Gameplay.Lessons.Tasks
         private async UniTaskVoid TranslateAsync(bool isTranslated)
         {
             var translation = string.Empty;
-            if (isTranslated)
-                translation = await _currentTask.GetQuestDescription(_saveService.SaveData.Settings.Language);
-            else
-                translation = await _currentTask.GetQuestDescription();
 
+            if (isTranslated)
+            {
+                if (_perspective == Perspective.Audio)
+                {
+                    var taskCount =
+                        _lessonConfig.GetCompletedTasksCount(
+                            _lessonGameDataProvider.GetLastCompletedTaskId(_lessonConfig.Id)) + 1;
+                    translation = await _localizationService.GetStringAsync("ind_audiotask_description",
+                        _saveService.SaveData.Settings.Language, LocalizationConsts.DefaultStringTableName,
+                        new { taskNumber = taskCount });
+                }
+                else
+                {
+                    translation = await _currentTask.GetQuestDescription(_saveService.SaveData.Settings.Language);
+                }
+            }
+            else
+            {
+                if (_perspective == Perspective.Audio)
+                {
+                    var taskCount =
+                        _lessonConfig.GetCompletedTasksCount(
+                            _lessonGameDataProvider.GetLastCompletedTaskId(_lessonConfig.Id)) + 1;
+                    translation = await _localizationService.GetStringAsync("ind_audiotask_description",
+                        LocalizationConsts.DefaultLocaleCode, LocalizationConsts.DefaultStringTableName,
+                        new { taskNumber = taskCount });
+                }
+                else
+                {
+                    translation = await _currentTask.GetQuestDescription();
+                }
+            }
+            
+            
             _activeTaskPresenter.UpdateTaskDescription(translation);
         }
         

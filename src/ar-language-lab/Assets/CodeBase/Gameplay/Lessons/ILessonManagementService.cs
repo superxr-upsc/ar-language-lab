@@ -10,6 +10,7 @@ namespace CodeBase.Gameplay.Lessons
         void SetPerspective(Perspective perspective);
         Perspective GetPerspective();
         void CleanupLesson();
+        void StartAudioLesson();
         void StartLesson();
         void LoadMainMenu();
         ARObjectBase GetObject(ARObjectConfig selectedObjectConfig);

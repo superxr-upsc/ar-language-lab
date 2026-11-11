@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 52a403636f7c8b34098de5892289141d
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 384346
+  packageName: Advanced Outline Shader
+  packageVersion: 1.1.0
+  assetPath: Assets/AdvancedOutline/Resources/Shaders/AdvancedOutlineFillURP.shader
+  uploadId: 1033698
