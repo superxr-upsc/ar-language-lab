@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using CodeBase.Gameplay.ARObjects;
 using CodeBase.Gameplay.Lessons.Saves;
 using CodeBase.Gameplay.Lessons.Tasks;
+using CodeBase.Gameplay.Lessons.Tutorial;
 using CodeBase.Infrastructure.CoroutineRunner;
 using CodeBase.Infrastructure.GameFactory;
 using CodeBase.Infrastructure.GameStateMachineService.StateMachine;
@@ -41,6 +43,7 @@ namespace CodeBase.Gameplay.Lessons
         private Dictionary<MultiTargetBehaviour, ARObjectBase> _lessonObjects = new();
 
         private LessonTasksService _lessonTasksService;
+        private ARTutorialService _tutorialService;
         private CancellationTokenSource _lessonCts;
         private Coroutine _previewObjectsCoroutine;
 
@@ -89,10 +92,63 @@ namespace CodeBase.Gameplay.Lessons
                 return;
 
             StopPreviewObjectsCoroutine();
-            _previewObjectsCoroutine = _coroutineRunner.RunCoroutine(PreviewCurrentObjects());
+
+            if (IsTutorialNeeded())
+            {
+                RunTutorialThen(() =>
+                {
+                    _previewObjectsCoroutine = _coroutineRunner.RunCoroutine(PreviewCurrentObjects());
+                }).Forget();
+            }
+            else
+            {
+                _previewObjectsCoroutine = _coroutineRunner.RunCoroutine(PreviewCurrentObjects());
+            }
         }
         
         public void StartLesson()
+        {
+            if (_lessonTasksService == null || (_lessonCts != null && _lessonCts.IsCancellationRequested))
+                return;
+
+            if (IsTutorialNeeded())
+            {
+                RunTutorialThen(StartRegularQuests).Forget();
+            }
+            else
+            {
+                StartRegularQuests();
+            }
+        }
+
+        private bool IsTutorialNeeded() =>
+            !_saveService.SaveData.Lessons.TutorialCompleted;
+
+        private async UniTaskVoid RunTutorialThen(Action onComplete)
+        {
+            _tutorialService = _gameFactory.Create<ARTutorialService>(_lessonObjects.Values.ToList(), _perspective);
+
+            try
+            {
+                await _tutorialService.RunTutorialAsync(_lessonCts?.Token ?? CancellationToken.None);
+            }
+            catch (OperationCanceledException)
+            {
+                return;
+            }
+            finally
+            {
+                _tutorialService?.Dispose();
+                _tutorialService = null;
+            }
+
+            if (_lessonCts == null || _lessonCts.IsCancellationRequested)
+                return;
+
+            onComplete?.Invoke();
+        }
+
+        private void StartRegularQuests()
         {
             if (_lessonTasksService == null || (_lessonCts != null && _lessonCts.IsCancellationRequested))
                 return;
@@ -123,6 +179,9 @@ namespace CodeBase.Gameplay.Lessons
             CancelLessonCancellationToken();
             StopPreviewObjectsCoroutine();
             _arCameraProvider.GetSpeaker()?.Stop();
+
+            _tutorialService?.Dispose();
+            _tutorialService = null;
 
             if (_lessonTasksService != null)
             {
@@ -172,7 +231,7 @@ namespace CodeBase.Gameplay.Lessons
             }
 
             _previewObjectsCoroutine = null;
-            StartLesson();
+            StartRegularQuests();
         }
 
         private bool AreAllObjectsInView()

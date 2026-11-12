@@ -29,6 +29,13 @@ namespace CodeBase.DebugExtensions
             ResetProgressAsync()
                 .Forget();
         }
+
+        [JahroCommand("reset-tutorial", "saves", "Reset the first-time tutorial completed flag.")]
+        public void ResetTutorial()
+        {
+            _saveService.SaveData.Lessons.TutorialCompleted = false;
+            _saveService.SaveAsync().Forget();
+        }
         
         [JahroCommand("set-auto-save-interval", "saves", "Set the auto save interval in seconds.")]
         public void SetAutoSaveInterval(int timeInSeconds)

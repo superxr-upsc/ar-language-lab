@@ -12,6 +12,8 @@ namespace CodeBase.Gameplay.ARObjects
     public class ARObjectBase : MonoBehaviour
     {
         public ARObjectObserver Observer => _observer;
+        public ARObjectConfig Config => _data;
+        public string LocalizedName => _model?.Name;
         public GameObject _objectView;
         public GameObject _outlineObject;
         public Material _invisibleMaterial;

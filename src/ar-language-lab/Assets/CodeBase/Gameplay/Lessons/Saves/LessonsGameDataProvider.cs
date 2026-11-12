@@ -25,6 +25,15 @@ namespace CodeBase.Gameplay.Lessons.Saves
         public LessonProgress[] GetAllProgress() => 
             _lessonsSaveData.Progress.ToArray();
 
+        public bool IsTutorialCompleted() =>
+            _lessonsSaveData.TutorialCompleted;
+
+        public void SaveTutorialCompleted()
+        {
+            _lessonsSaveData.TutorialCompleted = true;
+            _saveService.MarkDirty();
+        }
+
         public bool IsLessonComplete(string lessonId)
         {
             var lessonProgress = GetProgressById(lessonId);

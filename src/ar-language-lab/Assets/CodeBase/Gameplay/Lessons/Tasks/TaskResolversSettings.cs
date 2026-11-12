@@ -11,5 +11,6 @@ namespace CodeBase.Gameplay.Lessons.Tasks
         public float TopHorizontalToleranceMeters = 0.18f;
         public float AxisAdvantageMeters = 0.02f;
         public int RequiredStableFrames = 10;
+        public Vector3 PlacementIndicatorOffset = new Vector3(0.18f, -0.08f, 0f);
     }
 }
